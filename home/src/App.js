@@ -4,7 +4,7 @@ import NavBar from './navBar';
 import HomePage from './homePage/homePage';
 import FaqPage from './FAQPage/faqPage';
 import QuestionPage from './questionPage/questionPage';
-import TagsPage from './tagsPage/tagePage';
+import TagsPage from './tagsPage/tagsPage';
 import UserPage from './userPage/userPage';
 
 import { Routes, Route } from 'react-router-dom';

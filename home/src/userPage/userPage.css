@@ -1,0 +1,60 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+h1 {
+    font-size: 40px;
+}
+
+#header {
+    display: flex;
+    padding-top: 50px;
+    align-items: center;
+    background-color: rgb(151, 150, 150);
+    padding-bottom: 30px;
+  }
+
+  #header img {
+    width: 80px;
+    padding-left: 20px;
+  }
+
+  #header div {
+    display: flex;
+    flex-direction: column;
+    margin-left: 20px;
+    margin-top: 15px;
+  }
+
+  #header div p {
+    margin-top: 15px;
+  }
+
+  .questions {
+    background-color: rgb(46, 45, 45);
+    padding: 10px;
+    margin: 15px;
+    max-height: 150px;
+    overflow-y: auto;
+  }
+
+  .questions div {
+    background-color: rgb(195, 192, 192);
+    font-size: large;
+    margin: 10px;
+  }
+
+  .questions div button {
+    background-color: rgb(234, 92, 4);
+    padding: 8px;
+    border-radius: 30%;
+    border-color: transparent;
+    margin-right: 20px;
+  }
+
+  h2 {
+    padding: 10px;
+    padding-bottom: 5px;
+    font-size: 30px;
+  }
