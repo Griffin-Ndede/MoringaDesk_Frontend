@@ -118,15 +118,16 @@
     position: relative;
     top: -30px;
     left: 6%;
+    width: 94%;
 }
 
 .recentCardTitle{
     margin-top: 0;
     margin-bottom: 0;
-    padding-right: 5%;
     position: relative;
     top: -25px;
     left: 6%;
+    width: 94%;
 }
 
 .tagButtonDiv{
@@ -144,6 +145,7 @@
     top: -15px;
     font-size: 102%;
     border-radius: 15px;
+    border-color: rgb(1, 19, 55);
     color: white;
     background-color: rgba(238, 100, 50, 0.925);
 }
