@@ -1,5 +1,6 @@
 import './questions.css'
 import ResponseCard from './responseCard';
+import PostQn from '../popUps/postQuestion';
 import { CodeBlock } from "react-code-blocks";
 
 function QuestionPage(){
@@ -26,6 +27,7 @@ function QuestionPage(){
                 <ResponseCard user={"Otido"} solution={"Use the .join array method with a space as a seperator."} code={'let Array = ["My", "name", "is", "Sam"]; \nlet Sentence = Array.join(" ");'} votes={1}/>
 
             </div>
+            <PostQn />
         </>
     )
 }
