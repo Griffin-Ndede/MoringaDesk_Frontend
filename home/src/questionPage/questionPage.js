@@ -1,5 +1,6 @@
 import './questions.css'
 import ResponseCard from './responseCard';
+import PostResp from '../popUps/postResponse';
 import { CodeBlock } from "react-code-blocks";
 
 function QuestionPage(){
