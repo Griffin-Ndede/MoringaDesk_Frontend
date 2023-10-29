@@ -13,6 +13,10 @@
     height: 65px;
 }
 
+#menu:hover{
+    cursor: pointer;
+}
+
 #navLogo{
     margin-bottom: 8px;
     height: 50px;
