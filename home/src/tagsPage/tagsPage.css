@@ -1,0 +1,59 @@
+* {
+  padding-left: 5px;
+}
+
+#head {
+  padding: 20px;
+  background-color: white;
+  margin-right: 0;
+  /* padding-left: 0; */
+  display: flex;
+  flex-direction: column;
+}
+
+#head div p {
+  font-size: 18px;
+}
+
+#searchbar {
+  width: 1000px;
+  padding: 20px;
+  margin: 10px;
+  border-color: transparent;
+}
+
+#searchbar input {
+  width: 500px;
+  padding: 10px;
+  border-radius: 20px;
+  font-size: 20px;
+  background-color: rgb(221, 218, 218);
+  color: #000;
+  padding-left: 25px;
+}
+
+.card-container {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  padding: 20px;
+  white-space: nowrap;
+  width: 1500px;
+}
+
+.card {
+  background-color: rgb(221, 218, 218);
+  color: #000;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 20px;
+  width: 500px;
+  margin-right: 10px;
+  white-space: normal;
+  font-size: 18px;
+}
+
+.card h3 {
+  padding-bottom: 5px;
+  padding-left: 7px;
+}
