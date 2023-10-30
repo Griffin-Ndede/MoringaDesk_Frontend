@@ -62,7 +62,21 @@
 #navPanel{
     height: 100vh;
     background-color: rgba(1, 19, 55, 0.897);
+    position: relative;
+    left: -200px;
     width: 200px;
+    -webkit-animation: slide 0.5s forwards;
+    -webkit-animation-delay: 2s;
+    animation: slide 0.5s forwards;
+    animation-delay: 0s;
+}
+
+@-webkit-keyframes slide {
+    100% { left: 0; }
+}
+
+@keyframes slide {
+    100% { left: 0; }
 }
 
 #Navigate{

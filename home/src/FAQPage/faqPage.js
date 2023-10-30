@@ -5,6 +5,7 @@ import RecentCard from './recentQnCard'
 function FaqPage(){
     return(
         <>
+        <div id="FAQBody">
             <div id="faqHeader">
                 <h1 id="faqTitle">Help Desk</h1>
                 <input placeholder="Search..." id="faqSearch"></input>
@@ -26,6 +27,7 @@ function FaqPage(){
                     <RecentCard username={"Griffin"} title={"How can I pick the last letter of every word in an List"} tags={["Python"]} replyCount={1} date={"18/10/23"} />
                 </div>
             </div>
+        </div>
         </>
     )
 }
