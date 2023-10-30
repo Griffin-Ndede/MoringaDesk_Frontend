@@ -68,7 +68,7 @@ const Homepage =()=>{
               <span className="text-wrapper-11">.</span>
             </p>
           </div>
-          <img className="rectangle"alt="Rectangle" src= {img12} />
+          <img className="rectangle"alt="Rectangle" src= {img10} />
         </div>
         <div className="respond">
           <div className="flexcontainer-3">
@@ -84,7 +84,7 @@ const Homepage =()=>{
               </span>
             </p>
           </div>
-          <img className="rectangle-2" alt="Rectangle" src= {img10} />
+          <img className="rectangle-2" alt="Rectangle" src= {img2} />
         </div>
         <div className="reach-out">
           <div className="flexcontainer-2">
@@ -148,13 +148,13 @@ const Homepage =()=>{
         <div className="overlap-2">
           <div className="nav-bar-items">
             <div className="ellipse" />
-            <img className="NOTIFICATON" alt="Notificaton" src= {img3} />
-            <img className="image" alt="Image" src={img6} />
+            <img className="NOTIFICATON" alt="Notificaton" src= {img7} />
+            <img className="image" alt="Image" src={img5} />
             
           </div>
-          <div className="text-wrapper-19">user</div>
-          <div className="text-wrapper-20">tags</div>
-          <div className="text-wrapper-21">FAQs</div>
+          <div className="text-wrapper-19"></div>
+          <div className="text-wrapper-20"></div>
+          <div className="text-wrapper-21"></div>
         </div>
       </div>
     </div>
