@@ -1,0 +1,85 @@
+.questionPopUp{
+    margin-left: 17.5%;
+    width: 65%;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    background-color: rgba(91, 91, 91, 0.847);
+    border-radius: 15px;
+}
+
+.popUpTitle{
+    margin-left: 2%;
+    margin-top: 0%;
+    margin-bottom: 1.5%;
+    color: rgb(241, 241, 241);
+}
+
+.inputDivs{
+    background-color: rgb(1, 19, 55);
+    padding: 1%;
+    padding-top: 1px;
+    border-radius: 15px;
+    margin-bottom: 1%;
+    margin-left: 1.5%;
+    width: 95%;
+}
+
+.Title{
+    margin-top: 0.5%;
+    margin-bottom: 0.5%;
+    color: rgba(238, 100, 50, 0.95);
+}
+
+.inputs{
+    width: 99%;
+    border-radius: 8px;
+    font-size: larger;
+    background-color: rgb(241, 241, 241);
+    
+}
+
+#titleInput{
+    padding-bottom: 5px;
+}
+
+#descInput{
+    padding-bottom: 30px;
+}
+
+.selectTags{
+    padding-right: 2%;
+    padding-left: 2%;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    margin-right: 1%;
+    position: relative;
+    font-size: 102%;
+    border-radius: 15px;
+    border-color: rgb(1, 19, 55);
+    color: white;
+    background-color: rgba(238, 100, 50, 0.925);
+}
+
+#selectedTags{
+    height: 100px;
+    width: 98.5%;
+    border-style: solid;
+    border-width: 3px;
+    margin-top: 1%;
+    padding-top: 1%;
+    padding-left: 1%;
+}
+
+.post{
+    padding-right: 2%;
+    padding-left: 2%;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    font-size: 120%;
+    width: 15%;
+    margin-left: 83%;
+    border-radius: 15px;
+    border-color: rgb(1, 19, 55);
+    color: white;
+    background-color: rgba(238, 100, 50, 0.925);
+}
