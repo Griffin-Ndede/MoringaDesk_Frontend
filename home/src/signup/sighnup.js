@@ -6,6 +6,17 @@ import "/home/mwangi/FINAL_PROJECT/client/src/components/sighnup.css";
 import img1 from "/home/mwangi/MoringaDesk_Frontend/home/src/homePage/images/image.png";
 
 const CreateAccount = () => {
+    // State and Form Data Initialization
+
+const initialFormData = {
+    firstName: '',
+    lastName: '',
+    email: '',
+    password: '',
+  };
+  
+  const [formData, setFormData] = useState(initialFormData);
+
   
 };
 
