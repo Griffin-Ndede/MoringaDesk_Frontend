@@ -47,6 +47,58 @@ return (
 <div id="img">
   <img src={img1} alt="logo" />
 </div>
+<div id="registrationform">
+        <form id="registration" onSubmit={handleSubmit}>
+          <label>First name</label><br />
+          <input
+            type='text'
+            id='fname'
+            name='firstName'
+            placeholder='Your first name ...'
+            value={formData.firstName}
+            onChange={handleChange}
+          /><br />
+
+          <label>Last name</label><br />
+          <input
+            type='text'
+            id='lname'
+            name='lastName'
+            placeholder='Your last name ...'
+            value={formData.lastName}
+            onChange={handleChange}
+          /><br />
+
+          <label>Email address</label><br />
+          <input
+            type='email'
+            id='email'
+            name='email'
+            placeholder='Enter your email address ...'
+            value={formData.email}
+            onChange={handleChange}
+          /><br />
+
+          <label>Password</label><br />
+          <input
+            type='password'
+            id='password'
+            name='password'
+            placeholder='Enter your password ...'
+            value={formData.password}
+            onChange={handleChange}
+          /><br />
+           <button type="submit">Sign up</button>
+          <p className="text-wrapper"><NavLink to="/login">Already have an account? login!</NavLink></p>
+        </form>
+        <div className="registration-image">
+          <img
+            className="unnamed"
+            alt="Unnamed"
+            src="https://lh3.googleusercontent.com/1fmzgGEWYdufxJ9AFbI3gO8GMROfyrYYo5uE8EzAKpYeMfid89ZBoWtagyjQ5gYSJexxnYxfTRP5zHd0UUtlsNtsNDCPcn_Lcty8DGAgXQ=s750"
+          />
+        </div>
+      </div>
      
     </>
   );
