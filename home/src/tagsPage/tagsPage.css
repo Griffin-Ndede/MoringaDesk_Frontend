@@ -1,19 +1,25 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
 #head {
   background-image: url(https://www.i6net.com/wp-content/uploads/2015/06/background-header-technology.jpg);
-  padding: 20px;
+  padding: 10px;
   margin-top: 65px;
   margin-right: 0;
+  margin-left: 0;
   color: white;
 }
 
 #head div p {
   font-size: 18px;
+  margin-top: 2px;
 }
 
 #searchbar {
   width: 1000px;
   padding: 20px;
-  margin: 10px;
   border-color: transparent;
   color: white;
 }
