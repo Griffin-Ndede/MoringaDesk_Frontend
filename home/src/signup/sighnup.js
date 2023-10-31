@@ -1,53 +1,64 @@
 // Part 1: Import Statements and Component Definition
-
 import React, { useState } from "react";
 import { NavLink, useNavigate } from 'react-router-dom';
-import "/home/mwangi/FINAL_PROJECT/client/src/components/sighnup.css";
-import img1 from "/home/mwangi/MoringaDesk_Frontend/home/src/homePage/images/image.png";
+import "./sighnup.css"; // Corrected path for signup.css
+import img1 from "../homePage/images/image.png"; // Corrected path for image.png
 
 const CreateAccount = () => {
-    // State and Form Data Initialization
-
-const initialFormData = {
+  // State and Form Data Initialization
+  const initialFormData = {
     firstName: '',
     lastName: '',
     email: '',
     password: '',
   };
-  
+
   const [formData, setFormData] = useState(initialFormData);
 
-  //  Form Submission Handling
+  // Form Submission Handling
+  const navigate = useNavigate();
 
-const handleSubmit = async (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      // Form submission logic
+      const response = await fetch('http://127.0.0.1:5000/signup', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        console.log('Signup successful!');
+        setFormData(initialFormData);
+        navigate('/login');
+      } else {
+        console.error('Signup failed.');
+      }
     } catch (error) {
       console.error('Error:', error);
     }
-
   };
-};
-//  Form Input Change Handling
 
-const handleChange = (e) => {
+  // Form Input Change Handling
+  const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({
       ...formData,
       [name]: value,
     });
   };
-// Render JS Markup
 
-return (
+  // Render JSX Markup
+  return (
     <>
-    // JSX Markup - Image
-
-<div id="img">
-  <img src={img1} alt="logo" />
-</div>
-<div id="registrationform">
+      {/* JSX Markup - Image */}
+      <div id="img">
+        <img src={img1} alt="logo" />
+      </div>
+      
+      <div id="registrationform">
         <form id="registration" onSubmit={handleSubmit}>
           <label>First name</label><br />
           <input
@@ -88,9 +99,11 @@ return (
             value={formData.password}
             onChange={handleChange}
           /><br />
-           <button type="submit">Sign up</button>
-          <p className="text-wrapper"><NavLink to="/login">Already have an account? login!</NavLink></p>
+
+          <button type="submit">Sign up</button>
+          <p className="text-wrapper"><NavLink to="/login">Already have an account? Login!</NavLink></p>
         </form>
+
         <div className="registration-image">
           <img
             className="unnamed"
@@ -99,7 +112,8 @@ return (
           />
         </div>
       </div>
-     
     </>
   );
+};
+
 export default CreateAccount;
