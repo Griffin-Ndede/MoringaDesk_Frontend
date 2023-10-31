@@ -26,9 +26,17 @@ const handleSubmit = async (e) => {
     } catch (error) {
       console.error('Error:', error);
     }
-  };
 
-  
+  };
 };
+//  Form Input Change Handling
+
+const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
 
 export default CreateAccount;
