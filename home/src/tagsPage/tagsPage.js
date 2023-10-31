@@ -14,6 +14,12 @@ cards.forEach(card => {
     questions.forEach(question => {
       question.style.display = 'none';
     });
+
+    const filteredQuestions = document.querySelectorAll(`.question[datacategory="${selectedTag}"]`);
+
+    filteredQuestions.forEach(question => {
+      question.style.display = 'block'; 
+    });
   };
 
   return (
