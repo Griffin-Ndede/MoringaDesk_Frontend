@@ -1,14 +1,9 @@
-* {
-  padding-left: 5px;
-}
-
 #head {
+  background-image: url(https://www.i6net.com/wp-content/uploads/2015/06/background-header-technology.jpg);
   padding: 20px;
-  background-color: white;
+  margin-top: 65px;
   margin-right: 0;
-  /* padding-left: 0; */
-  display: flex;
-  flex-direction: column;
+  color: white;
 }
 
 #head div p {
