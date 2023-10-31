@@ -7,20 +7,20 @@ cards.forEach(card => {
   card.addEventListener('click', filterQuestions);
 });
 
-  function filterQuestions(event) {
-    const selectedCategory = event.currentTarget.dataset.category;
-    const questions = document.querySelectorAll('.question');
+function filterQuestions(event) {
+  const selectedCategory = event.currentTarget.dataset.category;
+  const questions = document.querySelectorAll('.question');
 
-    questions.forEach(question => {
-      question.style.display = 'none';
-    });
+  questions.forEach(question => {
+    question.style.display = 'none';
+  });
 
-    const filteredQuestions = document.querySelectorAll(`.question[datacategory="${selectedTag}"]`);
+  const filteredQuestions = document.querySelectorAll(`.question[data-category="${selectedCategory}"]`);
 
-    filteredQuestions.forEach(question => {
-      question.style.display = 'block'; 
-    });
-  };
+  filteredQuestions.forEach(question => {
+    question.style.display = 'block';
+  });
+}
 
   return (
     <>
