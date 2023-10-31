@@ -7,6 +7,11 @@ cards.forEach(card => {
   card.addEventListener('click', filterQuestions);
 });
 
+  function filterQuestions(event) {
+    const selectedCategory = event.currentTarget.dataset.category;
+    const questions = document.querySelectorAll('.question');
+  };
+
   return (
     <>
     <div id="head">
