@@ -6,7 +6,7 @@ import FaqPage from './FAQPage/faqPage';
 import QuestionPage from './questionPage/questionPage';
 import TagsPage from './tagsPage/tagePage';
 import UserPage from './userPage/userPage';
-
+import CreateAccount from './signup/sighnup';
 import { Routes, Route } from 'react-router-dom';
 
 
@@ -16,10 +16,13 @@ function App() {
       <NavBar />
       <Routes>
           <Route path='/' element={<HomePage />} />
+          <Route path='/signup' element={< CreateAccount/>} />
           <Route path='/FAQs' element={<FaqPage />}/>
           <Route path='/tags' element={<TagsPage />} />
           <Route path='/user' element={<UserPage />} />
           <Route path='/questions' element={<QuestionPage />} />
+          
+          
       </Routes>
     </>
   );
