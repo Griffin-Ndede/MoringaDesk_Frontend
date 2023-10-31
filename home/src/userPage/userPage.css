@@ -26,11 +26,11 @@ h1 {
   }
 
   #header div p {
-    margin-top: 5px;
+    margin-top: 15px;
   }
 
   .questions {
-    background-color: rgb(46, 45, 45);
+    background-color: rgb(1, 19, 55);
     padding: 10px;
     margin: 15px;
     max-height: 150px;
@@ -38,18 +38,21 @@ h1 {
   }
 
   .questions div {
-    background-color: rgb(195, 192, 192);
-    font-size: large;
+    background-color: white;
     margin: 10px;
+    height:100px;
+    font-size: 140%;
   }
 
   .questions div button {
-    background-color: rgb(234, 92, 4);
+    background-color: rgba(238, 100, 50, 0.863);
+    color: white;
     padding: 8px;
     border-radius: 30%;
-    border-color: transparent;
+    border-color: rgb(1, 19, 55);
     margin-right: 20px;
     margin-left: 5px;
+    font-size: 80%;
   }
 
   h2 {
