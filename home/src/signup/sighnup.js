@@ -42,6 +42,11 @@ const handleChange = (e) => {
 
 return (
     <>
+    // JSX Markup - Image
+
+<div id="img">
+  <img src={img1} alt="logo" />
+</div>
      
     </>
   );
