@@ -38,5 +38,11 @@ const handleChange = (e) => {
       [name]: value,
     });
   };
+// Render JS Markup
 
+return (
+    <>
+     
+    </>
+  );
 export default CreateAccount;
