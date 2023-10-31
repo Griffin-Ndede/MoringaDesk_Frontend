@@ -10,6 +10,10 @@ cards.forEach(card => {
   function filterQuestions(event) {
     const selectedCategory = event.currentTarget.dataset.category;
     const questions = document.querySelectorAll('.question');
+
+    questions.forEach(question => {
+      question.style.display = 'none';
+    });
   };
 
   return (
