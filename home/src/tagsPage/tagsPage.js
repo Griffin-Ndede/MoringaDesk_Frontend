@@ -1,6 +1,12 @@
 import './tagsPage.css';
 
 function TagsPage() {
+const cards = document.querySelectorAll('.card');
+
+cards.forEach(card => {
+  card.addEventListener('click', filterQuestions);
+});
+
   return (
     <>
     <div id="head">
