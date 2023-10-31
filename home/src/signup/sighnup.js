@@ -17,6 +17,17 @@ const initialFormData = {
   
   const [formData, setFormData] = useState(initialFormData);
 
+  //  Form Submission Handling
+
+const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      // Form submission logic
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  };
+
   
 };
 
