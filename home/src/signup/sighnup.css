@@ -1,0 +1,236 @@
+.create-account {
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+  }
+  
+  .create-account .overlap-wrapper {
+    background-color: #ffffff;
+    height: 982px;
+    width: 1512px;
+  }
+  
+  .create-account .overlap {
+    height: 920px;
+    left: 35px;
+    position: relative;
+    top: 52px;
+    width: 1372px;
+  }
+  
+  .create-account .white-rounded {
+    height: 920px;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 672px;
+  }
+  
+  .create-account .text-wrapper {
+    color: #fa510f;
+    font-family: "Comfortaa-Regular", Helvetica;
+    font-size: 20px;
+    font-weight: 400;
+    left: 150px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    top: 734px;
+    width: 371px;
+  }
+  
+  .create-account .div {
+    color: #000000;
+    font-family: "Comfortaa-Regular", Helvetica;
+    font-size: 20px;
+    font-weight: 400;
+    left: 108px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    top: 261px;
+    width: 196px;
+  }
+  
+  .create-account .text-wrapper-2 {
+    color: #000000;
+    font-family: "Comfortaa-Bold", Helvetica;
+    font-size: 40px;
+    font-weight: 700;
+    left: 104px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    top: 204px;
+    width: 601px;
+  }
+  
+  .create-account .password {
+    height: 30px;
+    left: 108px;
+    position: absolute;
+    top: 541px;
+    width: 459px;
+  }
+  
+  .create-account .overlap-group {
+    height: 31px;
+    position: relative;
+  }
+  
+  .create-account .text-wrapper-3 {
+    color: #000000bf;
+    font-family: "Comfortaa-Regular", Helvetica;
+    font-size: 15px;
+    font-weight: 400;
+    left: 0;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    top: 0;
+    width: 135px;
+  }
+  
+  .create-account .line {
+    height: 3px;
+    left: 0;
+    position: absolute;
+    top: 28px;
+    width: 459px;
+  }
+  
+  .create-account .email {
+    height: 30px;
+    left: 108px;
+    position: absolute;
+    top: 457px;
+    width: 459px;
+  }
+  
+  .create-account .input {
+    background: transparent;
+    border: none;
+    color: #000000bf;
+    font-family: "Comfortaa-Regular", Helvetica;
+    font-size: 15px;
+    font-weight: 400;
+    left: 0;
+    letter-spacing: 0;
+    line-height: normal;
+    padding: 0;
+    position: absolute;
+    top: 0;
+    white-space: nowrap;
+    width: 51px;
+  }
+  
+  .create-account .img {
+    height: 3px;
+    left: -1px;
+    position: absolute;
+    top: 28px;
+    width: 459px;
+  }
+  
+  .create-account .name {
+    height: 29px;
+    left: 108px;
+    position: absolute;
+    top: 377px;
+    width: 459px;
+  }
+  
+  .create-account .overlap-group-wrapper {
+    height: 40px;
+    left: 186px;
+    position: absolute;
+    top: 654px;
+    width: 302px;
+  }
+  
+  .create-account .div-wrapper {
+    background-color: #000e33;
+    border-radius: 50px;
+    height: 40px;
+    position: relative;
+    width: 300px;
+  }
+  
+  .create-account .text-wrapper-4 {
+    color: #ffffff;
+    font-family: "Comfortaa-Regular", Helvetica;
+    font-size: 15px;
+    font-weight: 400;
+    left: 76px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    text-align: center;
+    top: 11px;
+    width: 148px;
+  }
+  
+  .create-account .image {
+    height: 78px;
+    left: 35px;
+    object-fit: cover;
+    position: absolute;
+    top: 18px;
+    width: 341px;
+  }
+  
+  .create-account .overlap-2 {
+    background-color: #1f9801;
+    border-radius: 50px;
+    height: 40px;
+    position: relative;
+    width: 300px;
+  }
+  
+  .create-account .registration-image {
+    background-color: #fa510f;
+    border-radius: 150px;
+    height: 900px;
+    left: 672px;
+    position: absolute;
+    top: 0;
+    width: 700px;
+  }
+  
+  .create-account .unnamed {
+
+    height: 865px;
+    width: 650px;
+    left:20px;
+    position: relative;
+    border-radius: 100px;
+    margin: 10px;
+    align-items: center;
+  }
+#registrationform{
+    display: flex;
+    justify-content: space-evenly;
+}
+#registration input{
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 20px;
+}
+#registration input[type=text]:active {
+    border-color: #fa510f;
+}
+
+#registration{
+    margin-top: 150px;
+}
+#img img{
+    width: 300px;
+    height: auto;
+    margin: 50px 0 0 200px;
+}
+.registration-image img{
+    border-radius: 30px;
+}
+
