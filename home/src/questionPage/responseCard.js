@@ -6,7 +6,7 @@ function ResponseCard({ user, solution, code, votes }){
             <div className="responseDiv">
                 <div className="response">
                     <img className="userIcon" alt="user icon" src="https://icones.pro/wp-content/uploads/2021/02/icone-utilisateur-gris.png" />
-                    <h3 className="questionUserName">{user}</h3>
+                    <h3 className="questionUserName">@{user}</h3>
                     <p className="solution">{solution}</p>
                     <div className='questionCodeBlock'>
                         <CodeBlock
