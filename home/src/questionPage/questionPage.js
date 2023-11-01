@@ -15,6 +15,11 @@ function QuestionPage(){
             <div id="questionPage">
                 <div className="questionDiv">
                     <div className="question">
+                        <img className='actionDropDown' alt='option menu' src='https://static.thenounproject.com/png/892510-200.png'/>
+                        <div className='actionButtons'>
+                            <button className='editButtons'>Edit</button>
+                            <button className='editButtons'>Delete</button>
+                        </div>
                         <img className="userIcon" alt="user icon" src="https://icones.pro/wp-content/uploads/2021/02/icone-utilisateur-gris.png" />
                         <h3 className="questionUserName">@George:</h3>
                         <h1 className="questionTitle">How to convert an array to a string in JavaScript?</h1>

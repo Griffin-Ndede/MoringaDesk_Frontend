@@ -20,17 +20,18 @@ function NavBar(){
                 <div id="notifDot"></div>
             </div>
             {showPanel ? 
-                <div id="navBackground">
-                    <div id="navPanel">
+                <>
+                <div id="navBackground" onClick={toggle}></div>
+                    <div id="navPanel"> 
                         <h3 id="Navigate">Navigate</h3>
-                        <div className="linkDiv"><Link className="navLinks" to={'/'} onClick={toggle}>Home</Link></div>
+                        <div className="linkDiv"><Link className="navLinks" to={'/home'} onClick={toggle}>Home</Link></div>
                         <div className="linkDiv"><Link className="navLinks" to={'/FAQs'} onClick={toggle}>Questions</Link></div>
                         <div className="linkDiv"><Link className="navLinks" to={'/tags'} onClick={toggle}> Tags</Link></div>
                         <div className="linkDiv"><Link className="navLinks" to={'/user'} onClick={toggle}> User</Link></div>
                         <div className="linkDiv"><Link className="navLinks" to={'/questions'} onClick={toggle}>QN</Link></div>
                         <div id="logOut"><button id="logOutButton">Logout</button></div>
                     </div>
-                </div> 
+                </>
                 :
                 <> </>
             }

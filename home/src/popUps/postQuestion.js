@@ -34,7 +34,7 @@ function PostQn(){
                     </div>
                     <div className="inputDivs">
                         <h3 className="Title">Description: </h3>
-                        <input id="descInput" className="inputs" placeHolder={"Enter a Description..."} />
+                        <textarea id="descInput" className="inputs" placeHolder={"Enter a Description..."}  cols={40} rows={4} />
                     </div>
                     <div className="inputDivs">
                         <h3 className="Title">Code Attempt (Optional): </h3>
