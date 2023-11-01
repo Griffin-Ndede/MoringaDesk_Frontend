@@ -149,7 +149,7 @@ const Homepage =()=>{
           <div className="nav-bar-items">
             <div className="ellipse" />
             
-            <img className="image" alt="Image" src={img4} />
+            <img className="image" alt="Img4" src={img4} />
             
           </div>
           

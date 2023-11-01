@@ -86,7 +86,7 @@ const LoginPage = () => {
             </form>
           </div>
 
-          <img className="image" alt="Image" src={img2} />
+          <img className="image" alt="Image2" src={img2} />
           
         </div>
         <div className="login-image">
