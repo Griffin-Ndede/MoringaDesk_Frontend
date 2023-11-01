@@ -30,7 +30,7 @@ const Homepage =()=>{
             </div>
             <div className="email">
               <div className="text-wrapper-6">@moringadesl@gmail.com</div>
-              <img className="EML" alt="Eml" src= {img1} />
+              <img className="EML" alt="Eml" src= "./home/mwangi/MoringaDesk_Frontend/home/src/images/EML.png"/>
             </div>
             <div className="x">
               <div className="text-wrapper-7">@moringadeskofficial</div>

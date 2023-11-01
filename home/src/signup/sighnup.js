@@ -1,11 +1,11 @@
-// Part 1: Import Statements and Component Definition
 import React, { useState } from "react";
 import { NavLink, useNavigate } from 'react-router-dom';
-import "./sighnup.css"; // Corrected path for signup.css
-import img1 from "../homePage/images/image.png"; // Corrected path for image.png
+import "/home/mwangi/FINAL_PROJECT/client/src/components/sighnup.css";
+import img1 from "/home/mwangi/MoringaDesk_Frontend/home/src/images/image.png";
 
 const CreateAccount = () => {
-  // State and Form Data Initialization
+  const navigate = useNavigate();
+
   const initialFormData = {
     firstName: '',
     lastName: '',
@@ -14,9 +14,6 @@ const CreateAccount = () => {
   };
 
   const [formData, setFormData] = useState(initialFormData);
-
-  // Form Submission Handling
-  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -41,7 +38,6 @@ const CreateAccount = () => {
     }
   };
 
-  // Form Input Change Handling
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({
@@ -50,14 +46,11 @@ const CreateAccount = () => {
     });
   };
 
-  // Render JSX Markup
   return (
     <>
-      {/* JSX Markup - Image */}
       <div id="img">
         <img src={img1} alt="logo" />
       </div>
-      
       <div id="registrationform">
         <form id="registration" onSubmit={handleSubmit}>
           <label>First name</label><br />
@@ -101,9 +94,8 @@ const CreateAccount = () => {
           /><br />
 
           <button type="submit">Sign up</button>
-          <p className="text-wrapper"><NavLink to="/login">Already have an account? Login!</NavLink></p>
+          <p className="text-wrapper"><NavLink to="/login">Already have an account? login!</NavLink></p>
         </form>
-
         <div className="registration-image">
           <img
             className="unnamed"
