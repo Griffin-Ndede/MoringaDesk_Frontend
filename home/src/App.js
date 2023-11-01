@@ -6,7 +6,7 @@ import FaqPage from './FAQPage/faqPage';
 import QuestionPage from './questionPage/questionPage';
 import TagsPage from './tagsPage/tagsPage';
 import UserPage from './userPage/userPage';
-import HomePage from './homePage/home';
+import CreateAccount from './signup/sighnup';
 import LoginPage from './login/login';
 import { Routes, Route } from 'react-router-dom';
 
