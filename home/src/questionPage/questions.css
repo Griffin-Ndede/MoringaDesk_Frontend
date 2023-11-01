@@ -1,9 +1,34 @@
+#questionPage{
+    padding-left: 1%;
+    padding-right: 1%;
+}
+
 .questionDiv{
     background-color: rgb(1, 19, 55);
     padding: 1%;
     border-radius: 15px;
     margin-bottom: 1%;
     margin-top: 70px;
+}
+
+.actionDropDown{
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    right: 3%;
+}
+
+.actionButtons{
+    position: absolute;
+    top: 120px;
+    right: 3%;
+    width: 100px;
+}
+.editButtons{
+    width: 100px;
+    height: 20px;
+    background-color: rgb(185, 185, 185);
+    border: none;
 }
 
 .question{
@@ -56,7 +81,7 @@
 
 #Solutions{
     margin-left: 1%;
-    margin-top: 1%;
+    margin-top: 0%;
     margin-bottom: 1%;
 }
 
@@ -119,4 +144,26 @@
     right: 12%;
     top: 6%;
     transform: rotate(180deg);
+}
+
+.addButtons1{
+    width: 65px;
+    height: 65px;
+    border-radius: 35px;
+    border-color: rgba(1, 19, 55, 0.922);
+    font-size: 250%;
+    color: white;
+    background-color: rgba(1, 19, 55, 0.922);
+    position: fixed;
+    right: 1%;
+    bottom: 2%;
+    transition: 0.5s;
+}
+
+.addButtons1:hover{
+    cursor: pointer;
+    width: 70px;
+    height: 70px;
+    background-color: rgba(2, 31, 90, 0.922);
+
 }

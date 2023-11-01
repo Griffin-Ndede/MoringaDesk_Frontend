@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import '/home/mwangi/MoringaDesk_Frontend/home/src/login/login.css';
+import './login.css';
 import { NavLink, useNavigate } from 'react-router-dom';
-import img2 from "/home/mwangi/MoringaDesk_Frontend/images/image.png"
+import img2 from "../images/image.png"
 
 const LoginPage = () => {
   const navigate = useNavigate(); // Use useNavigate for navigation
@@ -86,7 +86,7 @@ const LoginPage = () => {
             </form>
           </div>
 
-          <img className="image" alt="Image" src={img2} />
+          <img className="image" alt="Image2" src={img2} />
           
         </div>
         <div className="login-image">

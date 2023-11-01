@@ -1,8 +1,17 @@
 import './faq.css'
 import FaqCard from './faqCard'
 import RecentCard from './recentQnCard'
+import PostQn from '../popUps/postQuestion'
+import { useState } from 'react'
 
 function FaqPage(){
+    const [ ask, setAsk ] = useState(false)
+
+    function addQn(){
+        setAsk(!ask)
+        console.log(ask)
+    }
+
     return(
         <>
         <div id="FAQBody">
@@ -27,6 +36,8 @@ function FaqPage(){
                     <RecentCard username={"Griffin"} title={"How can I pick the last letter of every word in an List"} tags={["Python"]} replyCount={1} date={"18/10/23"} />
                 </div>
             </div>
+            <button className="addButtons" onClick={addQn}> + </button>
+            {ask ? <div className="popUpBackground"><button className='closePopUp' onClick={addQn} >Close</button><PostQn /></div>: <></>}
         </div>
         </>
     )

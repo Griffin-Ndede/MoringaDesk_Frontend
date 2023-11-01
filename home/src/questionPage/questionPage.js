@@ -1,13 +1,25 @@
 import './questions.css'
 import ResponseCard from './responseCard';
+import PostResp from '../popUps/postResponse';
+import { useState } from 'react';
 import { CodeBlock } from "react-code-blocks";
 
 function QuestionPage(){
+    const [ resp, setResp ] = useState(false)
+
+    function addResp(){
+        setResp(!resp)
+    }
     return(
         <>
             <div id="questionPage">
                 <div className="questionDiv">
                     <div className="question">
+                        <img className='actionDropDown' alt='option menu' src='https://static.thenounproject.com/png/892510-200.png'/>
+                        <div className='actionButtons'>
+                            <button className='editButtons'>Edit</button>
+                            <button className='editButtons'>Delete</button>
+                        </div>
                         <img className="userIcon" alt="user icon" src="https://icones.pro/wp-content/uploads/2021/02/icone-utilisateur-gris.png" />
                         <h3 className="questionUserName">@George:</h3>
                         <h1 className="questionTitle">How to convert an array to a string in JavaScript?</h1>
@@ -24,6 +36,8 @@ function QuestionPage(){
                 <h2 id="Solutions">Solutions: </h2>
                 <ResponseCard user={"Wayne"} solution={"Use the .join array method with a space as a seperator."} code={'let Array = ["My", "name", "is", "Sam"]; \nlet Sentence = Array.join(" ");'} votes={4}/>
                 <ResponseCard user={"Otido"} solution={"Use the .join array method with a space as a seperator."} code={'let Array = ["My", "name", "is", "Sam"]; \nlet Sentence = Array.join(" ");'} votes={1}/>
+                <button className="addButtons1" onClick={addResp}> + </button>
+                {resp ? <div className="popUpBackground"><button className='closePopUp' onClick={addResp} >Close</button><PostResp /></div>: <></>}
 
             </div>
         </>
