@@ -1,5 +1,5 @@
 #FAQBody{
-    width: 100vw;
+    width: 100%;
     position: relative;
     margin-left: 0;
     margin: 0;
@@ -137,7 +137,7 @@
     position: relative;
     top: -25px;
     left: 6%;
-    width: 94%;
+    width: 90%;
 }
 
 .tagButtonDiv{
@@ -167,4 +167,39 @@
     position: relative;
     top: -15px;
     font-size: 105%;
+}
+
+.addButtons{
+    width: 65px;
+    height: 65px;
+    border-radius: 35px;
+    border-color: rgba(238, 100, 50, 0.925);
+    font-size: 250%;
+    color: white;
+    background-color: rgba(238, 100, 50, 0.925);
+    position: fixed;
+    right: 1%;
+    bottom: 2%;
+}
+
+.popUpBackground{
+    background-color: rgba(0, 0, 0, 0.527);
+    min-height: 110vh;
+    width: 100%;
+    position: fixed;
+    top: 65px;
+    z-index: 10;
+    padding-top: 1%;
+}
+
+.closePopUp{
+    position: absolute;
+    right: 3%;
+    top: 10px;
+    font-size: 150%;
+    height: 40px;
+    border-radius: 30px;
+    background-color: rgba(218, 45, 45, 0.893);
+    padding-left: 10px;
+    padding-right: 10px;
 }
