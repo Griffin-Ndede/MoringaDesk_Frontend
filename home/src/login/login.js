@@ -27,7 +27,7 @@ const LoginPage = () => {
       if (response.ok) {
         // Login successful, navigate to the home
         console.log('Login successful!');
-        navigate('/Home'); // Redirect to the home
+        navigate('/home'); // Redirect to the home
       } else {
         // Handle login failure, show error messages, etc.
         console.error('Login failed.');
