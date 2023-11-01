@@ -1,25 +1,27 @@
-* {
-  padding-left: 5px;
+body {
+  margin: 0;
+  padding: 0;
 }
 
 #head {
-  padding: 20px;
-  background-color: white;
+  background-image: url(https://www.i6net.com/wp-content/uploads/2015/06/background-header-technology.jpg);
+  padding: 10px;
+  margin-top: 65px;
   margin-right: 0;
-  /* padding-left: 0; */
-  display: flex;
-  flex-direction: column;
+  margin-left: 0;
+  color: white;
 }
 
 #head div p {
   font-size: 18px;
+  margin-top: 2px;
 }
 
 #searchbar {
   width: 1000px;
   padding: 20px;
-  margin: 10px;
   border-color: transparent;
+  color: white;
 }
 
 #searchbar input {
@@ -27,29 +29,32 @@
   padding: 10px;
   border-radius: 20px;
   font-size: 20px;
-  background-color: rgb(221, 218, 218);
-  color: #000;
+  background-color: rgb(1, 19, 55);
+  color: white;
   padding-left: 25px;
+}
+
+#searchbar input::placeholder {
+  color: white;
 }
 
 .card-container {
   display: flex;
-  flex-wrap: nowrap;
-  overflow-x: auto;
+  flex-wrap: wrap;
   padding: 20px;
-  white-space: nowrap;
-  width: 1500px;
+  gap: 5px;
 }
 
 .card {
-  background-color: rgb(221, 218, 218);
-  color: #000;
+  background-color: rgba(247, 76, 14, 0.863);
+  color: white;
   border: 1px solid #ccc;
   border-radius: 8px;
   padding: 20px;
-  width: 500px;
-  margin-right: 10px;
-  white-space: normal;
+  width: 350px;
+  height: 200px;
+  margin-right: 2px;
+  margin: 3px;
   font-size: 18px;
 }
 
