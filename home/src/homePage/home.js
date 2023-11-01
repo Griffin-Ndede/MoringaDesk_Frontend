@@ -1,16 +1,16 @@
 import React from "react";
-import "./Home.css";
-import img1 from "/home/mwangi/MoringaDesk_Frontend/images/askqus.jpeg"
-import img2 from "/home/mwangi/MoringaDesk_Frontend/images/EML.png"
-import img3 from "/home/mwangi/MoringaDesk_Frontend/images/IG.jpeg"
-import img4 from "/home/mwangi/MoringaDesk_Frontend/images/image.png"
-import img5 from "/home/mwangi/MoringaDesk_Frontend/images/MAP.jpeg"
-import img6 from "/home/mwangi/MoringaDesk_Frontend/images/mfFAQS.jpeg"
+import "./home.css";
+import img1 from "../images/askqus.jpeg"
+import img2 from "../images/EML.png"
+import img3 from "../images/IG.jpeg"
+import img4 from "../images/image.png"
+import img5 from "../images/MAP.jpeg"
+import img6 from "../images/mfFAQS.jpeg"
 
-import img8 from "/home/mwangi/FINAL_PROJECT/client/src/images/phone.png"
-import img9 from "/home/mwangi/MoringaDesk_Frontend/images/postresp.jpeg"
-import img10 from "/home/mwangi/MoringaDesk_Frontend/images/tagsfrt.jpeg"
-import img11 from "/home/mwangi/MoringaDesk_Frontend/images/TWEETER.png"
+import img8 from "../images/phone.png"
+import img9 from "../images/postresp.jpeg"
+import img10 from "../images/tagsfrt.jpeg"
+import img11 from "../images/TWEETER.png"
 
 
 const Homepage =()=>{

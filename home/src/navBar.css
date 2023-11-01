@@ -56,15 +56,17 @@
     position: fixed;
     left: 0;
     top: 65px;
-    z-index: 90;
+    z-index: 50;
 }
 
 #navPanel{
     height: 100vh;
     background-color: rgba(1, 19, 55, 0.897);
-    position: relative;
+    position: fixed;
+    top: 65px;
     left: -200px;
     width: 200px;
+    z-index: 55;
     -webkit-animation: slide 0.5s forwards;
     -webkit-animation-delay: 2s;
     animation: slide 0.5s forwards;
