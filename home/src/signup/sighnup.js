@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { NavLink, useNavigate } from 'react-router-dom';
-import "/home/mwangi/FINAL_PROJECT/client/src/components/sighnup.css";
+import "/home/mwangi/MoringaDesk_Frontend/home/src/signup/sighnup.css";
 import img1 from "/home/mwangi/MoringaDesk_Frontend/images/image.png"
 
 const CreateAccount = () => {

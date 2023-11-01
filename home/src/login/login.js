@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './login.css';
+import '/home/mwangi/MoringaDesk_Frontend/home/src/login/login.css';
 import { NavLink, useNavigate } from 'react-router-dom';
 import img2 from "/home/mwangi/MoringaDesk_Frontend/images/image.png"
 
