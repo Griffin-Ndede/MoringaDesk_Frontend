@@ -1,26 +1,46 @@
+import React, { useState } from 'react';
 import './tagsPage.css';
 
 function TagsPage() {
-const cards = document.querySelectorAll('.card');
+// const cards = document.querySelectorAll('.card');
 
-cards.forEach(card => {
-  card.addEventListener('click', filterQuestions);
-});
+const [tags, setTags] = useState([
+  { name: 'Phase 0', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud' },
+  { name: 'Phase 1', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud' },
+  { name: 'Phase 2', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud' },
+  { name: 'Phase 3', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud' },
+  { name: 'Phase 4', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud' },
+  { name: 'Phase 5', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud' },
+]);
 
-function filterQuestions(event) {
-  const selectedCategory = event.currentTarget.dataset.category;
-  const questions = document.querySelectorAll('.question');
+const [searchTerm, setSearchTerm] = useState('');
 
-  questions.forEach(question => {
-    question.style.display = 'none';
-  });
+  const handleSearch = (event) => {
+            setSearchTerm(event.target.value);
+          };
 
-  const filteredQuestions = document.querySelectorAll(`.question[data-category="${selectedCategory}"]`);
+  const filteredTags = tags.filter((tag) =>
+    tag.name.toLowerCase().includes(searchTerm.toLowerCase())
+  );
 
-  filteredQuestions.forEach(question => {
-    question.style.display = 'block';
-  });
-}
+// cards.forEach(card => {
+//   card.addEventListener('click', filterQuestions);
+// });
+
+// function filterQuestions(event) {
+//   const selectedCategory = event.currentTarget.dataset.category;
+//   const questions = document.querySelectorAll('.question');
+
+//   questions.forEach(question => {
+//     question.style.display = 'none';
+//   });
+
+//   const filteredQuestions = document.querySelectorAll(`.question[data-category="${selectedCategory}"]`);
+
+//   filteredQuestions.forEach(question => {
+//     question.style.display = 'block';
+//   });
+// }
 
   return (
     <>
@@ -30,34 +50,18 @@ function filterQuestions(event) {
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud</p>
     </div>
     <div id='searchbar'>
-        <input type="text" id="searchInput" placeholder="Filter by tag name"></input>
+        <input type="text" id="searchInput" placeholder="Filter by tag name" value={searchTerm} onChange={handleSearch}></input>
     </div>
     </div>
       <div className='card-container'>
-        <div className='card'>
-          <h3>Phase 0</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud</p>
-        </div>
-        <div className='card'>
-          <h3>Phase 1</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud</p>
-        </div>
-        <div className='card'>
-          <h3>Phase 2</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud</p>
-        </div>
-        <div className='card'>
-          <h3>Phase 3</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud</p>
-        </div>
-        <div className='card'>
-          <h3>Phase 4</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud</p>
-        </div>
-        <div className='card'>
-          <h3>Phase 5</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud</p>
-        </div>
+        {filteredTags.map((tag, index) => (
+          <div className='card' key={index}>
+            <h3>{tag.name}</h3>
+            <p>
+              {tag.description}
+            </p>
+          </div>
+        ))}
       </div>
       </>
   );

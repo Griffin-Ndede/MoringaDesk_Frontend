@@ -24,10 +24,18 @@
     right: 3%;
     width: 100px;
 }
+
 .editButtons{
     width: 100px;
     height: 20px;
     background-color: rgb(185, 185, 185);
+    border: none;
+}
+
+.deleteButtons{
+    width: 100px;
+    height: 20px;
+    background-color: rgba(232, 62, 62, 0.934);
     border: none;
 }
 

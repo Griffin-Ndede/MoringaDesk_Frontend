@@ -1,56 +1,132 @@
 import './popups.css'
 import React from"react"
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
-function PostQn(){
-    let tags = ["JavaScript", "Python", "CSS", "React", "Flask"]
-    const [ selected, setSelected ] = useState([])
+function PostQn({ newId }){
+    const [ allTags, setAllTags ] = useState([])
+    const [ title, setTitle ] = useState(' ')
+    const [ description , setDescription ] = useState('')
+    const [ code , setCode ] = useState('')
+    const [ qnTag , setQnTag ] = useState([])
+    const [ userId, setUserId ] = useState(2)
+
+    useEffect(()=>{
+        fetch('/tags')
+        .then((res)=> res.json())
+        .then(data => {
+          setAllTags(data)
+        })
+    }, [])
+
+    function handleSubmit(){
+        
+        if(title !== ' ' && description !== ''){
+            fetch('/questions', {
+                method: "POST",
+                body: JSON.stringify({
+                    title,
+                    description,
+                    code,
+                    userId,
+                  }),
+                  headers: {
+                    "Content-type": "application/json; charset=UTF-8",
+                  },
+                })
+                .then(response => {
+                    response.json()
+                })
+                .then(
+                    qnTag.forEach(tag => {
+                        let tagId = allTags.filter(tags => tags.name === tag)[0].id
+                        fetch('/questiontags', {
+                            method: "POST",
+                            body: JSON.stringify({
+                                tagId,
+                                questionId: newId,
+                              }),
+                              headers: {
+                                "Content-type": "application/json; charset=UTF-8",
+                              },
+                            })
+                            .then(response => {
+                                response.json()
+                            })
+                    })
+                )
+                .then(data => {
+                    setTitle(" ")
+                    setDescription(" ")
+                    setCode(" ")
+                    setQnTag([])
+                })
+        }
+    }
 
     function addTag(e, tag){
         e.preventDefault()
-        if(selected.includes(tag) === false){
-            setSelected([...selected, tag])
+        if(qnTag.includes(tag) === false){
+            setQnTag([...qnTag, tag])
+            console.log([...qnTag, tag])
         }
     }
 
     function removeTag(e, tag){
         e.preventDefault()
-        if(selected.includes(tag) === true){
-            let array = [...selected]
-            let index = selected.indexOf(tag)
+        if(qnTag.includes(tag) === true){
+            let array = [...qnTag]
+            let index = array.indexOf(tag)
             array.splice(index, 1)
-            setSelected(array)
+            setQnTag(array)
         }
+    }
+
+    function handleTitle(e){
+        e.preventDefault()
+        setTitle(e.target.value)
+        console.log(title)
+    }
+
+    function handleDesc(e){
+        e.preventDefault()
+        setDescription(e.target.value)
+        console.log(`${description}`)
+    }
+
+    function handleCode(e){
+        e.preventDefault()
+        setCode(e.target.value)
+        console.log(code)
     }
 
     return(
         <>
             <div className="questionPopUp">
                 <h1 className='popUpTitle'>Ask a Question</h1>
-                <form>
+                <form onSubmit={handleSubmit}>
                     <div className="inputDivs">
                         <h3 className="Title">Title: </h3>
-                        <input id="titleInput" className="inputs" placeHolder={"Enter a Title..."} />
+                        <input id="titleInput" className="inputs" placeholder={"Enter a Title..."} onChange={handleTitle} />
                     </div>
                     <div className="inputDivs">
                         <h3 className="Title">Description: </h3>
-                        <textarea id="descInput" className="inputs" placeHolder={"Enter a Description..."}  cols={40} rows={4} />
+                        <textarea id="descInput" className="inputs" placeholder={"Enter a Description..."}  cols={40} rows={4} onChange={handleDesc} />
                     </div>
                     <div className="inputDivs">
                         <h3 className="Title">Code Attempt (Optional): </h3>
-                        <input id="descInput" className="inputs" placeHolder={"Enter Code..."} />
+                        <textarea id="descInput" className="inputs" placeholder={"Enter Code..."} cols={40} rows={4} onChange={handleCode} />
                     </div>
                     <div className="inputDivs">
                         <h3 className="Title">Select Tags: </h3>
                         <div className="selectTagDiv">
-                            {tags.map((tag, index) => {
+                            {allTags.map((tag, index) => {
                                 return(
-                                    <button key={index} className="selectTags" onClick={(e) => addTag(e,tag)}>{tag}</button>
+                                    <button key={index} className="selectTags" onClick={(e) => addTag(e,tag.name)}>{tag.name}</button>
                                 )
                             })}
                         </div>
                         <div id="selectedTags" className="inputs">
-                        {selected.map((tag, index) => {
+                            {qnTag.map((tag, index) => {
                                 return(
                                     <button key={index} className="selectTags" onClick={(e) => removeTag(e,tag)}>{tag}</button>
                                 )
