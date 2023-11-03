@@ -2,9 +2,21 @@ import './faq.css'
 import FaqCard from './faqCard'
 import RecentCard from './recentQnCard'
 import PostQn from '../popUps/postQuestion'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 function FaqPage(){
+    const [ questions, setQuestions ] = useState([])
+
+    useEffect(()=>{
+        fetch('/questions')
+        .then((res)=> res.json())
+        .then(data => {
+          setQuestions(data)
+        })
+    }, [])
+
+    console.log(questions.length)
+
     const [ ask, setAsk ] = useState(false)
 
     function addQn(){
@@ -23,21 +35,19 @@ function FaqPage(){
             <div id="faqBody">
                 <div id="faqs">
                     <h2 id="FAQs">FAQs</h2>
-                    <FaqCard title={"How to convert string to number in Javascript?"} />
-                    <FaqCard title={"How to reverse an array in Javascript?"} />
-                    <FaqCard title={"How to get unique values in list Python?"} />
-                    <FaqCard title={"How to display a list as a string in Python?"} />
+                    {questions.filter(question => question.user_id === 1).map((question)=>(
+                        <FaqCard title={question.title} />
+                    ))}
                 </div>
                 <div id="recents">
                     <h2 id="Recents">Recent Questions</h2>
-                    <RecentCard username={"Joanne"} title={"How to display two elements side by side in React?"} tags={["ReactJS", "CSS"]} replyCount={2} date={"26/10/23"} />
-                    <RecentCard username={"Lewis"} title={"How do I loop through a string in Python?"} tags={["Python"]} replyCount={7} date={"25/10/23"} />
-                    <RecentCard username={"Peter"} title={"How to split a string at a specified character in JavaScript"} tags={["JavaScript"]} replyCount={3} date={"23/10/23"} />
-                    <RecentCard username={"Griffin"} title={"How can I pick the last letter of every word in an List"} tags={["Python"]} replyCount={1} date={"18/10/23"} />
+                    {questions.filter(question => question.user_id !== 1).map((question)=>(
+                        <RecentCard username={question.user.username} title={question.title} tags={question.tags.map((tag) => (tag.name))} replyCount={question.responses.length} date={question.created_at} />
+                    ))}
                 </div>
             </div>
             <button className="addButtons" onClick={addQn}> + </button>
-            {ask ? <div className="popUpBackground"><button className='closePopUp' onClick={addQn} >Close</button><PostQn /></div>: <></>}
+            {ask ? <div className="popUpBackground"><button className='closePopUp' onClick={addQn} >Close</button><PostQn newId={questions.length + 1}/></div>: <></>}
         </div>
         </>
     )
