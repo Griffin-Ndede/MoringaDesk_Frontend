@@ -219,7 +219,7 @@
     padding: 10px;
     border-radius: 20px;
      width: 500px;
-     margin-top: px;
+     margin-top: 10px;
 
 }
 #registration input[type=text]:hover {
@@ -227,7 +227,7 @@
 }
 
 #registration{
-    margin-top: -200px;
+    margin-top: -400px;
 }
 #img img{
     width: 300px;
@@ -235,8 +235,9 @@
     margin: 50px 0 0 200px;
 }
 .registration-image img{
-    border-radius: 30px;
-    margin-top: -200px;
+    border-radius: 50px;
+    margin-top: -600px;
+    width: 700px;
 }
 
 .notification {
