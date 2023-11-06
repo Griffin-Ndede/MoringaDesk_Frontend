@@ -1,17 +1,25 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './tagsPage.css';
 
 function TagsPage() {
-// const cards = document.querySelectorAll('.card');
+const [tags, setTags] = useState([]);
+const [selectedTag, setSelectedTag] = useState(null);
 
-const [tags, setTags] = useState([
-  { name: 'Phase 0', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud' },
-  { name: 'Phase 1', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud' },
-  { name: 'Phase 2', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud' },
-  { name: 'Phase 3', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud' },
-  { name: 'Phase 4', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud' },
-  { name: 'Phase 5', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud' },
-]);
+  useEffect(() => {
+    fetch('/tags')
+      .then((response) => response.json())
+      .then((data) => {
+        setTags(data);
+      })
+      .catch((error) => {
+        console.error('Error fetching data:', error);
+      });
+  }, []);
+
+  const handleClick = (tag) => {
+    const selectedTagObject = tags.find((t) => t.name === tag);
+    setSelectedTag(selectedTagObject);
+  };
 
 const [searchTerm, setSearchTerm] = useState('');
 
@@ -22,25 +30,6 @@ const [searchTerm, setSearchTerm] = useState('');
   const filteredTags = tags.filter((tag) =>
     tag.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
-
-// cards.forEach(card => {
-//   card.addEventListener('click', filterQuestions);
-// });
-
-// function filterQuestions(event) {
-//   const selectedCategory = event.currentTarget.dataset.category;
-//   const questions = document.querySelectorAll('.question');
-
-//   questions.forEach(question => {
-//     question.style.display = 'none';
-//   });
-
-//   const filteredQuestions = document.querySelectorAll(`.question[data-category="${selectedCategory}"]`);
-
-//   filteredQuestions.forEach(question => {
-//     question.style.display = 'block';
-//   });
-// }
 
   return (
     <>
@@ -55,7 +44,7 @@ const [searchTerm, setSearchTerm] = useState('');
     </div>
       <div className='card-container'>
         {filteredTags.map((tag, index) => (
-          <div className='card' key={index}>
+          <div className='card' key={index} onClick={() => handleClick(tag.name)}>
             <h3>{tag.name}</h3>
             <p>
               {tag.description}
@@ -63,6 +52,16 @@ const [searchTerm, setSearchTerm] = useState('');
           </div>
         ))}
       </div>
+      {selectedTag && (
+        <div>
+          <h3>Questions for {selectedTag.name}</h3>
+          <ul>
+            {selectedTag.questions.map((question, index) => (
+              <li key={index}>{question}</li>
+            ))}
+          </ul>
+        </div>
+      )}
       </>
   );
 }
