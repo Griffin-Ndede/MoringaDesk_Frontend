@@ -16,7 +16,16 @@
     height: 30px;
     position: absolute;
     right: 3%;
-    z-index: 30;
+    z-index: 10;
+}
+
+.respActionDropDown{
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    top: 10%;
+    right: 3%;
+    z-index: 10;
 }
 
 .actionButtons{
@@ -24,7 +33,15 @@
     top: 120px;
     right: 3%;
     width: 100px;
-    z-index: 40;
+    z-index: 15;
+}
+
+.respActionButtons{
+    position: absolute;
+    top: 23%;
+    right: 3%;
+    width: 100px;
+    z-index: 15;
 }
 
 .editButtons{
@@ -98,6 +115,7 @@
 
 .responseDiv{
     background-color: rgba(238, 100, 50, 0.95);
+    position: relative;
     padding: 1%;
     border-radius: 15px;
     margin-bottom: 1%;
@@ -158,8 +176,8 @@
 }
 
 .addButtons1{
-    width: 65px;
-    height: 65px;
+    width: 5.5vw;
+    height: 11vh;
     border-radius: 35px;
     border-color: rgba(1, 19, 55, 0.922);
     font-size: 250%;
@@ -173,8 +191,9 @@
 
 .addButtons1:hover{
     cursor: pointer;
-    width: 70px;
-    height: 70px;
+    width: 6.5vw;
+    height: 12vh;
+    border-radius: 50px;
     background-color: rgba(2, 31, 90, 0.922);
 
 }

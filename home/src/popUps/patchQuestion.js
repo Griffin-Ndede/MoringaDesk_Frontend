@@ -1,11 +1,10 @@
 import './popups.css'
 import React from"react"
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 
 function PatchQn({ tags, questionTags, Id, Title, Description, Code, QnTag, UserId }){
     let QnTagName = []
     QnTag.forEach(tag => QnTagName.push(tag.name))
-    console.log(QnTagName)
     const [ title, setTitle ] = useState(Title)
     const [ description , setDescription ] = useState(Description)
     const [ code , setCode ] = useState(Code)

@@ -17,7 +17,6 @@ function QuestionPage({ tags, questionTags }){
     const [ patchQuestion, setPatchQuestion ] = useState(false)
     const navigate = useNavigate();
 
-
     useEffect(()=>{
         fetch(`/questions/${qnId}`)
         .then((res)=> res.json())
@@ -98,11 +97,11 @@ function QuestionPage({ tags, questionTags }){
                 </div>
                 <h2 id="Solutions">Solutions: </h2>
                 {question.responses?.map((response)=>(
-                    <ResponseCard user={response.user.username} solution={response.suggestion} code={response.code} votes={response.votes} />
+                    <ResponseCard qnId={qnId} respId={response.id} user={response.user.username} userID={response.user.id} solution={response.suggestion} code={response.code} votes={response.votes} />
                 ))}
-                <button className="addButtons1" onClick={addResp}> + </button>
+                <button title="Post Response" className="addButtons1" onClick={addResp}> + </button>
                 {resp ? <div className="popUpBackground"><button className='closePopUp' onClick={addResp} >Close</button><PostResp qn={qnId}/></div>: <></>}
-                {patchQuestion ? <div className="popUpBackground"><button className='closePopUp' onClick={patchQN} >Close</button><PatchQn tags={tags} questionTags={questionTags} Id={question.id} Title={question.title} Description={question.description} Code={question.code} QnTag={question.tags} QnTagName={question.tags.name} UserId={question.user.id}/></div>: <></>}
+                {patchQuestion ? <div className="popUpBackground"><button className='closePopUp' onClick={patchQN} >Close</button><PatchQn tags={tags} questionTags={questionTags} Id={question.id} Title={question.title} Description={question.description} Code={question.code} QnTag={question.tags} UserId={question.user.id}/></div>: <></>}
             </div>
         </>
     )
