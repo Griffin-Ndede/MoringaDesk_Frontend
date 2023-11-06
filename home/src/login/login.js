@@ -50,7 +50,7 @@ const LoginPage = () => {
       <div className="div">
         <div className="overlap">
            <p className="text-wrapper">
-            <NavLink to="/">Do not have an account, register here</NavLink>
+            
           </p>
           <div className="text-wrapper-2">Let’s get started.</div>
           <div className="text-wrapper-3">Login to your account</div> 
