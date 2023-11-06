@@ -1,7 +1,18 @@
-function RecentCard({ username, title, tags, replyCount, date }){
+import { Link } from "react-router-dom"
+import { useSelector, useDispatch } from "react-redux";
+import { getData } from "../myStore";
+
+function RecentCard({ id, username, title, tags, replyCount, date }){
+
+    const dispatch = useDispatch();
+
+    const sendData = () => {
+        dispatch(getData(id));
+    };
+
     return(
         <>
-            <div className="recentCard">
+            <Link className="links" to={`/questions/${id}`} onClick={sendData}><div className="recentCard">
                 <img className="userIcon" alt="user icon" src="https://icones.pro/wp-content/uploads/2021/02/icone-utilisateur-gris.png" />
                 <h3 className="userName">@{username}:</h3>
                 <h2 className="recentCardTitle">{title}</h2>
@@ -13,7 +24,7 @@ function RecentCard({ username, title, tags, replyCount, date }){
                     })}
                 </div>
                 <p className="recentInfo">Replies: {replyCount} | Date Posted: {date}</p>
-            </div>
+            </div></Link>
         </>
     )
 }

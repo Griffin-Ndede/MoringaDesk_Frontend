@@ -62,6 +62,11 @@
     font-size: 200%;
 }
 
+.links{
+    text-decoration: none;
+    color: inherit;
+}
+
 .faqCard{
     background-color: rgb(1, 19, 55);
     width: 80%;

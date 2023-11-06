@@ -2,20 +2,10 @@ import './faq.css'
 import FaqCard from './faqCard'
 import RecentCard from './recentQnCard'
 import PostQn from '../popUps/postQuestion'
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 
-function FaqPage(){
-    const [ questions, setQuestions ] = useState([])
 
-    useEffect(()=>{
-        fetch('/questions')
-        .then((res)=> res.json())
-        .then(data => {
-          setQuestions(data)
-        })
-    }, [])
-
-    console.log(questions.length)
+function FaqPage({ questions}){
 
     const [ ask, setAsk ] = useState(false)
 
@@ -36,13 +26,13 @@ function FaqPage(){
                 <div id="faqs">
                     <h2 id="FAQs">FAQs</h2>
                     {questions.filter(question => question.user_id === 1).map((question)=>(
-                        <FaqCard title={question.title} />
+                        <FaqCard title={question.title} id={question.id} />
                     ))}
                 </div>
                 <div id="recents">
                     <h2 id="Recents">Recent Questions</h2>
                     {questions.filter(question => question.user_id !== 1).map((question)=>(
-                        <RecentCard username={question.user.username} title={question.title} tags={question.tags.map((tag) => (tag.name))} replyCount={question.responses.length} date={question.created_at} />
+                        <RecentCard id={question.id} username={question.user.username} title={question.title} tags={question.tags.map((tag) => (tag.name))} replyCount={question.responses.length} date={question.created_at} />
                     ))}
                 </div>
             </div>
