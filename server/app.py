@@ -165,8 +165,8 @@ class Responses(Resource):
         data = request.get_json()
         suggestion = data['suggestion']
         code = data['code']
-        user_id = data['user_id']
-        question_id = data['question_id']
+        user_id = data['userId']
+        question_id = data['questionId']
 
         new_response = Response(suggestion = suggestion, code = code, votes=0, user_id = user_id, question_id = question_id)
 
@@ -180,7 +180,7 @@ api.add_resource(Responses, '/responses')
 class ResponsesById(Resource):
     
     def get(self, id):
-        response_id = [question.id for question in Response.query.all()]
+        response_id = [response.id for response in Response.query.all()]
         if(id in response_id):
             response_dict = Response.query.filter_by(id = id).first().to_dict()
             return make_response(jsonify(response_dict), 200)

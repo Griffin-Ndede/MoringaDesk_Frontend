@@ -6,7 +6,7 @@ from sqlalchemy.ext.hybrid import hybrid_property
 class Tag(db.Model, SerializerMixin):
     __tablename__ = 'tags'
 
-    serialize_rules= ('-questions.tags',)
+    serialize_rules= ('-questions.tags', '-questions.responses',)
 
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String)
@@ -17,7 +17,7 @@ class Tag(db.Model, SerializerMixin):
 class Question(db.Model, SerializerMixin):
     __tablename__ = 'questions'
 
-    serialize_rules= ('-tag.questions', '-user.questions', '-responses.question',)
+    serialize_rules= ('-saves','-tags.questions', '-user.questions', '-responses.question', '-responses.user.questions', '-responses.user.saves', '-user.saves', '-user.responses',)
 
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String)
@@ -29,6 +29,7 @@ class Question(db.Model, SerializerMixin):
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable = False)
     tags = db.relationship('Tag', secondary = 'question_tags', back_populates = 'questions')
     responses = db.relationship('Response', backref = 'question')
+    saves = db.relationship('Save', backref= 'question')
     
 
 
@@ -43,7 +44,7 @@ class QuestionTag(db.Model, SerializerMixin):
 class Response(db.Model, SerializerMixin):
     __tablename__ = 'responses'
 
-    serialize_rules= ('-question.responses', '-user.responses',)
+    serialize_rules= ('-question.responses', '-user.responses', '-user.saves', '-user.questions', '-question.tags', '-question.user',)
 
     id = db.Column(db.Integer, primary_key=True)
     suggestion = db.Column(db.String)
@@ -58,7 +59,7 @@ class Response(db.Model, SerializerMixin):
 class User(db.Model, SerializerMixin):
     __tablename__ = 'users'
 
-    serialize_rules= ('-saves.user', '-questions.user', '-responses.user',)
+    serialize_rules= ('-saves.user', '-questions.user', '-responses.user', '-questions.responses', '-questions.saves',)
 
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String, unique = True, nullable = False)
@@ -85,7 +86,7 @@ class User(db.Model, SerializerMixin):
 class Save(db.Model, SerializerMixin):
     __tablename__ = 'saves'
 
-    serialize_rules= ('-user.saves',)
+    serialize_rules= ('-user.saves', '-user.questions', '-user.responses', '-question.saves', '-question.responses', '-question.user', '-question.tags')
 
     id = db.Column(db.Integer, primary_key=True)
 

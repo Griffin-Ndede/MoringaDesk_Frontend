@@ -50,10 +50,10 @@ function QuestionPage(){
                 </div>
                 <h2 id="Solutions">Solutions: </h2>
                 {question.responses?.map((response)=>(
-                        <ResponseCard user={response.user.username} solution={response.suggestion} code={response.code} votes={response.votes} />
+                    <ResponseCard user={response.user.username} solution={response.suggestion} code={response.code} votes={response.votes} />
                 ))}
                 <button className="addButtons1" onClick={addResp}> + </button>
-                {resp ? <div className="popUpBackground"><button className='closePopUp' onClick={addResp} >Close</button><PostResp /></div>: <></>}
+                {resp ? <div className="popUpBackground"><button className='closePopUp' onClick={addResp} >Close</button><PostResp qn={qnId}/></div>: <></>}
 
             </div>
         </>
