@@ -11,7 +11,6 @@ function ResponseCard({ user, solution, code, votes }){
                     <div className='questionCodeBlock'>
                         <CodeBlock
                             text={code}
-                            language='javascript'
                             showLineNumbers={false}
                         />
                     </div>

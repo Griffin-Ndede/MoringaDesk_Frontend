@@ -2,9 +2,35 @@ import './popups.css'
 import React from"react"
 import { useState } from 'react'
 
-function PostResp(){
-    const [ description , setDescription ] = useState({})
-    const [ code , setCode ] = useState({})
+function PostResp({ qn }){
+    const [ description , setDescription ] = useState('')
+    const [ code , setCode ] = useState('')
+    const [ userId, setUserId ] = useState(2)
+
+    function handleSubmit(){
+        
+        if(description !== ' '){
+            fetch('/responses', {
+                method: "POST",
+                body: JSON.stringify({
+                    suggestion: description,
+                    code,
+                    userId,
+                    questionId: qn,
+                  }),
+                  headers: {
+                    "Content-type": "application/json; charset=UTF-8",
+                  },
+                })
+                .then(response => {
+                    response.json()
+                })
+                .then(data => {
+                    setDescription(" ")
+                    setCode(" ")
+                })
+        }
+    }
 
     function handleDesc(e){
         e.preventDefault()
@@ -22,7 +48,7 @@ function PostResp(){
         <>
             <div className="questionPopUp">
                 <h1 className='popUpTitle'>Post a Response</h1>
-                <form>
+                <form onSubmit={handleSubmit}>
                     <div className="inputDivs">
                         <h3 className="Title">Suggestion: </h3>
                         <textarea id="descInput" className="inputs" placeholder={"Enter a Suggestion..."}  cols={40} rows={4} onChange={handleDesc} />

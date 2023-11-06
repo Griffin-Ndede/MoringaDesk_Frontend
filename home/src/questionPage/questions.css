@@ -59,6 +59,7 @@
 .questionTitle{
     position: relative;
     width: 98%;
+    margin-bottom: 1%;
     padding-top: 0.5%;
     top: -40px;
     left: 1%;
