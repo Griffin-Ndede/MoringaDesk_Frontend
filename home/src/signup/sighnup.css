@@ -212,18 +212,22 @@
 #registrationform{
     display: flex;
     justify-content: space-evenly;
+
 }
 #registration input{
-    margin: 10px 0;
+    margin: 20px 0;
     padding: 10px;
     border-radius: 20px;
+     width: 500px;
+     margin-top: px;
+
 }
-#registration input[type=text]:active {
+#registration input[type=text]:hover {
     border-color: #fa510f;
 }
 
 #registration{
-    margin-top: 150px;
+    margin-top: -200px;
 }
 #img img{
     width: 300px;
@@ -232,5 +236,34 @@
 }
 .registration-image img{
     border-radius: 30px;
+    margin-top: -200px;
+}
+
+.notification {
+  background-color: #f8d7da;
+  color: #721c24;
+  padding: 10px;
+  border-radius: 4px;
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+.notification.success {
+  background-color: #d4edda;
+  color: #155724;
+}
+
+.notification.error {
+  background-color: #f3d9d9;
+  color: #721c24;
+}
+
+.notification.error strong {
+  font-weight: bold;
+}
+
+.notification.error:before {
+  content: "⚠ ";
+  margin-right: 5px;
 }
 

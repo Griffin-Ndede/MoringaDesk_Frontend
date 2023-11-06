@@ -14,11 +14,12 @@ const CreateAccount = () => {
   };
 
   const [formData, setFormData] = useState(initialFormData);
+  const [notification, setNotification] = useState('');
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch('http://127.0.0.1:5000/signup', {
+      const response = await fetch('https://moringa-desk-9m7v.onrender.com/register', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -28,13 +29,16 @@ const CreateAccount = () => {
 
       if (response.ok) {
         console.log('Signup successful!');
+        setNotification('Signup successful!');
         setFormData(initialFormData);
         navigate('/login');
       } else {
         console.error('Signup failed.');
+        setNotification('Signup failed.');
       }
     } catch (error) {
       console.error('Error:', error);
+      setNotification('Error occurred during signup.');
     }
   };
 
@@ -103,6 +107,7 @@ const CreateAccount = () => {
             src="https://lh3.googleusercontent.com/1fmzgGEWYdufxJ9AFbI3gO8GMROfyrYYo5uE8EzAKpYeMfid89ZBoWtagyjQ5gYSJexxnYxfTRP5zHd0UUtlsNtsNDCPcn_Lcty8DGAgXQ=s750"
           />
         </div>
+        {notification && <p className="notification">{notification}</p>}
       </div>
     </>
   );

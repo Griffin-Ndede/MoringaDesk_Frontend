@@ -383,6 +383,7 @@
     top: -3px;
     width: 651px;
     border-radius: 30px;
+    margin-top: -5px;
   }
   
   .homepage .search {
@@ -442,9 +443,9 @@
     margin-top: 20px;
   }
   
-  /* .homepage .text-wrapper-15 {
+   .homepage .text-wrapper-15 {
     color: #ff7512e6;
-  } */
+  } 
   
   .homepage .text-wrapper-16 {
     color: #3b3b3b;
@@ -456,10 +457,13 @@
     position: absolute;
     top: 109px;
     width: 1516px;
+    background: rgba(8, 8, 8, 0.3);
+    /* opacity: 0.5 */
+    
   }
   
   .homepage .overlap {
-    background-image: url(https://moringaschool.com/wp-content/uploads/2022/01/backend.jpg);
+    background-image: url(../images/BACK.png) !important;
     background-position: 50% 50%;
     background-size: cover;
     height: 748px;
@@ -469,7 +473,7 @@
   }
   
   .homepage .text-wrapper-17 {
-    color: #ffffff;
+    color: #fcf6f6;
     font-family: "Inter-Regular", Helvetica;
     font-size: 40px;
     font-weight: 400;
@@ -482,7 +486,7 @@
   }
   
   .homepage .text-wrapper-18 {
-    color: #ffffff;
+    color: #f1ecec;
     font-family: "Comfortaa-Regular", Helvetica;
     font-size: 90px;
     font-weight: 400;

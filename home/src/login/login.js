@@ -81,7 +81,7 @@ const LoginPage = () => {
               <p className="text-wrapper">
                 
               </p>
-              <p className="text-wrapper"><NavLink to="/">do not have an account? sighn up!</NavLink></p>
+              <p className="link"><NavLink to="/">do not have an account? sighn up!</NavLink></p>
         
             </form>
           </div>
