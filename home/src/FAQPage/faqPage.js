@@ -5,7 +5,7 @@ import PostQn from '../popUps/postQuestion'
 import { useState } from 'react'
 
 
-function FaqPage({ questions}){
+function FaqPage({ questions, tags }){
 
     const [ ask, setAsk ] = useState(false)
 

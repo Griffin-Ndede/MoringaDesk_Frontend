@@ -16,6 +16,7 @@
     height: 30px;
     position: absolute;
     right: 3%;
+    z-index: 30;
 }
 
 .actionButtons{
@@ -23,6 +24,7 @@
     top: 120px;
     right: 3%;
     width: 100px;
+    z-index: 40;
 }
 
 .editButtons{

@@ -120,6 +120,11 @@ class TagsById(Resource):
 api.add_resource(TagsById, '/tags/<int:id>')
 
 class QuestionTags(Resource):
+
+    def get(self):
+        tags_dict = [tag.to_dict() for tag in QuestionTag.query.all()]
+        return make_response(jsonify(tags_dict), 200)
+        
     def post(self):
         data = request.get_json()
         new_record = QuestionTag(
@@ -134,6 +139,19 @@ class QuestionTags(Resource):
 
         return make_response(response_dict ,200)
     
+    
+api.add_resource(QuestionTags, '/questiontags')
+
+class QuestionTagById(Resource):
+
+    def get(self, id):
+        tags_id = [tag.id for tag in QuestionTag.query.all()]
+        if(id in tags_id):
+            tag_dict = QuestionTag.query.filter_by(id = id).first().to_dict()
+            return make_response(jsonify(tag_dict), 200)
+        else:
+            return {"error": "Tag not found"}
+
     def delete(self, id):
         questiontag_id = [questiontag.id for questiontag in QuestionTag.query.all()]
         if(id in questiontag_id):
@@ -152,8 +170,9 @@ class QuestionTags(Resource):
             return response
         else:
             return {"error": "Question not found"}
-    
-api.add_resource(QuestionTags, '/questiontags')
+        
+api.add_resource(QuestionTagById, '/questiontags/<int:id>')
+
 
 class Responses(Resource):
     

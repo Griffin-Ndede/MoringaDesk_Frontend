@@ -15,6 +15,9 @@ import { useEffect, useState } from 'react';
 
 function App() {
   const [ questions, setQuestions ] = useState([])
+  const [ allTags, setAllTags ] = useState([])
+  const [ questionTags, setQuestionTags ] = useState([])
+
   const initialState = { questionId: 1 }
 
   useEffect(()=>{
@@ -22,6 +25,22 @@ function App() {
     .then((res)=> res.json())
     .then(data => {
       setQuestions(data)
+    })
+  }, [])
+
+  useEffect(()=>{
+    fetch('/tags')
+    .then((res)=> res.json())
+    .then(data => {
+      setAllTags(data)
+    })
+}, [])
+
+  useEffect(()=>{
+    fetch('/questiontags')
+    .then((res)=> res.json())
+    .then(data => {
+      setQuestionTags(data)
     })
   }, [])
 
@@ -35,7 +54,7 @@ function App() {
           <Route path='/FAQs' element={<FaqPage questions={questions} />}/>
           <Route path='/tags' element={<TagsPage />} />
           <Route path='/user' element={<UserPage />} />
-          <Route path='/questions/:id' element={<QuestionPage />} />
+          <Route path='/questions/:id' element={<QuestionPage tags={allTags} questionTags={questionTags} />} />
       </Routes>
     </>
   );

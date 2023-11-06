@@ -6,8 +6,6 @@ from sqlalchemy.ext.hybrid import hybrid_property
 class Tag(db.Model, SerializerMixin):
     __tablename__ = 'tags'
 
-    serialize_rules= ('-questions.tags', '-questions.responses',)
-
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String)
     description = db.Column(db.String)

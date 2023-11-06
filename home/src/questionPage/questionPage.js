@@ -1,13 +1,22 @@
 import './questions.css'
 import ResponseCard from './responseCard';
 import PostResp from '../popUps/postResponse';
+import PatchQn from '../popUps/patchQuestion';
 import { useState, useEffect } from 'react';
 import { CodeBlock } from "react-code-blocks";
 import { useSelector } from "react-redux";
+import { Link, useNavigate } from 'react-router-dom';
+import { confirmAlert } from 'react-confirm-alert'; // Import
+import 'react-confirm-alert/src/react-confirm-alert.css';
 
-function QuestionPage(){
+
+function QuestionPage({ tags, questionTags }){
 
     const qnId = useSelector((state) => state.theStore.value);
+    const [ editStatus, setEditStatus ] = useState(false)
+    const [ patchQuestion, setPatchQuestion ] = useState(false)
+    const navigate = useNavigate();
+
 
     useEffect(()=>{
         fetch(`/questions/${qnId}`)
@@ -16,6 +25,36 @@ function QuestionPage(){
           setQuestion(data)
         })
       }, [])
+
+    function deleteQuestion(){
+        confirmAlert({
+            title: 'Delete Question?',
+            message: 'Are you sure you want to delete this question?',
+            buttons: [
+                {
+                    label: 'Cancel',
+                    onClick: () => {
+                        editActions()
+                    }
+                },
+                {
+                  label: 'Confirm',
+                  onClick: () => {
+                    fetch(`/questions/${qnId}`, {
+                        method: "DELETE",
+                      })
+                        .then(response => response.json())
+                        .then(() => {
+                            alert('Question deleted!')
+                            navigate('/questions')
+                          })
+                  }
+                }
+              ]
+        });
+
+  
+    }
       
     const [ resp, setResp ] = useState(false)
     const [ question, setQuestion ] = useState([])
@@ -25,17 +64,26 @@ function QuestionPage(){
         setResp(!resp)
     }
 
+    function patchQN(){
+        setPatchQuestion(!patchQuestion)
+    }
+
+    function editActions(){
+        setEditStatus(!editStatus)
+    }
+
     return(
         <>
             <div id="questionPage">
                 
                 <div className="questionDiv">
                     <div className="question">
-                        <img className='actionDropDown' alt='option menu' src='https://static.thenounproject.com/png/892510-200.png'/>
-                        <div className='actionButtons'>
-                            <button className='editButtons'>Edit</button>
-                            <button className='deleteButtons'>Delete</button>
-                        </div>
+                        <img className='actionDropDown' alt='option menu' src='https://static.thenounproject.com/png/892510-200.png' onClick={editActions}/>
+                        {editStatus? <div className='actionButtons'>
+                            <button className='editButtons' onClick={patchQN}>Edit</button>
+                            <button className='deleteButtons' onClick={deleteQuestion}>Delete</button>
+                        </div>: 
+                        <></>}
                         <img className="userIcon" alt="user icon" src="https://icones.pro/wp-content/uploads/2021/02/icone-utilisateur-gris.png" />
                         <h3 className="questionUserName">@{question.user?.username}:</h3>
                         <h1 className="questionTitle">{question.title}</h1>
@@ -54,7 +102,7 @@ function QuestionPage(){
                 ))}
                 <button className="addButtons1" onClick={addResp}> + </button>
                 {resp ? <div className="popUpBackground"><button className='closePopUp' onClick={addResp} >Close</button><PostResp qn={qnId}/></div>: <></>}
-
+                {patchQuestion ? <div className="popUpBackground"><button className='closePopUp' onClick={patchQN} >Close</button><PatchQn tags={tags} questionTags={questionTags} Id={question.id} Title={question.title} Description={question.description} Code={question.code} QnTag={question.tags} QnTagName={question.tags.name} UserId={question.user.id}/></div>: <></>}
             </div>
         </>
     )
