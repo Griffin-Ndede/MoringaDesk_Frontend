@@ -16,7 +16,7 @@ const LoginPage = () => {
 
     // Send login request with formData.email and formData.password
     try {
-      const response = await fetch('http://127.0.0.1:5000/login', {
+      const response = await fetch('https://moringa-desk-9m7v.onrender.com', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
