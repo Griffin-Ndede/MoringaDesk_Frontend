@@ -5,14 +5,14 @@ import PatchQn from '../popUps/patchQuestion';
 import { useState, useEffect } from 'react';
 import { CodeBlock } from "react-code-blocks";
 import { useSelector } from "react-redux";
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { confirmAlert } from 'react-confirm-alert'; // Import
 import 'react-confirm-alert/src/react-confirm-alert.css';
 
 
 function QuestionPage({ tags, questionTags }){
 
-    const qnId = useSelector((state) => state.theStore.value);
+    const qnId = useSelector((state) => state.value);
     const [ editStatus, setEditStatus ] = useState(false)
     const [ patchQuestion, setPatchQuestion ] = useState(false)
     const navigate = useNavigate();

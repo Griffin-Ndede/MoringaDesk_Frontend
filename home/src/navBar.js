@@ -28,7 +28,6 @@ function NavBar(){
                         <div className="linkDiv"><Link className="navLinks" to={'/FAQs'} onClick={toggle}>Questions</Link></div>
                         <div className="linkDiv"><Link className="navLinks" to={'/tags'} onClick={toggle}> Tags</Link></div>
                         <div className="linkDiv"><Link className="navLinks" to={'/user'} onClick={toggle}> User</Link></div>
-                        <div className="linkDiv"><Link className="navLinks" to={'/questions'} onClick={toggle}>QN</Link></div>
                         <div id="logOut"><button id="logOutButton">Logout</button></div>
                     </div>
                 </>
