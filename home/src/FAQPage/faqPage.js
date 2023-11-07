@@ -1,4 +1,5 @@
 import './faq.css'
+import './faqMobile.css'
 import FaqCard from './faqCard'
 import RecentCard from './recentQnCard'
 import PostQn from '../popUps/postQuestion'

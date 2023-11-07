@@ -17,6 +17,7 @@ import {
 } from 'redux-persist'
 import storage from 'redux-persist/lib/storage'
 import dataReducer from "./myStore";
+import userReducer from "./userStore"
 
 const persistConfig = { // configuration object for redux-persist
   key: 'root',
@@ -35,9 +36,23 @@ const store = configureStore({
         }), // add any middlewares here
       })
 
-const  persistor = persistStore(store); // used to create the persisted store, persistor will be used in the next step
+const  persistor = persistStore(store);
 
-export {store, persistor}
+const persistedReducer1 = persistReducer(persistConfig, userReducer) // create a persisted reducer
+
+const store1 = configureStore({
+  reducer: persistedReducer1,
+  middleware: (getDefaultMiddleware) =>
+      getDefaultMiddleware({
+          serializableCheck: {
+              ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+          },
+      }), // add any middlewares here
+    })
+
+const  persistor1 = persistStore(store);
+
+export {store, persistor, store1, persistor1}
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

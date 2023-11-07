@@ -26,8 +26,8 @@ class Question(db.Model, SerializerMixin):
 
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable = False)
     tags = db.relationship('Tag', secondary = 'question_tags', back_populates = 'questions')
-    responses = db.relationship('Response', backref = 'question')
-    saves = db.relationship('Save', backref= 'question')
+    responses = db.relationship('Response', backref = 'question', cascade="all, delete")
+    saves = db.relationship('Save', backref= 'question', cascade="all, delete")
     
 
 

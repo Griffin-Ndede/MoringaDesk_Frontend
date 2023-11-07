@@ -18,8 +18,6 @@ function App() {
   const [ allTags, setAllTags ] = useState([])
   const [ questionTags, setQuestionTags ] = useState([])
 
-  const initialState = { questionId: 1 }
-
   useEffect(()=>{
     fetch('/questions')
     .then((res)=> res.json())

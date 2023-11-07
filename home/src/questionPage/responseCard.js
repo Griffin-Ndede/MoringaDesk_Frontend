@@ -4,9 +4,12 @@ import { confirmAlert } from 'react-confirm-alert';
 import 'react-confirm-alert/src/react-confirm-alert.css';
 import PatchResp from "../popUps/patchResponse";
 
-function ResponseCard({ qnId, respId, user, userID, solution, code, votes }){
+function ResponseCard({ respId, user, userID, solution, code, votes }){
     const [ editStatus, setEditStatus ] = useState(false)
     const [ patchResponse, setPatchResponse ] = useState(false)
+    const [ upVoteState, setUpVoteState ] = useState(false)
+    const [ downVoteState, setDownVoteState ] = useState(false)
+    const [ voteCount, setVoteCount ] = useState(votes)
 
     function deleteResp(){
         confirmAlert({
@@ -46,6 +49,81 @@ function ResponseCard({ qnId, respId, user, userID, solution, code, votes }){
         setPatchResponse(!patchResponse)
     }
 
+    function disableUpVote(){
+        setUpVoteState(!upVoteState)
+        setVoteCount(votes)
+        fetch(`/responses/${respId}`, {
+            method: "PATCH",
+            body: JSON.stringify({
+                votes: votes+=1
+              }),
+              headers: {
+                "Content-type": "application/json; charset=UTF-8",
+              },
+            })
+            .then(response => {
+                response.json()
+                window.location.reload()
+        })
+
+        if(downVoteState === true){
+            setDownVoteState(!downVoteState)
+            setVoteCount(votes)
+            fetch(`/responses/${respId}`, {
+                method: "PATCH",
+                body: JSON.stringify({
+                    votes: votes+=2
+                  }),
+                  headers: {
+                    "Content-type": "application/json; charset=UTF-8",
+                  },
+                })
+                .then(response => {
+                    response.json()
+                    window.location.reload()
+            })
+        }
+        console.log(upVoteState)
+        console.log(downVoteState)
+    }
+
+    function disableDownVote(){
+        setDownVoteState(!downVoteState)
+        setVoteCount(votes)
+        fetch(`/responses/${respId}`, {
+            method: "PATCH",
+            body: JSON.stringify({
+                votes: votes-=1
+              }),
+              headers: {
+                "Content-type": "application/json; charset=UTF-8",
+              },
+            })
+            .then(response => {
+                response.json()
+                window.location.reload()
+        })
+            
+        if(upVoteState === true){
+            setUpVoteState(!upVoteState)
+            setVoteCount(votes)
+            fetch(`/responses/${respId}`, {
+                method: "PATCH",
+                body: JSON.stringify({
+                    votes: votes-=2
+                  }),
+                  headers: {
+                    "Content-type": "application/json; charset=UTF-8",
+                  },
+                })
+                .then(response => {
+                    response.json()
+                    window.location.reload()
+            })
+        }
+        console.log(downVoteState)
+        console.log(upVoteState)
+    }
     
 
     return(
@@ -68,9 +146,9 @@ function ResponseCard({ qnId, respId, user, userID, solution, code, votes }){
                         />
                     </div>
                     <div className='votesDiv'>
-                        <button className='voteButtons'><img className="buttonIcon" alt="up button" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Up_arrow_white.svg/2048px-Up_arrow_white.svg.png" /></button>
-                        <p className="votes">{votes}</p>
-                        <button className='voteButtons'><img className="buttonIcon2" alt="down button" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Up_arrow_white.svg/2048px-Up_arrow_white.svg.png" /></button>                    
+                        <button className='voteButtons' disabled={upVoteState} onClick={disableUpVote}><img className="buttonIcon" alt="up button" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Up_arrow_white.svg/2048px-Up_arrow_white.svg.png" /></button>
+                        <p className="votes">{voteCount}</p>
+                        <button className='voteButtons' disabled={downVoteState} onClick={disableDownVote}><img className="buttonIcon2" alt="down button" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Up_arrow_white.svg/2048px-Up_arrow_white.svg.png" /></button>                    
                     </div>
                 </div>
                 {patchResponse ? <div className="popUpBackground"><button className='closePopUp' onClick={patchResp} >Close</button><PatchResp Id={respId} Solution={solution} Code={code} UserId={userID} /></div>: <></>}            
