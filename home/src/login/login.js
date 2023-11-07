@@ -16,7 +16,7 @@ const LoginPage = () => {
 
     // Send login request with formData.email and formData.password
     try {
-      const response = await fetch('http://127.0.0.1:5000/login', {
+      const response = await fetch('https://moringa-desk-9m7v.onrender.com', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -50,7 +50,7 @@ const LoginPage = () => {
       <div className="div">
         <div className="overlap">
            <p className="text-wrapper">
-            <NavLink to="/">Do not have an account, register here</NavLink>
+            
           </p>
           <div className="text-wrapper-2">Let’s get started.</div>
           <div className="text-wrapper-3">Login to your account</div> 
@@ -77,11 +77,11 @@ const LoginPage = () => {
                 onChange={handleChange}
               /><br />
 
-              <button type="submit">login</button>
+              <button type="submit" className="login-btn">login</button>
               <p className="text-wrapper">
                 
               </p>
-              <p className="text-wrapper"><NavLink to="/">do not have an account? sighn up!</NavLink></p>
+              <p className="link"><NavLink to="/">do not have an account? sighn up!</NavLink></p>
         
             </form>
           </div>
