@@ -97,7 +97,7 @@ const CreateAccount = () => {
             onChange={handleChange}
           /><br />
 
-          <button type="submit">Sign up</button>
+          <button type="submit"className="login-btn">Sign up</button>
           <p className="text-wrapper"><NavLink to="/login">Already have an account? login!</NavLink></p>
         </form>
         <div className="registration-image">

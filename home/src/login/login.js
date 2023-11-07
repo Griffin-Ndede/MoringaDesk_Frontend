@@ -77,7 +77,7 @@ const LoginPage = () => {
                 onChange={handleChange}
               /><br />
 
-              <button type="submit">login</button>
+              <button type="submit" className="login-btn">login</button>
               <p className="text-wrapper">
                 
               </p>
