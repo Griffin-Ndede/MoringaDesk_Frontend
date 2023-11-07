@@ -1,11 +1,12 @@
 import './faq.css'
+import './faqMobile.css'
 import FaqCard from './faqCard'
 import RecentCard from './recentQnCard'
 import PostQn from '../popUps/postQuestion'
 import { useState } from 'react'
 
 
-function FaqPage({ questions}){
+function FaqPage({ questions, tags }){
 
     const [ ask, setAsk ] = useState(false)
 
@@ -14,12 +15,22 @@ function FaqPage({ questions}){
         console.log(ask)
     }
 
+    const [search, setSearch] = useState('');
+
+    const handleSearch = (event) => {
+        setSearch(event.target.value);
+    };
+
+    const filteredQuestions = questions.filter((question) =>
+        (question.title.toLowerCase() || question.description.toLowerCase()).includes(search.toLowerCase())
+    );
+
     return(
         <>
         <div id="FAQBody">
             <div id="faqHeader">
                 <h1 id="faqTitle">Help Desk</h1>
-                <input placeholder="Search..." id="faqSearch"></input>
+                <input placeholder="Search..." defaultValue={search} onChange={handleSearch} id="faqSearch"></input>
                 <img id="headerLogo" alt="Moringa logo" src="https://moringaschool.com/wp-content/themes/moringa/public/images/logo-white.png" />
             </div>
             <div id="faqBody">
@@ -31,12 +42,12 @@ function FaqPage({ questions}){
                 </div>
                 <div id="recents">
                     <h2 id="Recents">Recent Questions</h2>
-                    {questions.filter(question => question.user_id !== 1).map((question)=>(
+                    {filteredQuestions.filter(question => question.user_id !== 1).map((question)=>(
                         <RecentCard id={question.id} username={question.user.username} title={question.title} tags={question.tags.map((tag) => (tag.name))} replyCount={question.responses.length} date={question.created_at} />
                     ))}
                 </div>
             </div>
-            <button className="addButtons" onClick={addQn}> + </button>
+            <button title="Post Question" className="addButtons" onClick={addQn}> + </button>
             {ask ? <div className="popUpBackground"><button className='closePopUp' onClick={addQn} >Close</button><PostQn newId={questions.length + 1}/></div>: <></>}
         </div>
         </>
