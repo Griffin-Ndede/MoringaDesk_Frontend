@@ -2,21 +2,19 @@ import './popups.css'
 import React from"react"
 import { useState } from 'react'
 
-function PostResp({ qn }){
-    const [ description , setDescription ] = useState('')
-    const [ code , setCode ] = useState('')
+function PatchResp({ Solution, Code, Id }){
+    const [ description , setDescription ] = useState(Solution)
+    const [ code , setCode ] = useState(Code)
     const [ userId, setUserId ] = useState(2)
 
     function handleSubmit(){
         
         if(description !== ' '){
-            fetch('/responses', {
-                method: "POST",
+            fetch(`/responses/${Id}`, {
+                method: "PATCH",
                 body: JSON.stringify({
                     suggestion: description,
                     code,
-                    userId,
-                    questionId: qn,
                   }),
                   headers: {
                     "Content-type": "application/json; charset=UTF-8",
@@ -47,21 +45,21 @@ function PostResp({ qn }){
     return(
         <>
             <div className="questionPopUp">
-                <h1 className='popUpTitle'>Post a Response</h1>
+                <h1 className='popUpTitle'>Edit Response</h1>
                 <form onSubmit={handleSubmit}>
                     <div className="inputDivs">
                         <h3 className="Title">Suggestion: </h3>
-                        <textarea id="descInput" className="inputs" placeholder={"Enter a Suggestion..."}  cols={40} rows={4} onChange={handleDesc} />
+                        <textarea id="descInput" className="inputs" defaultValue={Solution}  cols={40} rows={4} onChange={handleDesc} />
                     </div>
                     <div className="inputDivs">
                         <h3 className="Title">Solution Code (Optional): </h3>
-                        <textarea id="descInput" className="inputs" placeholder={"Enter Code..."} cols={40} rows={4} onChange={handleCode}/>
+                        <textarea id="descInput" className="inputs" defaultValue={Code} cols={40} rows={4} onChange={handleCode}/>
                     </div>
-                    <button type='submit' className='post'>Post</button>
+                    <button type='submit' className='post'>Update</button>
                 </form>
             </div>
         </>
     )
 }
 
-export default PostResp
+export default PatchResp

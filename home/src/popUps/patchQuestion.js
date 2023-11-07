@@ -1,28 +1,30 @@
 import './popups.css'
 import React from"react"
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 
-function PostQn({ newId }){
-    const [ allTags, setAllTags ] = useState([])
-    const [ title, setTitle ] = useState(' ')
-    const [ description , setDescription ] = useState('')
-    const [ code , setCode ] = useState('')
-    const [ qnTag , setQnTag ] = useState([])
-    const [ userId, setUserId ] = useState(2)
-
-    useEffect(()=>{
-        fetch('/tags')
-        .then((res)=> res.json())
-        .then(data => {
-          setAllTags(data)
-        })
-    }, [])
+function PatchQn({ tags, questionTags, Id, Title, Description, Code, QnTag, UserId }){
+    let QnTagName = []
+    QnTag.forEach(tag => QnTagName.push(tag.name))
+    const [ title, setTitle ] = useState(Title)
+    const [ description , setDescription ] = useState(Description)
+    const [ code , setCode ] = useState(Code)
+    const [ qnTag , setQnTag ] = useState(QnTagName)
+    const [ userId, setUserId ] = useState(UserId)
 
     function handleSubmit(){
         
         if(title !== ' ' && description !== ''){
-            fetch('/questions', {
-                method: "POST",
+            questionTags.filter(questionTag => questionTag.question_id === Id).forEach((tag) =>{
+                fetch(`/questiontags/${tag.id}`, {
+                    method: "DELETE",
+                })
+                    .then(response => response.json())
+                    .then(() => {
+                        return "questiontag deleted successfully"
+            })})
+
+            fetch(`/questions/${Id}`, {
+                method: "PATCH",
                 body: JSON.stringify({
                     title,
                     description,
@@ -38,12 +40,12 @@ function PostQn({ newId }){
                 })
                 .then(
                     qnTag.forEach(tag => {
-                        let tagId = allTags.filter(tags => tags.name === tag)[0].id
+                        let tagId = tags.filter(tags => tags.name === tag)[0].id
                         fetch('/questiontags', {
                             method: "POST",
                             body: JSON.stringify({
                                 tagId,
-                                questionId: newId,
+                                questionId: Id,
                               }),
                               headers: {
                                 "Content-type": "application/json; charset=UTF-8",
@@ -102,24 +104,24 @@ function PostQn({ newId }){
     return(
         <>
             <div className="questionPopUp">
-                <h1 className='popUpTitle'>Ask a Question</h1>
+                <h1 className='popUpTitle'>Edit Question</h1>
                 <form onSubmit={handleSubmit}>
                     <div className="inputDivs">
                         <h3 className="Title">Title: </h3>
-                        <input id="titleInput" className="inputs" placeholder={"Enter a Title..."} onChange={handleTitle} />
+                        <input id="titleInput" className="inputs" defaultValue={Title} onChange={handleTitle} />
                     </div>
                     <div className="inputDivs">
                         <h3 className="Title">Description: </h3>
-                        <textarea id="descInput" className="inputs" placeholder={"Enter a Description..."}  cols={40} rows={4} onChange={handleDesc} />
+                        <textarea id="descInput" className="inputs" defaultValue={Description} cols={40} rows={4} onChange={handleDesc} />
                     </div>
                     <div className="inputDivs">
                         <h3 className="Title">Code Attempt (Optional): </h3>
-                        <textarea id="descInput" className="inputs" placeholder={"Enter Code..."} cols={40} rows={4} onChange={handleCode} />
+                        <textarea id="descInput" className="inputs" defaultValue={Code} cols={40} rows={4} onChange={handleCode} />
                     </div>
                     <div className="inputDivs">
                         <h3 className="Title">Select Tags: </h3>
                         <div className="selectTagDiv">
-                            {allTags.map((tag, index) => {
+                            {tags.map((tag, index) => {
                                 return(
                                     <button key={index} className="selectTags" onClick={(e) => addTag(e,tag.name)}>{tag.name}</button>
                                 )
@@ -133,11 +135,11 @@ function PostQn({ newId }){
                             })}
                         </div>
                     </div>
-                    <button type='submit' className='post'>Post</button>
+                    <button type='submit' className='post'>Update</button>
                 </form>
             </div>
         </>
     )
 }
 
-export default PostQn
+export default PatchQn
