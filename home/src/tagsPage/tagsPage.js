@@ -4,6 +4,9 @@ import './tagsPage.css';
 function TagsPage() {
 const [tags, setTags] = useState([]);
 const [selectedTag, setSelectedTag] = useState(null);
+const [questions, setQuestions] = useState([]);
+const [searchTerm, setSearchTerm] = useState('');
+
 
   useEffect(() => {
     fetch('/tags')
@@ -16,12 +19,23 @@ const [selectedTag, setSelectedTag] = useState(null);
       });
   }, []);
 
-  const handleClick = (tag) => {
-    const selectedTagObject = tags.find((t) => t.name === tag);
-    setSelectedTag(selectedTagObject);
+  const handleClick = (tagId) => {
+    fetch(`/tags/${tagId}`)
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        } else {
+          throw new Error(`Failed to fetch tag with ID: ${tagId}`);
+        }
+      })
+      .then((data) => {
+        setSelectedTag(data);
+        setQuestions(data.questions);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   };
-
-const [searchTerm, setSearchTerm] = useState('');
 
   const handleSearch = (event) => {
             setSearchTerm(event.target.value);
@@ -44,7 +58,7 @@ const [searchTerm, setSearchTerm] = useState('');
     </div>
       <div className='card-container'>
         {filteredTags.map((tag, index) => (
-          <div className='card' key={index} onClick={() => handleClick(tag.name)}>
+          <div className='card' key={index} onClick={() => handleClick(tag.id)}>
             <h3>{tag.name}</h3>
             <p>
               {tag.description}
@@ -56,12 +70,13 @@ const [searchTerm, setSearchTerm] = useState('');
         <div>
           <h3>Questions for {selectedTag.name}</h3>
           <ul>
-            {selectedTag.questions.map((question, index) => (
-              <li key={index}>{question}</li>
+            {questions.map((question, index) => (
+              <li key={index}>{question.description}</li>
             ))}
           </ul>
         </div>
       )}
+
       </>
   );
 }
