@@ -227,7 +227,7 @@
 }
 
 #registration{
-    margin-top: -700px;
+    margin-top: -900px;
 }
 #img img{
     width: 300px;
@@ -236,8 +236,8 @@
 }
 .registration-image img{
     border-radius: 50px;
-    margin-top: -800px;
-    width: 700px;
+    margin-top: -700px;
+    
 }
 
 .notification {
@@ -314,3 +314,8 @@
   opacity: 1;
 }
 
+.registration-image{
+  margin-top: -500px;
+  
+
+}
