@@ -202,5 +202,20 @@
         position: relative;
         left: 85%;
         top: -30px;
+        z-index: 10;
+    }
+
+    .addButtons1:hover{
+        width: 50px;
+        height: 30px;
+        border-radius: 10px;
+        border-color: rgba(1, 19, 55, 0.922);
+        font-size: 140%;
+        color: white;
+        background-color: rgba(1, 19, 55, 0.922);
+        position: relative;
+        left: 85%;
+        top: -30px;
+        z-index: 10;
     }
 }

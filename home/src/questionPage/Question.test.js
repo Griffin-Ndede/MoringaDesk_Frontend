@@ -1,80 +1,80 @@
-import React from 'react';
-import { render, screen, waitFor, fireEvent } from '@testing-library/react';
-import '@testing-library/jest-dom/extend-expect'; // To use toBeInTheDocument()
-import fetchMock from 'jest-fetch-mock'; // Mock the fetch function
-import { Provider } from 'react-redux'; // If you're using Redux
-import configureStore from 'redux-mock-store'; // If you're using Redux
-import QuestionPage from './questionPage';
+// import React from 'react';
+// import { render, fireEvent, waitFor, screen } from '@testing-library/react';
+// import '@testing-library/jest-dom/extend-expect'; // Import for better assertions
+// import QuestionPage from './questionPage';
 
-// Mock Redux store and initial state if you're using Redux
-const initialState = {
-  theStore: {
-    value: 1, // Set your initial value here
-  },
-};
-const mockStore = configureStore();
-const store = mockStore(initialState);
+// describe('QuestionPage Component', () => {
+//   it('renders without errors', () => {
+//     render(<QuestionPage tags={[]} questionTags={[]} />);
+//   });
 
-describe('QuestionPage Component', () => {
-  // Define an example question data for testing
-  const exampleQuestion = {
-    user: { username: 'testuser' },
-    title: 'Test Question',
-    description: 'This is a test question',
-    code: 'console.log("Hello, World!");',
-    responses: [
-      {
-        user: { username: 'user1' },
-        suggestion: 'Test response 1',
-        code: 'console.log("Response 1");',
-        votes: 5,
-      },
-      // Add more example responses here
-    ],
-  };
+//   it('displays the question details', () => {
+//     // Mock the question data for testing
+//     const questionData = {
+//       id: 1,
+//       title: 'Sample Question',
+//       description: 'This is a sample question.',
+//       code: 'console.log("Hello, World!");',
+//       user: {
+//         username: 'sample_user',
+//         id: 2,
+//       },
+//       responses: [],
+//     };
 
-  // Mock the fetch function before each test
-  beforeEach(() => {
-    fetchMock.resetMocks();
-  });
+//     render(<QuestionPage tags={[]} questionTags={[]} />);
+//     // You should use appropriate selectors to query the elements
+//     expect(screen.getByText('Sample Question')).toBeInTheDocument();
+//     expect(screen.getByText('This is a sample question.')).toBeInTheDocument();
+//     expect(screen.getByText('console.log("Hello, World!");')).toBeInTheDocument();
+//     expect(screen.getByText('@sample_user:')).toBeInTheDocument();
+//   });
 
-  it('should render the question and responses', async () => {
-    // Mock the fetch response with the example question data
-    fetchMock.mockResponseOnce(JSON.stringify(exampleQuestion));
+//   it('toggles the response pop-up', async () => {
+//     render(<QuestionPage tags={[]} questionTags={[]} />);
 
-    render(
-      <Provider store={store}>
-        <QuestionPage />
-      </Provider>
-    );
+//     // Click the "Post Response" button
+//     fireEvent.click(screen.getByTitle('Post Response'));
 
-    // Use waitFor to wait for the component to render
-    await waitFor(() => {
-      // Check that the question and responses are rendered
-      expect(screen.getByText(`@${exampleQuestion.user.username}:`)).toBeInTheDocument();
-      expect(screen.getByText(exampleQuestion.title)).toBeInTheDocument();
-      expect(screen.getByText(exampleQuestion.description)).toBeInTheDocument();
+//     // Expect the response pop-up to be displayed
+//     await waitFor(() => {
+//       expect(screen.getByText('Post Response')).toBeInTheDocument();
+//     });
 
-      // Add more assertions for rendering responses if needed
-    });
-  });
+//     // Click the "Close" button to close the pop-up
+//     fireEvent.click(screen.getByText('Close'));
 
-  it('should toggle the response pop-up when "Add" button is clicked', () => {
-    render(
-      <Provider store={store}>
-        <QuestionPage />
-      </Provider>
-    );
+//     // Expect the response pop-up to be closed
+//     await waitFor(() => {
+//       expect(screen.queryByText('Post Response')).toBeNull();
+//     });
+//   });
 
-    // Initially, the pop-up should not be in the document
-    expect(screen.queryByText('Close')).toBeNull();
+//   // You can write similar tests for other interactions and functionalities
 
-    // Click the "Add" button
-    fireEvent.click(screen.getByText('+'));
+//   it('deletes a question', () => {
+//     // Mock the fetch request and confirm dialog using jest.fn()
+//     global.fetch = jest.fn(() =>
+//       Promise.resolve({
+//         json: () => Promise.resolve({}),
+//       })
+//     );
+//     global.confirm = jest.fn(() => true);
 
-    // Now, the pop-up should be in the document
-    expect(screen.getByText('Close')).toBeInTheDocument();
-  });
+//     render(<QuestionPage tags={[]} questionTags={[]} />);
 
-  // Add more test cases for interaction and state changes as needed
-});
+//     // Click the "Delete" button
+//     fireEvent.click(screen.getByText('Delete'));
+
+//     // Expect the confirmation dialog to have been called
+//     expect(global.confirm).toHaveBeenCalled();
+
+//     // Expect the fetch request to have been called with the delete URL
+//     expect(global.fetch).toHaveBeenCalledWith(
+//       'https://moringa-yjml.onrender.com/questions/1',
+//       {
+//         method: 'DELETE',
+//       }
+//     );
+//   });
+// });

@@ -25,9 +25,9 @@ function PatchQn({ tags, questionTags, Id, Title, Description, Code, QnTag }){
             fetch(`https://moringa-yjml.onrender.com/questions/${Id}`, {
                 method: "PATCH",
                 body: JSON.stringify({
-                    title,
-                    description,
-                    code,
+                    title: title,
+                    description: description,
+                    code: code,
                   }),
                   headers: {
                     "Content-type": "application/json; charset=UTF-8",

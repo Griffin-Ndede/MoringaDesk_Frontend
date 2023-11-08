@@ -152,6 +152,7 @@
         position: absolute;
         right: 1%;
         top: 135px;
+        z-index: 10;
     }
     
     .popUpBackground{
@@ -159,17 +160,17 @@
         min-height: 110vh;
         width: 100%;
         position: fixed;
-        top: 65px;
+        top: 50px;
         z-index: 10;
         padding-top: 1%;
     }
     
     .closePopUp{
         position: absolute;
-        right: 3%;
-        top: 10px;
-        font-size: 150%;
-        height: 40px;
+        right: 10%;
+        top: 8px;
+        font-size: 140%;
+        height: 30px;
         border-radius: 30px;
         background-color: rgba(218, 45, 45, 0.893);
         padding-left: 10px;
