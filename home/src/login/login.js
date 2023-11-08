@@ -16,7 +16,7 @@ const LoginPage = () => {
 
     // Send login request with formData.email and formData.password
     try {
-      const response = await fetch('https://moringa-desk-9m7v.onrender.com', {
+      const response = await fetch('https://moringa-yjml.onrender.com/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -102,4 +102,4 @@ const LoginPage = () => {
   );
 };
 
-export default LoginPage;
+export default LoginPage;  
