@@ -1,4 +1,5 @@
 import './questions.css'
+import './questionMobile.css'
 import ResponseCard from './responseCard';
 import PostResp from '../popUps/postResponse';
 import PatchQn from '../popUps/patchQuestion';
@@ -45,7 +46,7 @@ function QuestionPage({ tags, questionTags }){
                         .then(response => response.json())
                         .then(() => {
                             alert('Question deleted!')
-                            navigate('/questions')
+                            navigate('/FAQs')
                           })
                   }
                 }
@@ -96,10 +97,10 @@ function QuestionPage({ tags, questionTags }){
                     </div>
                 </div>
                 <h2 id="Solutions">Solutions: </h2>
+                <button title="Post Response" className="addButtons1" onClick={addResp}> + </button>
                 {question.responses?.map((response)=>(
                     <ResponseCard qnId={qnId} respId={response.id} user={response.user.username} userID={response.user.id} solution={response.suggestion} code={response.code} votes={response.votes} />
                 ))}
-                <button title="Post Response" className="addButtons1" onClick={addResp}> + </button>
                 {resp ? <div className="popUpBackground"><button className='closePopUp' onClick={addResp} >Close</button><PostResp qn={qnId}/></div>: <></>}
                 {patchQuestion ? <div className="popUpBackground"><button className='closePopUp' onClick={patchQN} >Close</button><PatchQn tags={tags} questionTags={questionTags} Id={question.id} Title={question.title} Description={question.description} Code={question.code} QnTag={question.tags} UserId={question.user.id}/></div>: <></>}
             </div>

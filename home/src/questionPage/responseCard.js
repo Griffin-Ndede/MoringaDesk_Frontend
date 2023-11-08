@@ -131,7 +131,7 @@ function ResponseCard({ respId, user, userID, solution, code, votes }){
             <div className="responseDiv">
                 <div className="response">
                     <img className="userIcon" alt="user icon" src="https://icones.pro/wp-content/uploads/2021/02/icone-utilisateur-gris.png" />
-                    <h3 className="questionUserName">@{user}</h3>
+                    <h3 className="questionUserName">@{user}:</h3>
                     <img className='respActionDropDown' alt='option menu' src='https://static.thenounproject.com/png/892510-200.png' onClick={editActions}/>
                         {editStatus? <div className='respActionButtons'>
                             <button className='editButtons' onClick={patchResp}>Edit</button>

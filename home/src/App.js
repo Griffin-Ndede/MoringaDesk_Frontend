@@ -5,6 +5,7 @@ import HomePage from './homePage/home';
 import FaqPage from './FAQPage/faqPage';
 import QuestionPage from './questionPage/questionPage';
 import TagsPage from './tagsPage/tagsPage';
+import FilteredTag from './tagsPage/filteredTagPage';
 import UserPage from './userPage/userPage';
 import LoginPage from './login/login';
 import CreateAccount from './signup/sighnup';
@@ -50,9 +51,10 @@ function App() {
           <Route exact path="/login" element={<LoginPage />} />
           <Route path='/home' element={<HomePage />} />
           <Route path='/FAQs' element={<FaqPage questions={questions} />}/>
-          <Route path='/tags' element={<TagsPage />} />
+          <Route path='/tags' element={<TagsPage allTags={allTags} />} />
           <Route path='/user' element={<UserPage />} />
           <Route path='/questions/:id' element={<QuestionPage tags={allTags} questionTags={questionTags} />} />
+          <Route path='/tags/:id' element={<FilteredTag allTags={allTags} />} />
       </Routes>
     </>
   );

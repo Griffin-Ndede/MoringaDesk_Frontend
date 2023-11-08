@@ -1,19 +1,44 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './tagsPage.css';
+import { Link } from "react-router-dom"
+import { useDispatch } from "react-redux";
+import { getData1 } from "../myStore";
 
 function TagsPage() {
-// const cards = document.querySelectorAll('.card');
-
-const [tags, setTags] = useState([
-  { name: 'Phase 0', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud' },
-  { name: 'Phase 1', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud' },
-  { name: 'Phase 2', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud' },
-  { name: 'Phase 3', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud' },
-  { name: 'Phase 4', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud' },
-  { name: 'Phase 5', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud' },
-]);
-
+const [tags, setTags] = useState([]);
+const [selectedTag, setSelectedTag] = useState(null);
+const [questions, setQuestions] = useState([]);
 const [searchTerm, setSearchTerm] = useState('');
+
+
+  useEffect(() => {
+    fetch('/tags')
+      .then((response) => response.json())
+      .then((data) => {
+        setTags(data);
+      })
+      .catch((error) => {
+        console.error('Error fetching data:', error);
+      });
+  }, []);
+
+  const handleClick = (tagId) => {
+    fetch(`/tags/${tagId}`)
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        } else {
+          throw new Error(`Failed to fetch tag with ID: ${tagId}`);
+        }
+      })
+      .then((data) => {
+        setSelectedTag(data);
+        setQuestions(data.questions);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
 
   const handleSearch = (event) => {
             setSearchTerm(event.target.value);
@@ -23,24 +48,10 @@ const [searchTerm, setSearchTerm] = useState('');
     tag.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
-// cards.forEach(card => {
-//   card.addEventListener('click', filterQuestions);
-// });
-
-// function filterQuestions(event) {
-//   const selectedCategory = event.currentTarget.dataset.category;
-//   const questions = document.querySelectorAll('.question');
-
-//   questions.forEach(question => {
-//     question.style.display = 'none';
-//   });
-
-//   const filteredQuestions = document.querySelectorAll(`.question[data-category="${selectedCategory}"]`);
-
-//   filteredQuestions.forEach(question => {
-//     question.style.display = 'block';
-//   });
-// }
+  const dispatch = useDispatch();
+  const sendData = (id) => {
+    dispatch(getData1(id));
+  };
 
   return (
     <>
@@ -55,14 +66,25 @@ const [searchTerm, setSearchTerm] = useState('');
     </div>
       <div className='card-container'>
         {filteredTags.map((tag, index) => (
-          <div className='card' key={index}>
+          <Link className="links" to={`/tags/${tag.id}`} onClick={()=> sendData(tag.id)}><div className='card' key={index} /* onClick={() => handleClick(tag.id)}*/>
             <h3>{tag.name}</h3>
             <p>
               {tag.description}
             </p>
-          </div>
+          </div></Link>
         ))}
       </div>
+      {/* {selectedTag && (
+        <div>
+          <h3>Questions for {selectedTag.name}</h3>
+          <ul>
+            {questions.map((question, index) => (
+              <li key={index}>{question.description}</li>
+            ))}
+          </ul>
+        </div>
+      )} */}
+
       </>
   );
 }
