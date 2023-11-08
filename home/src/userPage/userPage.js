@@ -10,7 +10,7 @@ function UserPage(){
 
     useEffect(() => {
         if (userId) {
-          fetch(`/saves/${userId}`)
+          fetch(`https://moringa-yjml.onrender.com/saves/${userId}`)
             .then((res) => res.json())
             .then((saves) => setSaves(saves));
         }
@@ -18,7 +18,7 @@ function UserPage(){
 
     useEffect(() => {
         if (userId) {
-            fetch(`/responses/${userId}`)
+            fetch(`https://moringa-yjml.onrender.com/responses/${userId}`)
                 .then((res) => res.json())
                 .then((responses) => setResponses(responses));
         }
@@ -26,7 +26,7 @@ function UserPage(){
 
     useEffect(() => {
         if (userId) {
-            fetch(`/questions/${userId}`)
+            fetch(`https://moringa-yjml.onrender.com/questions/${userId}`)
                 .then((res) => res.json())
                 .then((questions) => setQuestions(questions));
         }
@@ -35,12 +35,19 @@ function UserPage(){
     return(
         <>
             <div id='header'>
-                <img src='./Default_pfp.png' alt='Default pfp' />
-                <div>
-                    <h1>Wayne Otido</h1>
-                    <p>Member since 2022</p>
-                </div>
-            </div>
+    <img src='./Default_pfp.png' alt='Default pfp' />
+    <div id="header-content">
+        <div>
+            <h1>Wayne Otido</h1>
+            <p>Member since 2022</p>
+        </div>
+        <div id="header-buttons">
+            <button>Saves</button>
+            <button>My Questions</button>
+            <button>My Responses</button>
+        </div>
+    </div>
+</div>
             {/* <h2>My Questions</h2>
             <div className='questions'>
                 <div>

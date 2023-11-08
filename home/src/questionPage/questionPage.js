@@ -53,12 +53,12 @@ function QuestionPage({ tags, questionTags }){
               ]
         });
 
-  
+
     }
-      
+
     const [ resp, setResp ] = useState(false)
     const [ question, setQuestion ] = useState([])
-    
+
 
     function addResp(){
         setResp(!resp)
@@ -75,14 +75,14 @@ function QuestionPage({ tags, questionTags }){
     return(
         <>
             <div id="questionPage">
-                
+
                 <div className="questionDiv">
                     <div className="question">
                         <img className='actionDropDown' alt='option menu' src='https://static.thenounproject.com/png/892510-200.png' onClick={editActions}/>
                         {editStatus? <div className='actionButtons'>
                             <button className='editButtons' onClick={patchQN}>Edit</button>
                             <button className='deleteButtons' onClick={deleteQuestion}>Delete</button>
-                        </div>: 
+                        </div>:
                         <></>}
                         <img className="userIcon" alt="user icon" src="https://icones.pro/wp-content/uploads/2021/02/icone-utilisateur-gris.png" />
                         <h3 className="questionUserName">@{question.user?.username}:</h3>
