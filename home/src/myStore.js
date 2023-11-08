@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 export const initialStateValue = 1;
 export const initialStateValue1 = 1;
-export const initialStateValue2 = [];
+export const initialStateValue2 = {};
 
 
 

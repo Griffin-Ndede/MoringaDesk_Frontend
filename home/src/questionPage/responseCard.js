@@ -1,5 +1,6 @@
 import { CodeBlock } from "react-code-blocks";
 import { useState } from "react";
+import { useSelector } from "react-redux";
 import { confirmAlert } from 'react-confirm-alert'; 
 import 'react-confirm-alert/src/react-confirm-alert.css';
 import PatchResp from "../popUps/patchResponse";
@@ -10,6 +11,7 @@ function ResponseCard({ respId, user, userID, solution, code, votes }){
     const [ upVoteState, setUpVoteState ] = useState(false)
     const [ downVoteState, setDownVoteState ] = useState(false)
     const [ voteCount, setVoteCount ] = useState(votes)
+    const userId = useSelector((state) => state.value2.id)
 
     function deleteResp(){
         confirmAlert({
@@ -132,7 +134,7 @@ function ResponseCard({ respId, user, userID, solution, code, votes }){
                 <div className="response">
                     <img className="userIcon" alt="user icon" src="https://icones.pro/wp-content/uploads/2021/02/icone-utilisateur-gris.png" />
                     <h3 className="questionUserName">@{user}:</h3>
-                    <img className='respActionDropDown' alt='option menu' src='https://static.thenounproject.com/png/892510-200.png' onClick={editActions}/>
+                    {userID === userId? <img className='respActionDropDown' alt='option menu' src='https://static.thenounproject.com/png/892510-200.png' onClick={editActions}/>: <></>}
                         {editStatus? <div className='respActionButtons'>
                             <button className='editButtons' onClick={patchResp}>Edit</button>
                             <button className='deleteButtons' onClick={deleteResp}>Delete</button>

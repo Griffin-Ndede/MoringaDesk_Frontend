@@ -14,8 +14,11 @@ import 'react-confirm-alert/src/react-confirm-alert.css';
 function QuestionPage({ tags, questionTags }){
 
     const qnId = useSelector((state) => state.value);
+    const userId = useSelector((state) => state.value2.id)
     const [ editStatus, setEditStatus ] = useState(false)
     const [ patchQuestion, setPatchQuestion ] = useState(false)
+    const [ resp, setResp ] = useState(false)
+    const [ question, setQuestion ] = useState([])
     const navigate = useNavigate();
 
     useEffect(()=>{
@@ -25,6 +28,9 @@ function QuestionPage({ tags, questionTags }){
           setQuestion(data)
         })
       }, [])
+
+      console.log(question.user?.id)
+      console.log(userId)
 
     function deleteQuestion(){
         confirmAlert({
@@ -74,10 +80,6 @@ function QuestionPage({ tags, questionTags }){
                 setEditStatus(!editStatus)
             })
     }
-      
-    const [ resp, setResp ] = useState(false)
-    const [ question, setQuestion ] = useState([])
-    
 
     function addResp(){
         setResp(!resp)
@@ -100,8 +102,8 @@ function QuestionPage({ tags, questionTags }){
                         <img className='actionDropDown' alt='option menu' src='https://static.thenounproject.com/png/892510-200.png' onClick={editActions}/>
                         {editStatus? <div className='actionButtons'>
                             <button className='editButtons' onClick={saveQn}>Save</button>
-                            <button className='editButtons' onClick={() =>(patchQN(), editActions())}>Edit</button>
-                            <button className='deleteButtons' onClick={deleteQuestion}>Delete</button>
+                            {question.user?.id === userId? <button className='editButtons' onClick={() =>(patchQN(), editActions())}>Edit</button> : <></>}
+                            {question.user?.id === userId? <button className='deleteButtons' onClick={deleteQuestion}>Delete</button> : <></>}
                         </div>: 
                         <></>}
                         <img className="userIcon" alt="user icon" src="https://icones.pro/wp-content/uploads/2021/02/icone-utilisateur-gris.png" />
@@ -119,7 +121,7 @@ function QuestionPage({ tags, questionTags }){
                 <h2 id="Solutions">Solutions: </h2>
                 <button title="Post Response" className="addButtons1" onClick={addResp}> + </button>
                 {question.responses?.map((response)=>(
-                    <ResponseCard qnId={qnId} respId={response.id} user={response.user.username} userID={response.user.id} solution={response.suggestion} code={response.code} votes={response.votes} />
+                    <ResponseCard qnId={qnId} respId={response.id} user={response.user.username} userID={response.user.id} solution={response.description} code={response.code} votes={response.votes} />
                 ))}
                 {resp ? <div className="popUpBackground"><button className='closePopUp' onClick={addResp} >Close</button><PostResp qn={qnId}/></div>: <></>}
                 {patchQuestion ? <div className="popUpBackground"><button className='closePopUp' onClick={patchQN} >Close</button><PatchQn tags={tags} questionTags={questionTags} Id={question.id} Title={question.title} Description={question.description} Code={question.code} QnTag={question.tags} UserId={question.user.id}/></div>: <></>}

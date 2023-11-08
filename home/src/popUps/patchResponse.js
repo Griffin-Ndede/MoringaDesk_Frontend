@@ -12,8 +12,8 @@ function PatchResp({ Solution, Code, Id }){
             fetch(`https://moringa-yjml.onrender.com/responses/${Id}`, {
                 method: "PATCH",
                 body: JSON.stringify({
-                    description,
-                    code,
+                    description: description,
+                    code: code,
                   }),
                   headers: {
                     "Content-type": "application/json; charset=UTF-8",

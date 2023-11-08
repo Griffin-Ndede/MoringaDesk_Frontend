@@ -18,7 +18,17 @@ function App() {
   const [ questions, setQuestions ] = useState([])
   const [ allTags, setAllTags ] = useState([])
   const [ questionTags, setQuestionTags ] = useState([])
+  const [ userData, setUserData ] = useState([])
 
+
+  useEffect(()=>{
+    fetch('https://moringa-yjml.onrender.com/users')
+    .then((res)=> res.json())
+    .then(data => {
+      setUserData(data)
+    })
+  }, [])
+  
   useEffect(()=>{
     fetch('https://moringa-yjml.onrender.com/questions')
     .then((res)=> res.json())
@@ -26,7 +36,6 @@ function App() {
       setQuestions(data)
     })
   }, [])
-  
 
   useEffect(()=>{
     fetch('https://moringa-yjml.onrender.com/tags')
@@ -52,9 +61,9 @@ function App() {
       <NavBar tags={allTags}/>
       <Routes>
           <Route exact path="/" element={<CreateAccount />} />
-          <Route exact path="/login" element={<LoginPage />} />
+          <Route exact path="/login" element={<LoginPage userData={userData} />} />
           <Route path='/home' element={<HomePage />} />
-          <Route path='/FAQs' element={<FaqPage questions={questions} />}/>
+          <Route path='/FAQs' element={<FaqPage questions={questions} tags={allTags} />}/>
           <Route path='/tags' element={<TagsPage tags={allTags} />} />
           <Route path='/user' element={<UserPage />} />
           <Route path='/questions/:id' element={<QuestionPage tags={allTags} questionTags={questionTags} />} />
