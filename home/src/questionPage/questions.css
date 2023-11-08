@@ -108,6 +108,7 @@
 }
 
 #Solutions{
+    padding-top: 0%;
     margin-left: 1%;
     margin-top: 0%;
     margin-bottom: 1%;
@@ -210,4 +211,19 @@
     border-radius: 50px;
     background-color: rgba(2, 31, 90, 0.922);
 
+}
+
+.emptyDiv{
+    width: 99%;
+    margin-left: 0.5%;
+    background-color: rgb(220, 220, 220);
+    border-style: dashed;
+    border-radius: 15px;
+    border-color: rgba(0, 0, 0, 0.785);
+    text-align: center;
+}
+
+.emptyDesc{
+    font-size: 150%;
+    margin-top: 0;
 }

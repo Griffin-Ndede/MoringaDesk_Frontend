@@ -7,7 +7,6 @@ function PatchResp({ Solution, Code, Id }){
     const [ code , setCode ] = useState(Code)
 
     function handleSubmit(){
-        
         if(description !== ' '){
             fetch(`https://moringa-yjml.onrender.com/responses/${Id}`, {
                 method: "PATCH",
@@ -22,6 +21,9 @@ function PatchResp({ Solution, Code, Id }){
                 .then(response => {
                     response.json()
                 })
+                .catch((error) => {
+                    console.error('Error fetching data:', error);
+                  })
                 .then(data => {
                     setDescription(" ")
                     setCode(" ")

@@ -29,9 +29,6 @@ function QuestionPage({ tags, questionTags }){
         })
       }, [])
 
-      console.log(question.user?.id)
-      console.log(userId)
-
     function deleteQuestion(){
         confirmAlert({
             title: 'Delete Question?',
@@ -92,7 +89,7 @@ function QuestionPage({ tags, questionTags }){
     function editActions(){
         setEditStatus(!editStatus)
     }
-
+    if(userId !== 0){
     return(
         <>
             <div id="questionPage">
@@ -102,8 +99,8 @@ function QuestionPage({ tags, questionTags }){
                         <img className='actionDropDown' alt='option menu' src='https://static.thenounproject.com/png/892510-200.png' onClick={editActions}/>
                         {editStatus? <div className='actionButtons'>
                             <button className='editButtons' onClick={saveQn}>Save</button>
-                            {question.user?.id === userId? <button className='editButtons' onClick={() =>(patchQN(), editActions())}>Edit</button> : <></>}
-                            {question.user?.id === userId? <button className='deleteButtons' onClick={deleteQuestion}>Delete</button> : <></>}
+                            {question?.user?.id === userId? <button className='editButtons' onClick={() =>(patchQN(), editActions())}>Edit</button> : <></>}
+                            {question?.user?.id === userId? <button className='deleteButtons' onClick={deleteQuestion}>Delete</button> : <></>}
                         </div>: 
                         <></>}
                         <img className="userIcon" alt="user icon" src="https://icones.pro/wp-content/uploads/2021/02/icone-utilisateur-gris.png" />
@@ -120,14 +117,23 @@ function QuestionPage({ tags, questionTags }){
                 </div>
                 <h2 id="Solutions">Solutions: </h2>
                 <button title="Post Response" className="addButtons1" onClick={addResp}> + </button>
-                {question.responses?.map((response)=>(
-                    <ResponseCard qnId={qnId} respId={response.id} user={response.user.username} userID={response.user.id} solution={response.description} code={response.code} votes={response.votes} />
+                {question.responses?.length > 0? <div>
+                {question.responses?.sort((a, b) => (a.votes > b.votes) ? -1 : 1).map((response)=>(
+                    <ResponseCard qnId={qnId} respId={response.id} user={response.user?.username} userID={response.user?.id} solution={response.description} code={response.code} votes={response.votes} />
                 ))}
+                </div>:
+                <div className="emptyDiv">
+                    <img className='emptyData' alt='No Data' src="https://ouch-cdn2.icons8.com/yep8SwOMXtawFqUAzSTS5Vs2X6ZydXZgpmwwEE_EVPE/rs:fit:368:276/czM6Ly9pY29uczgu/b3VjaC1wcm9kLmFz/c2V0cy9zdmcvNjc4/L2ZkYmNhOTFhLTkz/NGYtNDRhZC1hNjRi/LTBmMTA1ZDg3YjBi/Yy5zdmc.png"/>
+                    <p className='emptyDesc'>No Responses Yet!</p>
+                </div>
+                }
                 {resp ? <div className="popUpBackground"><button className='closePopUp' onClick={addResp} >Close</button><PostResp qn={qnId}/></div>: <></>}
-                {patchQuestion ? <div className="popUpBackground"><button className='closePopUp' onClick={patchQN} >Close</button><PatchQn tags={tags} questionTags={questionTags} Id={question.id} Title={question.title} Description={question.description} Code={question.code} QnTag={question.tags} UserId={question.user.id}/></div>: <></>}
+                {patchQuestion ? <div className="popUpBackground"><button className='closePopUp' onClick={patchQN} >Close</button><PatchQn tags={tags} questionTags={questionTags} Id={question.id} Title={question.title} Description={question.description} Code={question.code} QnTag={question.tags} UserId={question.user?.id}/></div>: <></>}
             </div>
         </>
-    )
+    )}else{
+        navigate('/')
+    }
 }
 
 export default QuestionPage
