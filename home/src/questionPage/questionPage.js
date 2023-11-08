@@ -55,6 +55,24 @@ function QuestionPage({ tags, questionTags }){
 
   
     }
+
+    function saveQn(){
+        fetch('/saves', {
+            method: "POST",
+            body: JSON.stringify({
+                user_id: 2,
+                question_id: qnId,
+              }),
+              headers: {
+                "Content-type": "application/json; charset=UTF-8",
+              },
+            })
+            .then(response => {
+                response.json()
+                alert('Question added to Saves!')
+                setEditStatus(!editStatus)
+            })
+    }
       
     const [ resp, setResp ] = useState(false)
     const [ question, setQuestion ] = useState([])
@@ -80,6 +98,7 @@ function QuestionPage({ tags, questionTags }){
                     <div className="question">
                         <img className='actionDropDown' alt='option menu' src='https://static.thenounproject.com/png/892510-200.png' onClick={editActions}/>
                         {editStatus? <div className='actionButtons'>
+                            <button className='editButtons' onClick={saveQn}>Save</button>
                             <button className='editButtons' onClick={patchQN}>Edit</button>
                             <button className='deleteButtons' onClick={deleteQuestion}>Delete</button>
                         </div>: 

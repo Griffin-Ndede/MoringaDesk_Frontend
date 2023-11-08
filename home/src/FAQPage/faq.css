@@ -46,12 +46,13 @@
     position: relative;
     left: 0;
     display: flex;
+    height: 1200px;
 }
 
 #faqs{
     width: 40%;
     background-color: rgb(190, 190, 191);
-    padding-bottom: 5%;
+    padding-bottom: 1%;
 }
 
 #FAQs{
@@ -94,13 +95,17 @@
 #recents{
     width: 60%;
     background-color: rgb(241, 241, 241);
-    padding-bottom: 5%;
+    padding-bottom: 1%;
     border-left: solid;
     border-left-color: rgba(0, 0, 0, 0.443);
+    overflow-y: scroll;
 }
 
 #Recents{
-    background-color: rgb(241, 241, 241);
+    position: sticky;
+    z-index: 40;
+    top: 0px;
+    background: rgb(241, 241, 241);
     padding-left: 1%;
     margin-top: 0;
     margin-bottom: 0;

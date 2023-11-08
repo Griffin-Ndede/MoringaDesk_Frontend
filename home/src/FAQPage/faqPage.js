@@ -42,7 +42,7 @@ function FaqPage({ questions, tags }){
                 </div>
                 <div id="recents">
                     <h2 id="Recents">Recent Questions</h2>
-                    {filteredQuestions.filter(question => question.user_id !== 1).map((question)=>(
+                    {filteredQuestions.filter(question => question.user_id !== 1).reverse().map((question)=>(
                         <RecentCard id={question.id} username={question.user.username} title={question.title} tags={question.tags.map((tag) => (tag.name))} replyCount={question.responses.length} date={question.created_at} />
                     ))}
                 </div>

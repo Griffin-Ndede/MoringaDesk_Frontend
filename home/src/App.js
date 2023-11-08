@@ -49,7 +49,7 @@ function App() {
 
   return (
     <>
-      <NavBar />
+      <NavBar tags={allTags}/>
       <Routes>
           <Route exact path="/" element={<CreateAccount />} />
           <Route exact path="/login" element={<LoginPage />} />
@@ -58,7 +58,7 @@ function App() {
           <Route path='/tags' element={<TagsPage tags={allTags} />} />
           <Route path='/user' element={<UserPage />} />
           <Route path='/questions/:id' element={<QuestionPage tags={allTags} questionTags={questionTags} />} />
-          <Route path='/tags/:id' element={<FilteredTag allTags={allTags} />} />
+          <Route path='/tags/:name' element={<FilteredTag allTags={allTags} />} />
       </Routes>
     </>
   );
