@@ -200,6 +200,7 @@
     right: 1%;
     bottom: 2%;
     transition: 0.5s;
+    z-index: 50;
 }
 
 .addButtons1:hover{

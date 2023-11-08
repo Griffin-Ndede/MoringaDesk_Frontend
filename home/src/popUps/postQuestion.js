@@ -1,33 +1,25 @@
 import './popups.css'
 import React from"react"
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
+import { useSelector } from "react-redux";
 
-function PostQn({ newId }){
-    const [ allTags, setAllTags ] = useState([])
+function PostQn({ newId, allTags }){
     const [ title, setTitle ] = useState(' ')
     const [ description , setDescription ] = useState('')
     const [ code , setCode ] = useState('')
     const [ qnTag , setQnTag ] = useState([])
-    const [ userId, setUserId ] = useState(2)
 
-    useEffect(()=>{
-        fetch('/tags')
-        .then((res)=> res.json())
-        .then(data => {
-          setAllTags(data)
-        })
-    }, [])
+    const userId = useSelector((state) => state.value2.id);
 
-    function handleSubmit(){
-        
+    function handleSubmit(e){
         if(title !== ' ' && description !== ''){
-            fetch('/questions', {
+            fetch('https://moringa-yjml.onrender.com/questions', {
                 method: "POST",
                 body: JSON.stringify({
-                    title,
-                    description,
-                    code,
-                    userId,
+                    title: title,
+                    description: description,
+                    code: code,
+                    user_id: userId,
                   }),
                   headers: {
                     "Content-type": "application/json; charset=UTF-8",
@@ -36,14 +28,17 @@ function PostQn({ newId }){
                 .then(response => {
                     response.json()
                 })
+                .catch((error) => {
+                    console.error('Error fetching data:', error);
+                  })
                 .then(
                     qnTag.forEach(tag => {
                         let tagId = allTags.filter(tags => tags.name === tag)[0].id
-                        fetch('/questiontags', {
+                        fetch('https://moringa-yjml.onrender.com/question_tags', {
                             method: "POST",
                             body: JSON.stringify({
-                                tagId,
-                                questionId: newId,
+                                tag_id: tagId,
+                                question_id: newId,
                               }),
                               headers: {
                                 "Content-type": "application/json; charset=UTF-8",
@@ -52,6 +47,9 @@ function PostQn({ newId }){
                             .then(response => {
                                 response.json()
                             })
+                            .catch((error) => {
+                                console.error('Error fetching data:', error);
+                              })
                     })
                 )
                 .then(data => {
@@ -78,6 +76,7 @@ function PostQn({ newId }){
             let index = array.indexOf(tag)
             array.splice(index, 1)
             setQnTag(array)
+            console.log(qnTag)
         }
     }
 
@@ -119,7 +118,7 @@ function PostQn({ newId }){
                     <div className="inputDivs">
                         <h3 className="Title">Select Tags: </h3>
                         <div className="selectTagDiv">
-                            {allTags.map((tag, index) => {
+                            {allTags?.map((tag, index) => {
                                 return(
                                     <button key={index} className="selectTags" onClick={(e) => addTag(e,tag.name)}>{tag.name}</button>
                                 )

@@ -1,30 +1,34 @@
 import './popups.css'
 import React from"react"
 import { useState } from 'react'
+import { useSelector } from "react-redux";
 
 function PostResp({ qn }){
     const [ description , setDescription ] = useState('')
     const [ code , setCode ] = useState('')
-    const [ userId, setUserId ] = useState(2)
+    const userId = useSelector((state) => state.value2.id);
 
-    function handleSubmit(){
-        
+    function handleSubmit(e){
+        e.preventDefault()
         if(description !== ' '){
-            fetch('/responses', {
+            fetch('https://moringa-yjml.onrender.com/response', {
                 method: "POST",
                 body: JSON.stringify({
-                    suggestion: description,
-                    code,
-                    userId,
-                    questionId: qn,
+                    description: description,
+                    code: code,
+                    user_id: userId,
+                    question_id: qn,
                   }),
                   headers: {
-                    "Content-type": "application/json; charset=UTF-8",
+                    "Content-type": "application/json",
                   },
                 })
                 .then(response => {
                     response.json()
                 })
+                .catch((error) => {
+                    console.error('Error fetching data:', error);
+                  })
                 .then(data => {
                     setDescription(" ")
                     setCode(" ")
@@ -48,7 +52,7 @@ function PostResp({ qn }){
         <>
             <div className="questionPopUp">
                 <h1 className='popUpTitle'>Post a Response</h1>
-                <form onSubmit={handleSubmit}>
+                <form onSubmit={(e)=>handleSubmit(e)}>
                     <div className="inputDivs">
                         <h3 className="Title">Suggestion: </h3>
                         <textarea id="descInput" className="inputs" placeholder={"Enter a Suggestion..."}  cols={40} rows={4} onChange={handleDesc} />

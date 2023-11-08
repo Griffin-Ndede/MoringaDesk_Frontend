@@ -18,18 +18,27 @@ function App() {
   const [ questions, setQuestions ] = useState([])
   const [ allTags, setAllTags ] = useState([])
   const [ questionTags, setQuestionTags ] = useState([])
+  const [ userData, setUserData ] = useState([])
+
 
   useEffect(()=>{
-    fetch('/questions')
+    fetch('https://moringa-yjml.onrender.com/users')
+    .then((res)=> res.json())
+    .then(data => {
+      setUserData(data)
+    })
+  }, [])
+  
+  useEffect(()=>{
+    fetch('https://moringa-yjml.onrender.com/questions')
     .then((res)=> res.json())
     .then(data => {
       setQuestions(data)
     })
   }, [])
-  
 
   useEffect(()=>{
-    fetch('/tags')
+    fetch('https://moringa-yjml.onrender.com/tags')
     .then((res)=> res.json())
     .then(data => {
       setAllTags(data)
@@ -40,7 +49,7 @@ function App() {
   }, [])
 
   useEffect(()=>{
-    fetch('/questiontags')
+    fetch('https://moringa-yjml.onrender.com/question_tags')
     .then((res)=> res.json())
     .then(data => {
       setQuestionTags(data)
@@ -49,16 +58,16 @@ function App() {
 
   return (
     <>
-      <NavBar />
+      <NavBar tags={allTags}/>
       <Routes>
           <Route exact path="/" element={<CreateAccount />} />
-          <Route exact path="/login" element={<LoginPage />} />
+          <Route exact path="/login" element={<LoginPage userData={userData} />} />
           <Route path='/home' element={<HomePage />} />
-          <Route path='/FAQs' element={<FaqPage questions={questions} />}/>
+          <Route path='/FAQs' element={<FaqPage questions={questions} tags={allTags} />}/>
           <Route path='/tags' element={<TagsPage tags={allTags} />} />
           <Route path='/user' element={<UserPage />} />
           <Route path='/questions/:id' element={<QuestionPage tags={allTags} questionTags={questionTags} />} />
-          <Route path='/tags/:id' element={<FilteredTag allTags={allTags} />} />
+          <Route path='/tags/:name' element={<FilteredTag allTags={allTags} />} />
       </Routes>
     </>
   );

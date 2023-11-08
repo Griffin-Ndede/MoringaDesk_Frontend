@@ -47,7 +47,7 @@ function FilteredTag({ allTags }){
                     )
                 })}
             </div>
-            <p className="recentInfo1">Replies: {question.responses.length} | Date Posted: {question.created_at}</p>
+            <p className="recentInfo1">Replies: {question.responses?.length} | Date Posted: {question.created_at}</p>
         </div></Link>
         ))}
     </div>
