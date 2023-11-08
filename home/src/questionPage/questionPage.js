@@ -1,4 +1,5 @@
 import './questions.css'
+import './questionMobile.css'
 import ResponseCard from './responseCard';
 import PostResp from '../popUps/postResponse';
 import PatchQn from '../popUps/patchQuestion';
@@ -18,7 +19,7 @@ function QuestionPage({ tags, questionTags }){
     const navigate = useNavigate();
 
     useEffect(()=>{
-        fetch(`/questions/${qnId}`)
+        fetch(`https://moringa-yjml.onrender.com/questions/${qnId}`)
         .then((res)=> res.json())
         .then(data => {
           setQuestion(data)
@@ -39,13 +40,14 @@ function QuestionPage({ tags, questionTags }){
                 {
                   label: 'Confirm',
                   onClick: () => {
-                    fetch(`/questions/${qnId}`, {
+                    fetch(`https://moringa-yjml.onrender.com/questions/${qnId}`, {
                         method: "DELETE",
                       })
                         .then(response => response.json())
                         .then(() => {
                             alert('Question deleted!')
-                            navigate('/questions')
+                            navigate('/FAQs')
+                            window.location.reload()
                           })
                   }
                 }
@@ -53,6 +55,24 @@ function QuestionPage({ tags, questionTags }){
         });
 
   
+    }
+
+    function saveQn(){
+        fetch('https://moringa-yjml.onrender.com/saves', {
+            method: "POST",
+            body: JSON.stringify({
+                user_id: 2,
+                question_id: qnId,
+              }),
+              headers: {
+                "Content-type": "application/json; charset=UTF-8",
+              },
+            })
+            .then(response => {
+                response.json()
+                alert('Question added to Saves!')
+                setEditStatus(!editStatus)
+            })
     }
       
     const [ resp, setResp ] = useState(false)
@@ -79,7 +99,8 @@ function QuestionPage({ tags, questionTags }){
                     <div className="question">
                         <img className='actionDropDown' alt='option menu' src='https://static.thenounproject.com/png/892510-200.png' onClick={editActions}/>
                         {editStatus? <div className='actionButtons'>
-                            <button className='editButtons' onClick={patchQN}>Edit</button>
+                            <button className='editButtons' onClick={saveQn}>Save</button>
+                            <button className='editButtons' onClick={() =>(patchQN(), editActions())}>Edit</button>
                             <button className='deleteButtons' onClick={deleteQuestion}>Delete</button>
                         </div>: 
                         <></>}
@@ -96,10 +117,10 @@ function QuestionPage({ tags, questionTags }){
                     </div>
                 </div>
                 <h2 id="Solutions">Solutions: </h2>
+                <button title="Post Response" className="addButtons1" onClick={addResp}> + </button>
                 {question.responses?.map((response)=>(
                     <ResponseCard qnId={qnId} respId={response.id} user={response.user.username} userID={response.user.id} solution={response.suggestion} code={response.code} votes={response.votes} />
                 ))}
-                <button title="Post Response" className="addButtons1" onClick={addResp}> + </button>
                 {resp ? <div className="popUpBackground"><button className='closePopUp' onClick={addResp} >Close</button><PostResp qn={qnId}/></div>: <></>}
                 {patchQuestion ? <div className="popUpBackground"><button className='closePopUp' onClick={patchQN} >Close</button><PatchQn tags={tags} questionTags={questionTags} Id={question.id} Title={question.title} Description={question.description} Code={question.code} QnTag={question.tags} UserId={question.user.id}/></div>: <></>}
             </div>

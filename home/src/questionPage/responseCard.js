@@ -25,7 +25,7 @@ function ResponseCard({ respId, user, userID, solution, code, votes }){
                 {
                   label: 'Confirm',
                   onClick: () => {
-                    fetch(`/responses/${respId}`, {
+                    fetch(`https://moringa-yjml.onrender.com/responses/${respId}`, {
                         method: "DELETE",
                       })
                         .then(response => response.json())
@@ -52,7 +52,7 @@ function ResponseCard({ respId, user, userID, solution, code, votes }){
     function disableUpVote(){
         setUpVoteState(!upVoteState)
         setVoteCount(votes)
-        fetch(`/responses/${respId}`, {
+        fetch(`https://moringa-yjml.onrender.com/responses/${respId}`, {
             method: "PATCH",
             body: JSON.stringify({
                 votes: votes+=1
@@ -69,7 +69,7 @@ function ResponseCard({ respId, user, userID, solution, code, votes }){
         if(downVoteState === true){
             setDownVoteState(!downVoteState)
             setVoteCount(votes)
-            fetch(`/responses/${respId}`, {
+            fetch(`https://moringa-yjml.onrender.com/responses/${respId}`, {
                 method: "PATCH",
                 body: JSON.stringify({
                     votes: votes+=2
@@ -90,7 +90,7 @@ function ResponseCard({ respId, user, userID, solution, code, votes }){
     function disableDownVote(){
         setDownVoteState(!downVoteState)
         setVoteCount(votes)
-        fetch(`/responses/${respId}`, {
+        fetch(`https://moringa-yjml.onrender.com/responses/${respId}`, {
             method: "PATCH",
             body: JSON.stringify({
                 votes: votes-=1
@@ -107,7 +107,7 @@ function ResponseCard({ respId, user, userID, solution, code, votes }){
         if(upVoteState === true){
             setUpVoteState(!upVoteState)
             setVoteCount(votes)
-            fetch(`/responses/${respId}`, {
+            fetch(`https://moringa-yjml.onrender.com/responses/${respId}`, {
                 method: "PATCH",
                 body: JSON.stringify({
                     votes: votes-=2
@@ -131,7 +131,7 @@ function ResponseCard({ respId, user, userID, solution, code, votes }){
             <div className="responseDiv">
                 <div className="response">
                     <img className="userIcon" alt="user icon" src="https://icones.pro/wp-content/uploads/2021/02/icone-utilisateur-gris.png" />
-                    <h3 className="questionUserName">@{user}</h3>
+                    <h3 className="questionUserName">@{user}:</h3>
                     <img className='respActionDropDown' alt='option menu' src='https://static.thenounproject.com/png/892510-200.png' onClick={editActions}/>
                         {editStatus? <div className='respActionButtons'>
                             <button className='editButtons' onClick={patchResp}>Edit</button>

@@ -1,8 +1,10 @@
 import "./navBar.css"
 import { Link } from 'react-router-dom';
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { getData1 } from "./myStore";
 
-function NavBar(){
+function NavBar({ tags }){
     const [ showPanel, setShowPanel ] = useState(false);
       
     function toggle() {
@@ -10,6 +12,11 @@ function NavBar(){
         console.log(showPanel)
     }
     
+    const dispatch = useDispatch();
+    const sendData = (id) => {
+    dispatch(getData1(id));
+    };
+
     return(
         <>
             <div id="navbar">
@@ -27,6 +34,11 @@ function NavBar(){
                         <div className="linkDiv"><Link className="navLinks" to={'/home'} onClick={toggle}>Home</Link></div>
                         <div className="linkDiv"><Link className="navLinks" to={'/FAQs'} onClick={toggle}>Questions</Link></div>
                         <div className="linkDiv"><Link className="navLinks" to={'/tags'} onClick={toggle}> Tags</Link></div>
+                        <div id="tagNames">
+                            {tags.map(tag => (
+                                <div className="linkDiv1"><Link className="navLinks1" to={`/tags/${tag.name}`} onClick={()=>(sendData(tag.id), toggle())}>{tag.name}</Link></div> 
+                            ))}
+                        </div>
                         <div className="linkDiv"><Link className="navLinks" to={'/user'} onClick={toggle}> User</Link></div>
                         <div id="logOut"><button id="logOutButton">Logout</button></div>
                     </div>
