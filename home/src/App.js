@@ -26,6 +26,7 @@ function App() {
       setQuestions(data)
     })
   }, [])
+  
 
   useEffect(()=>{
     fetch('/tags')
@@ -33,7 +34,10 @@ function App() {
     .then(data => {
       setAllTags(data)
     })
-}, [])
+    .catch((error) => {
+      console.error('Error fetching data:', error);
+    })
+  }, [])
 
   useEffect(()=>{
     fetch('/questiontags')
@@ -51,7 +55,7 @@ function App() {
           <Route exact path="/login" element={<LoginPage />} />
           <Route path='/home' element={<HomePage />} />
           <Route path='/FAQs' element={<FaqPage questions={questions} />}/>
-          <Route path='/tags' element={<TagsPage allTags={allTags} />} />
+          <Route path='/tags' element={<TagsPage tags={allTags} />} />
           <Route path='/user' element={<UserPage />} />
           <Route path='/questions/:id' element={<QuestionPage tags={allTags} questionTags={questionTags} />} />
           <Route path='/tags/:id' element={<FilteredTag allTags={allTags} />} />

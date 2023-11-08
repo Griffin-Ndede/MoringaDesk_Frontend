@@ -1,44 +1,46 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import './tagsPage.css';
-import { Link } from "react-router-dom"
+
+
 import { useDispatch } from "react-redux";
 import { getData1 } from "../myStore";
 
-function TagsPage() {
-const [tags, setTags] = useState([]);
-const [selectedTag, setSelectedTag] = useState(null);
-const [questions, setQuestions] = useState([]);
+function TagsPage({ tags }) {
+// const [tags, setTags] = useState([]);
+// const [selectedTag, setSelectedTag] = useState(null);
+// const [questions, setQuestions] = useState([]);
 const [searchTerm, setSearchTerm] = useState('');
 
 
-  useEffect(() => {
-    fetch('/tags')
-      .then((response) => response.json())
-      .then((data) => {
-        setTags(data);
-      })
-      .catch((error) => {
-        console.error('Error fetching data:', error);
-      });
-  }, []);
+  // useEffect(() => {
+  //   fetch('/tags')
+  //     .then((response) => response.json())
+  //     .then((data) => {
+  //       setTags(data);
+  //     })
+  //     .catch((error) => {
+  //       console.error('Error fetching data:', error);
+  //     });
+  // }, []);
 
-  const handleClick = (tagId) => {
-    fetch(`/tags/${tagId}`)
-      .then((response) => {
-        if (response.ok) {
-          return response.json();
-        } else {
-          throw new Error(`Failed to fetch tag with ID: ${tagId}`);
-        }
-      })
-      .then((data) => {
-        setSelectedTag(data);
-        setQuestions(data.questions);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  };
+  // const handleClick = (tagId) => {
+  //   fetch(`/tags/${tagId}`)
+  //     .then((response) => {
+  //       if (response.ok) {
+  //         return response.json();
+  //       } else {
+  //         throw new Error(`Failed to fetch tag with ID: ${tagId}`);
+  //       }
+  //     })
+  //     .then((data) => {
+  //       setSelectedTag(data);
+  //       setQuestions(data.questions);
+  //     })
+  //     .catch((error) => {
+  //       console.error(error);
+  //     });
+  // };
 
   const handleSearch = (event) => {
             setSearchTerm(event.target.value);

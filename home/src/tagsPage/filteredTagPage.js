@@ -1,6 +1,5 @@
 import './filteredTags.css'
 import './tagsPage.css'
-import '../FAQPage/faq.css'
 import { useState } from 'react';
 import { Link } from "react-router-dom"
 import { useSelector } from "react-redux";
@@ -16,7 +15,6 @@ function FilteredTag({ allTags }){
     };
 
     const tagId = useSelector((state) => state.value1);
-    console.log(allTags)
     const [searchTerm, setSearchTerm] = useState('');
 
     const handleSearch = (event) => {
@@ -36,19 +34,20 @@ function FilteredTag({ allTags }){
         </div>
     </div>
     <div id="filteredQns">
+        <h2 id="Questions">{allTags[tagId-1]?.name} Questions</h2>
         {allTags[tagId-1]?.questions?.map(question => (
-            <Link className="links" to={`/questions/${question.id}`} onClick={() => sendData(question.id)}><div className="recentCard">
-            <img className="userIcon" alt="user icon" src="https://icones.pro/wp-content/uploads/2021/02/icone-utilisateur-gris.png" />
-            <h3 className="userName">@{question.user.username}:</h3>
-            <h2 className="recentCardTitle">{question.title}</h2>
-            <div className="tagButtonDiv">
+            <Link className="links" to={`/questions/${question.id}`} onClick={() => sendData(question.id)}><div className="recentCard1">
+            <img className="userIcon1" alt="user icon" src="https://icones.pro/wp-content/uploads/2021/02/icone-utilisateur-gris.png" />
+            <h3 className="userName1">@{question.user.username}:</h3>
+            <h2 className="recentCardTitle1">{question.title}</h2>
+            <div className="tagButtonDiv1">
                 {question.tags?.map((tag, index) => {
                     return(
-                        <button key={index} className="tagButtons">{tag.name}</button>
+                        <button key={index} className="tagButtons1">{tag.name}</button>
                     )
                 })}
             </div>
-            <p className="recentInfo">Replies: {question.responses.length} | Date Posted: {question.created_at}</p>
+            <p className="recentInfo1">Replies: {question.responses.length} | Date Posted: {question.created_at}</p>
         </div></Link>
         ))}
     </div>
