@@ -383,6 +383,7 @@
     top: -3px;
     width: 651px;
     border-radius: 30px;
+    margin-top: -5px;
   }
   
   .homepage .search {
@@ -391,7 +392,7 @@
     position: absolute;
     top: 1352px;
     width: 1273px;
-    margin-top:20px ;
+    margin-top:10px ;
   }
   
   .homepage .flexcontainer-4 {
@@ -442,9 +443,9 @@
     margin-top: 20px;
   }
   
-  /* .homepage .text-wrapper-15 {
+   .homepage .text-wrapper-15 {
     color: #ff7512e6;
-  } */
+  } 
   
   .homepage .text-wrapper-16 {
     color: #3b3b3b;
@@ -456,10 +457,13 @@
     position: absolute;
     top: 109px;
     width: 1516px;
+    background: rgba(8, 8, 8, 0.3);
+    /* opacity: 0.5 */
+    
   }
   
   .homepage .overlap {
-    background-image: url(https://moringaschool.com/wp-content/uploads/2022/01/backend.jpg);
+    background-image: url(../images/BACK.png) !important;
     background-position: 50% 50%;
     background-size: cover;
     height: 748px;
@@ -469,7 +473,7 @@
   }
   
   .homepage .text-wrapper-17 {
-    color: #ffffff;
+    color: #fcf6f6;
     font-family: "Inter-Regular", Helvetica;
     font-size: 40px;
     font-weight: 400;
@@ -482,7 +486,7 @@
   }
   
   .homepage .text-wrapper-18 {
-    color: #ffffff;
+    color: #f1ecec;
     font-family: "Comfortaa-Regular", Helvetica;
     font-size: 90px;
     font-weight: 400;
@@ -576,4 +580,108 @@
     top: 31px;
     white-space: nowrap;
   }
+  .search .text-wrapper-9{
+    margin-top: 600px;
+  }
+  .search .flexcontainer-4 .text-2 .text-wrapper-9 {
+    margin-top: 600px;
+  }
+
+  .homepage .search .flexcontainer-4 .text-2 .text-wrapper-9{
+    margin-top: 30px;
+  }
+  @media (max-width: 768px) {
+    .homepage .div {
+      width: 100%;
+    }
+  
+    .homepage .footer {
+      top: 4700px;
+    }
+  
+    .homepage .map {
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80%;
+    }
+  
+    .homepage .call {
+      left: 50%;
+      transform: translateX(-50%);
+      text-align: center;
+    }
+  
+    .homepage .email {
+      left: 50%;
+      transform: translateX(-50%);
+      text-align: center;
+    }
+  
+    .homepage .x {
+      left: 50%;
+      transform: translateX(-50%);
+      text-align: center;
+    }
+  
+    .homepage .IG {
+      left: 50%;
+      transform: translateX(-50%);
+      text-align: center;
+    }
+  
+    .homepage .flexcontainer {
+      left: 50%;
+      transform: translateX(-50%);
+      text-align: center;
+    }
+  
+    .homepage .filter {
+      left: 10px;
+      width: calc(100% - 20px);
+    }
+  
+    .homepage .respond {
+      left: 10px;
+      width: calc(100% - 20px);
+    }
+  
+    .homepage .reach-out {
+      left: 10px;
+      width: calc(100% - 20px);
+    }
+  
+    .homepage .search {
+      left: 10px;
+      width: calc(100% - 20px);
+    }
+  
+    .homepage .overlap-wrapper {
+      top: 150px;
+    }
+  
+    .homepage .overlap {
+      width: 100%;
+    }
+  
+    .homepage .text-wrapper-17 {
+      left: 50%;
+      transform: translateX(-50%);
+      text-align: center;
+    }
+  
+    .homepage .text-wrapper-18 {
+      left: 50%;
+      transform: translateX(-50%);
+      text-align: center;
+    }
+  
+    .homepage .nav-bar-items {
+      width: 100%;
+    }
+  
+    .homepage .image {
+      width: 50%;
+    }
+  }
+  
   
