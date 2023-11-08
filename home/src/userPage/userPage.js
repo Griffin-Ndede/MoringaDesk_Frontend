@@ -4,6 +4,8 @@ import './userPage.css'
 function UserPage(){
     const [saves, setSaves] = useState([]);
     const [responses, setResponses] = useState([]);
+    const [questions, setQuestions] = useState([]);
+    // const userId = 7;
     const userId = localStorage.getItem('userId');
 
     useEffect(() => {
@@ -22,6 +24,14 @@ function UserPage(){
         }
     }, [userId]);
 
+    useEffect(() => {
+        if (userId) {
+            fetch(`/questions/${userId}`)
+                .then((res) => res.json())
+                .then((questions) => setQuestions(questions));
+        }
+    }, [userId]);
+
     return(
         <>
             <div id='header'>
@@ -31,7 +41,7 @@ function UserPage(){
                     <p>Member since 2022</p>
                 </div>
             </div>
-            <h2>My Questions</h2>
+            {/* <h2>My Questions</h2>
             <div className='questions'>
                 <div>
                     <h3>Problem title</h3>
@@ -47,7 +57,7 @@ function UserPage(){
                     <button>tag 1</button>
                     <button>tag 2</button>
                 </div>
-            </div>
+            </div> */}
             {/* <h2>My Responses</h2>
             <div className='questions'>
                 <div>
@@ -65,6 +75,15 @@ function UserPage(){
                    <button>tag 2</button>
                 </div> */}
             {/* </div> */}
+            <h2>My Questions</h2>
+            <div className='questions'>
+                {questions.map((question) => (
+                    <div key={question.id}>
+                        <h3>{question.title}</h3>
+                        <p>{question.description}</p>
+                    </div>
+                ))}
+            </div>
             <h2>My Responses</h2>
             <div className='questions'>
                 {responses.map((response) => (
@@ -74,8 +93,7 @@ function UserPage(){
                     </div>
                 ))}
             </div>
-            <div>
-                <h2>Saves</h2>
+                <h2>My Saves</h2>
                 <div className="questions">
                     {saves && saves.map((save) => (
                     <div key={save.id}>
@@ -84,8 +102,6 @@ function UserPage(){
             </div>
           ))}
         </div>
-      </div>
-
         </>
     )
 }
