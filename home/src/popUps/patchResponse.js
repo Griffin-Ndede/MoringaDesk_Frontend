@@ -5,16 +5,15 @@ import { useState } from 'react'
 function PatchResp({ Solution, Code, Id }){
     const [ description , setDescription ] = useState(Solution)
     const [ code , setCode ] = useState(Code)
-    const [ userId, setUserId ] = useState(2)
 
     function handleSubmit(){
         
         if(description !== ' '){
-            fetch(`/responses/${Id}`, {
+            fetch(`https://moringa-yjml.onrender.com/responses/${Id}`, {
                 method: "PATCH",
                 body: JSON.stringify({
-                    suggestion: description,
-                    code,
+                    description: description,
+                    code: code,
                   }),
                   headers: {
                     "Content-type": "application/json; charset=UTF-8",

@@ -19,9 +19,9 @@ const CreateAccount = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('formData', formData)
+    // console.log('formData', formData)
     try {
-      const response = await fetch('https://moringa-desk-9m7v.onrender.com/register', {
+      const response = await fetch('https://moringa-yjml.onrender.com/register', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -36,7 +36,7 @@ const CreateAccount = () => {
         setFormData(initialFormData);
         navigate('/login');
       } else {
-        console.error('Signup failed.');
+        alert('Signup failed.');
         setNotification('Signup failed.');
       }
     } catch (error) {

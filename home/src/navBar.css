@@ -99,9 +99,42 @@
     border-bottom-style: outset;
 }
 
+#tagNames{
+    height: 56.4vh;
+    overflow-y: scroll;
+    border-bottom-style: outset;
+    border-bottom-color: black;
+    border-top-style: outset;
+    border-top-color: black;
+}
+
+#tagNames::-webkit-scrollbar{
+    display: none;
+}
+
+.linkDiv1{
+    width: 80%;
+    position: relative;
+    left: 10%;
+    text-align: center;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    background-color: rgb(181, 78, 40);
+    border-bottom-style: outset;
+    border-bottom-color: black;
+}
+
 .navLinks{
     font-size: 120%;
     color: Black;
+    text-decoration: none;
+}
+
+.navLinks1{
+    font-size: 120%;
+    color: white;
+    padding-left: 45px;
+    padding-right: 45px;
     text-decoration: none;
 }
 
@@ -173,6 +206,7 @@
         position: relative;
         left: 83%;
         top: -80%;
+        display: none;
     }
     
     #navBackground{
@@ -181,7 +215,7 @@
         height: 100vh;
         position: fixed;
         left: 0;
-        top: 65px;
+        top: 50px;
         z-index: 50;
     }
     
@@ -216,13 +250,40 @@
         padding-top: 5%;
         margin-bottom: 5%;
     }
+
+    #tagNames{
+        height: 55vh;
+        overflow-y: scroll;
+        border-bottom-style: outset;
+        border-bottom-color: black;
+        border-top-style: outset;
+        border-top-color: black;
+    }
     
     .linkDiv{
         text-align: center;
         padding-top: 5px;
         padding-bottom: 5px;
+        height: 28px;
         background-color: rgba(218, 218, 218, 0.726);
         border-bottom-style: outset;
+        vertical-align: middle;
+
+    }
+
+    .linkDiv1{
+        width: 80%;
+        position: relative;
+        left: 10%;
+        text-align: center;
+        height: 30px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        background-color: rgb(181, 78, 40);
+        border-bottom-style: outset;
+        border-bottom-color: black;
+        vertical-align: middle;
+
     }
     
     .navLinks{
@@ -241,7 +302,7 @@
     
     #logOutButton{
         width: 100%;
-        height: 30px;
+        height: 40px;
         font-size: 120%;
         background-color: rgb(229, 65, 65);
         border-style: none;

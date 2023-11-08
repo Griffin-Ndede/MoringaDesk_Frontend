@@ -2,9 +2,16 @@ import React, { useState } from 'react';
 import './login.css';
 import { NavLink, useNavigate } from 'react-router-dom';
 import img2 from "../images/image.png"
+import { useDispatch } from "react-redux";
+import { getData2 } from "../myStore";
 
-const LoginPage = () => {
+const LoginPage = ({ userData }) => {
   const navigate = useNavigate(); // Use useNavigate for navigation
+  const dispatch = useDispatch();
+
+  const sendData = (user) => {
+      dispatch(getData2(user));
+  };
 
   const [formData, setFormData] = useState({
     email: '',
@@ -16,7 +23,7 @@ const LoginPage = () => {
 
     // Send login request with formData.email and formData.password
     try {
-      const response = await fetch('https://moringa-desk-9m7v.onrender.com', {
+      const response = await fetch('https://moringa-yjml.onrender.com/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -27,6 +34,7 @@ const LoginPage = () => {
       if (response.ok) {
         // Login successful, navigate to the home
         console.log('Login successful!');
+        sendData(userData?.filter(user => user.email === formData.email)[0])
         navigate('/Home'); // Redirect to the home
       } else {
         // Handle login failure, show error messages, etc.
@@ -102,4 +110,4 @@ const LoginPage = () => {
   );
 };
 
-export default LoginPage;
+export default LoginPage;  
