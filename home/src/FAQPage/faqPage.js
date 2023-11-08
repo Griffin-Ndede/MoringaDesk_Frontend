@@ -7,7 +7,6 @@ import { useState } from 'react'
 
 
 function FaqPage({ questions, tags }){
-
     const [ ask, setAsk ] = useState(false)
 
     function addQn(){
@@ -48,7 +47,7 @@ function FaqPage({ questions, tags }){
                 </div>
             </div>
             <button title="Post Question" className="addButtons" onClick={addQn}> + </button>
-            {ask ? <div className="popUpBackground"><button className='closePopUp' onClick={addQn} >Close</button><PostQn newId={questions.length + 1}/></div>: <></>}
+            {ask ? <div className="popUpBackground"><button className='closePopUp' onClick={addQn} >Close</button><PostQn newId={questions.length + 1} allTags={tags} /></div>: <></>}
         </div>
         </>
     )

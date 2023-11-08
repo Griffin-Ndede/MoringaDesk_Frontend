@@ -20,7 +20,7 @@ function App() {
   const [ questionTags, setQuestionTags ] = useState([])
 
   useEffect(()=>{
-    fetch('/questions')
+    fetch('https://moringa-yjml.onrender.com/questions')
     .then((res)=> res.json())
     .then(data => {
       setQuestions(data)
@@ -29,7 +29,7 @@ function App() {
   
 
   useEffect(()=>{
-    fetch('/tags')
+    fetch('https://moringa-yjml.onrender.com/tags')
     .then((res)=> res.json())
     .then(data => {
       setAllTags(data)
@@ -40,7 +40,7 @@ function App() {
   }, [])
 
   useEffect(()=>{
-    fetch('/questiontags')
+    fetch('https://moringa-yjml.onrender.com/question_tags')
     .then((res)=> res.json())
     .then(data => {
       setQuestionTags(data)

@@ -10,13 +10,13 @@ function PostResp({ qn }){
     function handleSubmit(){
         
         if(description !== ' '){
-            fetch('/responses', {
+            fetch('https://moringa-yjml.onrender.com/responses', {
                 method: "POST",
                 body: JSON.stringify({
-                    suggestion: description,
+                    description,
                     code,
-                    userId,
-                    questionId: qn,
+                    user_id: userId,
+                    question_id: qn,
                   }),
                   headers: {
                     "Content-type": "application/json; charset=UTF-8",

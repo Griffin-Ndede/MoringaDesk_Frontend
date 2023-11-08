@@ -2,20 +2,19 @@ import './popups.css'
 import React from"react"
 import { useState } from 'react'
 
-function PatchQn({ tags, questionTags, Id, Title, Description, Code, QnTag, UserId }){
+function PatchQn({ tags, questionTags, Id, Title, Description, Code, QnTag }){
     let QnTagName = []
     QnTag.forEach(tag => QnTagName.push(tag.name))
     const [ title, setTitle ] = useState(Title)
     const [ description , setDescription ] = useState(Description)
     const [ code , setCode ] = useState(Code)
     const [ qnTag , setQnTag ] = useState(QnTagName)
-    const [ userId, setUserId ] = useState(UserId)
 
     function handleSubmit(){
         
         if(title !== ' ' && description !== ''){
             questionTags.filter(questionTag => questionTag.question_id === Id).forEach((tag) =>{
-                fetch(`/questiontags/${tag.id}`, {
+                fetch(`https://moringa-yjml.onrender.com/question_tags/${tag.id}`, {
                     method: "DELETE",
                 })
                     .then(response => response.json())
@@ -23,13 +22,12 @@ function PatchQn({ tags, questionTags, Id, Title, Description, Code, QnTag, User
                         return "questiontag deleted successfully"
             })})
 
-            fetch(`/questions/${Id}`, {
+            fetch(`https://moringa-yjml.onrender.com/questions/${Id}`, {
                 method: "PATCH",
                 body: JSON.stringify({
                     title,
                     description,
                     code,
-                    userId,
                   }),
                   headers: {
                     "Content-type": "application/json; charset=UTF-8",
@@ -41,11 +39,11 @@ function PatchQn({ tags, questionTags, Id, Title, Description, Code, QnTag, User
                 .then(
                     qnTag.forEach(tag => {
                         let tagId = tags.filter(tags => tags.name === tag)[0].id
-                        fetch('/questiontags', {
+                        fetch('https://moringa-yjml.onrender.com/question_tags', {
                             method: "POST",
                             body: JSON.stringify({
-                                tagId,
-                                questionId: Id,
+                                tag_Id: tagId,
+                                question_Id: Id,
                               }),
                               headers: {
                                 "Content-type": "application/json; charset=UTF-8",

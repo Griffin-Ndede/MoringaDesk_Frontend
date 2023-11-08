@@ -19,7 +19,7 @@ function QuestionPage({ tags, questionTags }){
     const navigate = useNavigate();
 
     useEffect(()=>{
-        fetch(`/questions/${qnId}`)
+        fetch(`https://moringa-yjml.onrender.com/questions/${qnId}`)
         .then((res)=> res.json())
         .then(data => {
           setQuestion(data)
@@ -40,13 +40,14 @@ function QuestionPage({ tags, questionTags }){
                 {
                   label: 'Confirm',
                   onClick: () => {
-                    fetch(`/questions/${qnId}`, {
+                    fetch(`https://moringa-yjml.onrender.com/questions/${qnId}`, {
                         method: "DELETE",
                       })
                         .then(response => response.json())
                         .then(() => {
                             alert('Question deleted!')
                             navigate('/FAQs')
+                            window.location.reload()
                           })
                   }
                 }
@@ -57,7 +58,7 @@ function QuestionPage({ tags, questionTags }){
     }
 
     function saveQn(){
-        fetch('/saves', {
+        fetch('https://moringa-yjml.onrender.com/saves', {
             method: "POST",
             body: JSON.stringify({
                 user_id: 2,
@@ -99,7 +100,7 @@ function QuestionPage({ tags, questionTags }){
                         <img className='actionDropDown' alt='option menu' src='https://static.thenounproject.com/png/892510-200.png' onClick={editActions}/>
                         {editStatus? <div className='actionButtons'>
                             <button className='editButtons' onClick={saveQn}>Save</button>
-                            <button className='editButtons' onClick={patchQN}>Edit</button>
+                            <button className='editButtons' onClick={() =>(patchQN(), editActions())}>Edit</button>
                             <button className='deleteButtons' onClick={deleteQuestion}>Delete</button>
                         </div>: 
                         <></>}
