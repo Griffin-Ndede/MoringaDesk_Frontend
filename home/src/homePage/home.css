@@ -392,7 +392,7 @@
     position: absolute;
     top: 1352px;
     width: 1273px;
-    margin-top:20px ;
+    margin-top:10px ;
   }
   
   .homepage .flexcontainer-4 {
@@ -580,4 +580,108 @@
     top: 31px;
     white-space: nowrap;
   }
+  .search .text-wrapper-9{
+    margin-top: 600px;
+  }
+  .search .flexcontainer-4 .text-2 .text-wrapper-9 {
+    margin-top: 600px;
+  }
+
+  .homepage .search .flexcontainer-4 .text-2 .text-wrapper-9{
+    margin-top: 30px;
+  }
+  @media (max-width: 768px) {
+    .homepage .div {
+      width: 100%;
+    }
+  
+    .homepage .footer {
+      top: 4700px;
+    }
+  
+    .homepage .map {
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80%;
+    }
+  
+    .homepage .call {
+      left: 50%;
+      transform: translateX(-50%);
+      text-align: center;
+    }
+  
+    .homepage .email {
+      left: 50%;
+      transform: translateX(-50%);
+      text-align: center;
+    }
+  
+    .homepage .x {
+      left: 50%;
+      transform: translateX(-50%);
+      text-align: center;
+    }
+  
+    .homepage .IG {
+      left: 50%;
+      transform: translateX(-50%);
+      text-align: center;
+    }
+  
+    .homepage .flexcontainer {
+      left: 50%;
+      transform: translateX(-50%);
+      text-align: center;
+    }
+  
+    .homepage .filter {
+      left: 10px;
+      width: calc(100% - 20px);
+    }
+  
+    .homepage .respond {
+      left: 10px;
+      width: calc(100% - 20px);
+    }
+  
+    .homepage .reach-out {
+      left: 10px;
+      width: calc(100% - 20px);
+    }
+  
+    .homepage .search {
+      left: 10px;
+      width: calc(100% - 20px);
+    }
+  
+    .homepage .overlap-wrapper {
+      top: 150px;
+    }
+  
+    .homepage .overlap {
+      width: 100%;
+    }
+  
+    .homepage .text-wrapper-17 {
+      left: 50%;
+      transform: translateX(-50%);
+      text-align: center;
+    }
+  
+    .homepage .text-wrapper-18 {
+      left: 50%;
+      transform: translateX(-50%);
+      text-align: center;
+    }
+  
+    .homepage .nav-bar-items {
+      width: 100%;
+    }
+  
+    .homepage .image {
+      width: 50%;
+    }
+  }
+  
   
