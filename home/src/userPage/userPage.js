@@ -1,6 +1,18 @@
+import { useState, useEffect } from "react";
 import './userPage.css'
 
 function UserPage(){
+    const [saves, setSaves] = useState([]);
+    const userId = localStorage.getItem('userId');
+
+    useEffect(() => {
+        if (userId) {
+          fetch(`/saves/${userId}`)
+            .then((res) => res.json())
+            .then((saves) => setSaves(saves));
+        }
+      }, [userId]);
+
     return(
         <>
             <div id='header'>
@@ -44,6 +56,18 @@ function UserPage(){
                    <button>tag 2</button>
                 </div>
             </div>
+            <div>
+        <h2>Saves</h2>
+        <div className="questions">
+          {saves && saves.map((save) => (
+            <div key={save.id}>
+              <h3>{save.question.title}</h3>
+              <button>{save.question.tag}</button>
+            </div>
+          ))}
+        </div>
+      </div>
+
         </>
     )
 }
