@@ -60,8 +60,9 @@ function QuestionPage({ tags, questionTags }){
               ]
         });
 
-  
+
     }
+
 
     function saveQn(){
         fetch('https://moringa-yjml.onrender.com/saves', {
@@ -81,6 +82,7 @@ function QuestionPage({ tags, questionTags }){
             })
     }
 
+
     function addResp(){
         setResp(!resp)
     }
@@ -96,15 +98,17 @@ function QuestionPage({ tags, questionTags }){
     return(
         <>
             <div id="questionPage">
-                
+
                 <div className="questionDiv">
                     <div className="question">
                         <img className='actionDropDown' alt='option menu' src='https://static.thenounproject.com/png/892510-200.png' onClick={editActions}/>
                         {editStatus? <div className='actionButtons'>
+
                             <button className='editButtons' onClick={saveQn}>Save</button>
                             {question.user?.id === userId? <button className='editButtons' onClick={() =>(patchQN(), editActions())}>Edit</button> : <></>}
                             {question.user?.id === userId? <button className='deleteButtons' onClick={deleteQuestion}>Delete</button> : <></>}
                         </div>: 
+
                         <></>}
                         <img className="userIcon" alt="user icon" src="https://icones.pro/wp-content/uploads/2021/02/icone-utilisateur-gris.png" />
                         <h3 className="questionUserName">@{question.user?.username}:</h3>

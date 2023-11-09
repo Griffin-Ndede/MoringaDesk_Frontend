@@ -24,7 +24,7 @@ function FilteredTag({ allTags }){
     // const filteredTags = allTags.filter((tag) =>
     //     tag.questions?.title.toLowerCase().includes(searchTerm.toLowerCase())
     // );
-    
+
     return(
     <>
     <div id="head">
@@ -36,7 +36,7 @@ function FilteredTag({ allTags }){
     <div id="filteredQns">
         <h2 id="Questions">{allTags[tagId-1]?.name} Questions</h2>
         {allTags[tagId-1]?.questions?.map(question => (
-            <Link className="links" to={`/questions/${question.id}`} onClick={() => sendData(question.id)}><div className="recentCard1">
+            <Link className="links" to={`https://moringa-yjml.onrender.com/questions/${question.id}`} onClick={() => sendData(question.id)}><div className="recentCard1">
             <img className="userIcon1" alt="user icon" src="https://icones.pro/wp-content/uploads/2021/02/icone-utilisateur-gris.png" />
             <h3 className="userName1">@{question.user.username}:</h3>
             <h2 className="recentCardTitle1">{question.title}</h2>

@@ -8,15 +8,14 @@ body {
 #head {
   background-image: url(https://www.i6net.com/wp-content/uploads/2015/06/background-header-technology.jpg);
   padding: 10px;
-  margin-top: 65px;
+  margin-top: 60px;
   margin-right: 0;
   margin-left: 0;
   color: white;
 }
 
-#head div p {
-  font-size: 18px;
-  margin-top: 2px;
+#head h1 {
+  margin-bottom: 0px;
 }
 
 #searchbar {
@@ -28,7 +27,7 @@ body {
 
 #searchbar input {
   width: 500px;
-  padding: 10px;
+  padding: 5px;
   border-radius: 20px;
   font-size: 20px;
   background-color: rgb(1, 19, 55);
@@ -45,6 +44,7 @@ body {
   flex-wrap: wrap;
   padding: 20px;
   gap: 5px;
+  margin-left: 13px;
 }
 
 .card {
