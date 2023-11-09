@@ -1,39 +1,43 @@
 import React, { useState, useEffect } from 'react';
+import { useSelector } from "react-redux";
 import './userPage.css'
 
 function UserPage() {
-  const [saves, setSaves] = useState([]);
-  const [responses, setResponses] = useState([]);
-  const [questions, setQuestions] = useState([]);
+  
   const [activeButton, setActiveButton] = useState('Saves');
+  const userData = useSelector((state) => state.value2);
+  const saves = userData?.saves;
+  const responses = userData?.responses;
+  const questions = userData?.questions;
 
-  const userId = localStorage.getItem('userId');
-  const username = localStorage.getItem('username');
-  const created_at = localStorage.getItem('created_at');
 
-  useEffect(() => {
-    if (userId) {
-      fetch(`https://moringa-yjml.onrender.com/saves/${userId}`)
-        .then((res) => res.json())
-        .then((saves) => setSaves(saves));
-    }
-  }, [userId]);
+  // const userId = userData?.id;
+  const username = userData?.username
+  const created_at = userData?.created_at
 
-  useEffect(() => {
-    if (userId) {
-      fetch(`https://moringa-yjml.onrender.com/responses/${userId}`)
-        .then((res) => res.json())
-        .then((responses) => setResponses(responses));
-    }
-  }, [userId]);
+  // useEffect(() => {
+  //   if (userId) {
+  //     fetch(`https://moringa-yjml.onrender.com/saves/${userId}`)
+  //       .then((res) => res.json())
+  //       .then((saves) => setSaves(saves));
+  //   }
+  // }, [userId]);
 
-  useEffect(() => {
-    if (userId) {
-      fetch(`https://moringa-yjml.onrender.com/questions/${userId}`)
-        .then((res) => res.json())
-        .then((questions) => setQuestions(questions));
-    }
-  }, [userId]);
+  // useEffect(() => {
+  //   if (userId) {
+  //     fetch(`https://moringa-yjml.onrender.com/responses/${userId}`)
+  //       .then((res) => res.json())
+  //       .then((responses) => setResponses(responses));
+  //   }
+  // }, [userId]);
+
+  // useEffect(() => {
+  //   if (userId) {
+  //     fetch(`https://moringa-yjml.onrender.com/questions/${userId}`)
+  //       .then((res) => res.json())
+  //       .then((questions) => setQuestions(questions));
+  //   }
+  // }, [userId]);
 
   const handleClick = (buttonName) => {
     setActiveButton(buttonName);
