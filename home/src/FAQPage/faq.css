@@ -32,6 +32,7 @@
     height: 35px;
     font-size: 110%;
     border-radius: 10px;
+    z-index: 10;
 }
 
 #headerLogo{
@@ -40,6 +41,7 @@
     position: absolute;
     right: 3.5%;
     top: 45px;
+    z-index: 5;
 }
 
 #faqBody{
@@ -138,7 +140,7 @@
     margin-bottom: 0;
     position: relative;
     top: -30px;
-    left: 6%;
+    left: 40px;
     width: 94%;
 }
 
@@ -181,9 +183,9 @@
 }
 
 .addButtons{
-    width: 5.5vw;
-    height: 11vh;
-    border-radius: 35px;
+    width: 6.5vw;
+    height: 13vh;
+    border-radius: 50%;
     border-color: rgba(238, 100, 50, 0.925);
     font-size: 250%;
     color: white;
@@ -196,11 +198,10 @@
 
 .addButtons:hover{
     cursor: pointer;
-    width: 6.5vw;
-    height: 12vh;
-    border-radius: 50px;
+    width: 7.5vw;
+    height: 15vh;
+    border-radius: 50%;
     background-color: rgba(249, 109, 58, 0.925);
-
 }
 
 .popUpBackground{
@@ -223,4 +224,11 @@
     background-color: rgba(218, 45, 45, 0.893);
     padding-left: 10px;
     padding-right: 10px;
+}
+
+.emptyDiv1{
+    width: 99%;
+    text-align: center;
+    margin-left: 0.5%;
+    padding-left: 2%;
 }

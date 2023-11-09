@@ -14,26 +14,26 @@ import { useEffect, useState } from 'react';
 
 
 
+
 function App() {
   const [ questions, setQuestions ] = useState([])
   const [ allTags, setAllTags ] = useState([])
   const [ questionTags, setQuestionTags ] = useState([])
   const [ userData, setUserData ] = useState([])
-
-
-  useEffect(()=>{
-    fetch('https://moringa-yjml.onrender.com/users')
-    .then((res)=> res.json())
-    .then(data => {
-      setUserData(data)
-    })
-  }, [])
   
   useEffect(()=>{
     fetch('https://moringa-yjml.onrender.com/questions')
     .then((res)=> res.json())
     .then(data => {
       setQuestions(data)
+    })
+  }, [])
+
+  useEffect(()=>{
+    fetch('https://moringa-yjml.onrender.com/users')
+    .then((res)=> res.json())
+    .then(data => {
+      setUserData(data)
     })
   }, [])
 

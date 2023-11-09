@@ -12,6 +12,7 @@ function PostQn({ newId, allTags }){
     const userId = useSelector((state) => state.value2.id);
 
     function handleSubmit(e){
+        e.preventDefault()
         if(title !== ' ' && description !== ''){
             fetch('https://moringa-yjml.onrender.com/questions', {
                 method: "POST",
@@ -46,6 +47,7 @@ function PostQn({ newId, allTags }){
                             })
                             .then(response => {
                                 response.json()
+                                window.location.reload()
                             })
                             .catch((error) => {
                                 console.error('Error fetching data:', error);
@@ -102,7 +104,7 @@ function PostQn({ newId, allTags }){
         <>
             <div className="questionPopUp">
                 <h1 className='popUpTitle'>Ask a Question</h1>
-                <form onSubmit={handleSubmit}>
+                <form onSubmit={(e) =>handleSubmit(e)}>
                     <div className="inputDivs">
                         <h3 className="Title">Title: </h3>
                         <input id="titleInput" className="inputs" placeholder={"Enter a Title..."} onChange={handleTitle} />

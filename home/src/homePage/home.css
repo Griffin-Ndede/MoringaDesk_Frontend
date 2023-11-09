@@ -23,23 +23,38 @@
 
 #content {
   margin-top: 150px;
-  width: 600px;
+  width: 80%;
   margin-left: 25px;
   overflow: wrap;
 
 }
 
-#content h1 {
-  font-size: 60px;
-  color: white;
+#content h1{
+  width: 100%;
+}
+
+#content h1 b{
+  font-size: 80px;
+  color: rgb(22, 23, 113);
   font-weight: bold;
-  width: 80%;
+  width: 100%;
   padding: 20px;
+  text-shadow: 2px 2px rgba(255, 255, 255, 0.562);
+}
+
+#content h1 i{
+  margin-left: 1%;
+  font-size: 70px;
+  color: rgb(187, 80, 13);
+  text-shadow: 2px 2px rgba(255, 255, 255, 0.562);
 }
 #content p{
   font-size: 30px;
-  color: white;
+  color: rgb(248, 248, 248);
   margin-left:20px;
+  width: 60%;
+  text-shadow: 3px 3px rgba(0, 0, 0, 0.562);
+
 }
 /* styling page 2 */
 #page2 {
@@ -57,7 +72,7 @@ text-align: center;
 #about p{
 font-size: 23px;
 color:black;
-width: 1200px;
+width: 90%;
 margin: auto;
 line-height: 2;
 }
@@ -74,17 +89,18 @@ margin-top: 60px;
 flex: 1; 
 padding: 20px; 
 text-align: center; 
+width: 30%;
 }
 #searchcontent p{
 font-size: 20px;
 width: 400px;
 margin: auto;
 }
-img {
-width: 500px;
+.searchImg {
+width: 50%;
+padding-left: 0%;
 max-width: 100%; 
 border-radius: 20px;
-margin-right: 100px;
 }
 #reach {
 display: flex;
@@ -102,17 +118,17 @@ font-size: 20px;
 width: 400px;
 margin: auto;
 }
-img {
+.reachImg {
 width: 500px;
-height: auto;
+height: 300px;
 max-width: 100%; 
 border-radius: 20px;
-margin-left: 100px;
 }
+
 #bottomcontent p{
 font-size: 20px;
 color:black;
-width: 1200px;
+width: 100%;
 margin: auto;
 line-height: 2;
 text-align: center;

@@ -1,11 +1,15 @@
 import "./navBar.css"
 import { Link } from 'react-router-dom';
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { getData1 } from "./myStore";
+import { useSelector } from "react-redux/es/hooks/useSelector";
+import { getData1, getData2 } from "./myStore";
 
 function NavBar({ tags }){
     const [ showPanel, setShowPanel ] = useState(false);
+    const navigate = useNavigate()
+    const user = useSelector((state)=> state.value2?.id)
       
     function toggle() {
         setShowPanel((showPanel) => !showPanel);
@@ -17,6 +21,11 @@ function NavBar({ tags }){
     dispatch(getData1(id));
     };
 
+    const sendData1 = () => {
+        dispatch(getData2({id: 0}));
+        };
+
+    if(user !== 0){
     return(
         <>
             <div id="navbar">
@@ -36,11 +45,11 @@ function NavBar({ tags }){
                         <div className="linkDiv"><Link className="navLinks" to={'/tags'} onClick={toggle}> Tags</Link></div>
                         <div id="tagNames">
                             {tags.map(tag => (
-                                <div className="linkDiv1"><Link className="navLinks1" to={`/tags/${tag.name}`} onClick={()=>(sendData(tag.id), toggle())}>{tag.name}</Link></div> 
+                                <div className="linkDiv1"><Link className="navLinks1" to={`/tags/${tag.name}`} onClick={()=>{sendData(tag.id); toggle()}}>{tag.name}</Link></div> 
                             ))}
                         </div>
                         <div className="linkDiv"><Link className="navLinks" to={'/user'} onClick={toggle}> User</Link></div>
-                        <div id="logOut"><button id="logOutButton">Logout</button></div>
+                        <div id="logOut" onClick={()=>{sendData1(); navigate('/'); window.location.reload()}}><button id="logOutButton">Logout</button></div>
                     </div>
                 </>
                 :
@@ -48,7 +57,7 @@ function NavBar({ tags }){
             }
                 
         </>
-        )
+        )}
 }
 
 export default NavBar

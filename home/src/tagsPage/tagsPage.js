@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './tagsPage.css';
 
@@ -59,16 +59,13 @@ const [searchTerm, setSearchTerm] = useState('');
     <>
     <div id="head">
       <h1>Tags</h1> <br></br>
-    <div>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud</p>
-    </div>
     <div id='searchbar'>
         <input type="text" id="searchInput" placeholder="Filter by tag name" value={searchTerm} onChange={handleSearch}></input>
     </div>
     </div>
       <div className='card-container'>
         {filteredTags.map((tag, index) => (
-          <Link className="links" to={`/tags/${tag.id}`} onClick={()=> sendData(tag.id)}><div className='card' key={index} /* onClick={() => handleClick(tag.id)}*/>
+          <Link className="links" to={`/tags/${tag.name}`} onClick={()=> sendData(tag.id)}><div className='card' key={index} /* onClick={() => handleClick(tag.id)}*/>
             <h3>{tag.name}</h3>
             <p>
               {tag.description}

@@ -1,69 +1,20 @@
-.login-page {
-    background-color: #ffffff;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    width: 100%;
-  }
   
-  .login-page .div {
-    background-color: #ffffff;
-    height: 982px;
-    position: relative;
-    width: 1512px;
-  }
-  
-  .login-page .overlap {
-    
-    background-size: 100% 100%;
-    height: 920px;
-    left: 795px;
-    position: absolute;
-    top: 52px;
-    width: 672px;
-  }
-  
-  .login-page .text-wrapper {
-    color: #fa510f;
-    font-family: "Comfortaa-Regular", Helvetica;
-    font-size: 20px;
-    font-weight: 400;
-    left: 125px;
-    letter-spacing: 0;
-    line-height: normal;
-    position: absolute;
-    text-align: center;
-    top: 732px;
-    width: 418px;
-  }
-  
-  .login-page .text-wrapper-2 {
-    color: #000000;
-    font-family: "Comfortaa-Regular", Helvetica;
-    font-size: 20px;
-    font-weight: 400;
-    left: 108px;
-    letter-spacing: 0;
-    line-height: normal;
-    position: absolute;
-    top: 261px;
-    width: 196px;
-  }
-  
-  .login-page .text-wrapper-3 {
+   #text-wrapper-3 {
     color: #000000;
     font-family: "Comfortaa-Bold", Helvetica;
     font-size: 40px;
     font-weight: 700;
-    left: 104px;
     letter-spacing: 0;
     line-height: normal;
-    position: absolute;
-    top: 204px;
-    width: 489px;
+    margin-top: 3%;
+    margin-bottom: 3%;
+  }
+
+  .login-image{
+    width: 65%;
   }
   
-  .login-page .password {
+   .password {
     height: 30px;
     left: 105px;
     position: absolute;
@@ -71,12 +22,12 @@
     width: 459px;
   }
   
-  .login-page .overlap-group {
+   .overlap-group {
     height: 31px;
     position: relative;
   }
   
-  .login-page .text-wrapper-4 {
+   #text-wrapper-4 {
     color: #000000bf;
     font-family: "Comfortaa-Regular", Helvetica;
     font-size: 15px;
@@ -89,7 +40,7 @@
     width: 135px;
   }
   
-  .login-page .line {
+   .line {
     height: 3px;
     left: 0;
     position: absolute;
@@ -97,7 +48,7 @@
     width: 459px;
   }
   
-  .login-page .email {
+   .email {
     height: 30px;
     left: 104px;
     position: absolute;
@@ -105,7 +56,7 @@
     width: 459px;
   }
   
-  .login-page .input {
+   .input {
     background: transparent;
     border: none;
     color: #000000bf;
@@ -122,7 +73,7 @@
     width: 51px;
   }
   
-  .login-page .img {
+   .img {
     height: 3px;
     left: -1px;
     position: absolute;
@@ -130,7 +81,7 @@
     width: 459px;
   }
   
-  .login-page .create-account {
+   .create-account {
     height: 40px;
     left: 186px;
     position: absolute;
@@ -138,7 +89,7 @@
     width: 302px;
   }
   
-  .login-page .div-wrapper {
+   .div-wrapper {
     background-color: #1f9801;
     border-radius: 50px;
     height: 40px;
@@ -146,7 +97,7 @@
     width: 300px;
   }
   
-  .login-page .text-wrapper-5 {
+   .text-wrapper-5 {
     color: #ffffff;
     font-family: "Comfortaa-Regular", Helvetica;
     font-size: 15px;
@@ -160,7 +111,7 @@
     width: 148px;
   }
   
-  .login-page .image {
+   .image {
     height: 78px;
     left: 35px;
     object-fit: cover;
@@ -168,26 +119,28 @@
     top: 18px;
     width: 341px;
   }
+
+  .unnamed1{
+    z-index: 10;
+    border-radius: 50px;
+    width: 95%;
+    position: relative;
+    right: -95%;
+    margin-right: 5%;
+    box-shadow: 0 0 5px 5px #bc3c05;
+    animation: loginslide 0.5s forwards;
+    animation-delay: 0s;
+}
+
+@-webkit-keyframes loginslide {
+    100% { right: 0; }
+}
+
+@keyframes loginslide {
+    100% { right: 0; }
+}
+
   
-  
-  
-  .login-page .unnamed {
-    
-    position: static;
-    border-radius: 100px;
-    height: auto;
-    width: 700px;
-    
-    border-radius: 100px;
-     margin-top: 150px ; 
-    align-items: center;
-    
-    
-    
-  }
-  #registrationform{
-    margin-top: 1200px;
-  }
   .login-btn {
     background: #020220;
     color: #fff;
@@ -234,3 +187,20 @@
     right: 0;
     opacity: 1;
   }
+
+@media (max-width: 1000px){
+  .login-image{
+    display: none;
+  }
+
+  #text-wrapper-3 {
+    color: #000000;
+    font-family: "Comfortaa-Bold", Helvetica;
+    font-size: 30px;
+    font-weight: 700;
+    letter-spacing: 0;
+    line-height: normal;
+    margin-top: 3%;
+    margin-bottom: 3%;
+  }
+}
