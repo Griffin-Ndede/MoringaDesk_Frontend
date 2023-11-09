@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import './login.css';
 import { NavLink, useNavigate } from 'react-router-dom';
-import img2 from "../images/image.png"
 import { useDispatch } from "react-redux";
 import { getData2 } from "../myStore";
 
@@ -54,17 +53,22 @@ const LoginPage = ({ userData }) => {
   };
 
   return (
-    <div className="login-page">
-      <div className="div">
-        <div className="overlap">
-           <p className="text-wrapper">
-            
-          </p>
-          <div className="text-wrapper-2">Let’s get started.</div>
-          <div className="text-wrapper-3">Login to your account</div> 
-          
+    <>    
+        <div id="img">
+          <img id="signUpLogo" src={'https://moringaschool.com/wp-content/themes/moringa/public/images/logo-white.png'} alt="logo" />
+        </div>    
           <div id="registrationform">
+            <div className="login-image">
+              <img
+                className="unnamed1"
+                src="https://lh3.googleusercontent.com/1fmzgGEWYdufxJ9AFbI3gO8GMROfyrYYo5uE8EzAKpYeMfid89ZBoWtagyjQ5gYSJexxnYxfTRP5zHd0UUtlsNtsNDCPcn_Lcty8DGAgXQ=s750"
+                alt="Unnamed"
+              />
+            </div>
+            
             <form id="registration" onSubmit={handleSubmit}>
+              <div id="text-wrapper-3">Login to your account</div> 
+
               <label htmlFor="email">Email address</label><br />
               <input
                 type="email"
@@ -86,27 +90,12 @@ const LoginPage = ({ userData }) => {
               /><br />
 
               <button type="submit" className="login-btn">login</button>
-              <p className="text-wrapper">
-                
-              </p>
-              <p className="link"><NavLink to="/">do not have an account? sighn up!</NavLink></p>
+              
+              <p className="text-wrapper"><NavLink to="/">Do not have an account? Sign up!</NavLink></p>
         
             </form>
           </div>
-
-          <img className="image" alt="Image2" src={img2} />
-          
-        </div>
-        <div className="login-image">
-          <img
-            className="unnamed"
-            src="https://lh3.googleusercontent.com/1fmzgGEWYdufxJ9AFbI3gO8GMROfyrYYo5uE8EzAKpYeMfid89ZBoWtagyjQ5gYSJexxnYxfTRP5zHd0UUtlsNtsNDCPcn_Lcty8DGAgXQ=s750"
-            alt="Unnamed"
-          />
-          
-        </div>
-      </div>
-    </div>
+    </>
   );
 };
 

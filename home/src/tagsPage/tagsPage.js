@@ -65,7 +65,7 @@ const [searchTerm, setSearchTerm] = useState('');
     </div>
       <div className='card-container'>
         {filteredTags.map((tag, index) => (
-          <Link className="links" to={`https://moringa-yjml.onrender.com/tags/${tag.id}`} onClick={()=> sendData(tag.id)}><div className='card' key={index} /* onClick={() => handleClick(tag.id)}*/>
+          <Link className="links" to={`/tags/${tag.name}`} onClick={()=> sendData(tag.id)}><div className='card' key={index} /* onClick={() => handleClick(tag.id)}*/>
             <h3>{tag.name}</h3>
             <p>
               {tag.description}

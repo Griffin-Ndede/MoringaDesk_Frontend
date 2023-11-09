@@ -10,8 +10,8 @@ function PatchQn({ tags, questionTags, Id, Title, Description, Code, QnTag }){
     const [ code , setCode ] = useState(Code)
     const [ qnTag , setQnTag ] = useState(QnTagName)
 
-    function handleSubmit(){
-        
+    function handleSubmit(e){
+        e.preventDefault()
         if(title !== ' ' && description !== ''){
             questionTags.filter(questionTag => questionTag.question_id === Id).forEach((tag) =>{
                 fetch(`https://moringa-yjml.onrender.com/question_tags/${tag.id}`, {
@@ -36,6 +36,9 @@ function PatchQn({ tags, questionTags, Id, Title, Description, Code, QnTag }){
                 .then(response => {
                     response.json()
                 })
+                .catch((error) => {
+                    console.error('Error fetching data:', error);
+                  })
                 .then(
                     qnTag.forEach(tag => {
                         let tagId = tags.filter(tags => tags.name === tag)[0].id
@@ -51,7 +54,11 @@ function PatchQn({ tags, questionTags, Id, Title, Description, Code, QnTag }){
                             })
                             .then(response => {
                                 response.json()
+                                window.location.reload()
                             })
+                            .catch((error) => {
+                                console.error('Error fetching data:', error);
+                              })
                     })
                 )
                 .then(data => {
@@ -103,7 +110,7 @@ function PatchQn({ tags, questionTags, Id, Title, Description, Code, QnTag }){
         <>
             <div className="questionPopUp">
                 <h1 className='popUpTitle'>Edit Question</h1>
-                <form onSubmit={handleSubmit}>
+                <form onSubmit={(e)=>handleSubmit(e)}>
                     <div className="inputDivs">
                         <h3 className="Title">Title: </h3>
                         <input id="titleInput" className="inputs" defaultValue={Title} onChange={handleTitle} />

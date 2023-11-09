@@ -1,4 +1,4 @@
-@media (max-width: 500px){
+@media (max-width: 750px){
     #questionPage{
         padding-left: 1%;
         padding-right: 1%;
@@ -72,7 +72,7 @@
         margin-bottom: 0;
         position: relative;
         top: -28px;
-        left: 35px;
+        left: 37px;
         width: 80%;
         font-size: 100%;
     }
@@ -215,6 +215,51 @@
         background-color: rgba(1, 19, 55, 0.922);
         position: relative;
         left: 85%;
+        top: -30px;
+        z-index: 10;
+    }
+
+    .emptyDiv{
+        position: relative;
+        top: -20px;
+        width: 99%;
+        margin-left: 0.5%;
+        background-color: rgb(220, 220, 220);
+        border-style: dashed;
+        border-radius: 15px;
+        border-color: rgba(0, 0, 0, 0.785);
+        text-align: center;
+    }
+
+    .emptyData{
+        width: 80%;
+    }
+    
+    .emptyDesc{
+        font-size: 150%;
+        margin-top: 0;
+    }
+}
+
+@media (min-width: 500px) and (max-width:750px){
+    .questionDiv{
+        background-color: rgb(1, 19, 55);
+        padding: 1%;
+        border-radius: 15px;
+        margin-bottom: 1%;
+        margin-top: 70px;
+    }
+
+    .addButtons1{
+        width: 50px;
+        height: 30px;
+        border-radius: 10px;
+        border-color: rgba(1, 19, 55, 0.922);
+        font-size: 140%;
+        color: white;
+        background-color: rgba(1, 19, 55, 0.922);
+        position: relative;
+        left: 90%;
         top: -30px;
         z-index: 10;
     }
