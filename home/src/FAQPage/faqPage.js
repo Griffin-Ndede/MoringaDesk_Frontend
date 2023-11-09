@@ -3,15 +3,33 @@ import './faqMobile.css'
 import FaqCard from './faqCard'
 import RecentCard from './recentQnCard'
 import PostQn from '../popUps/postQuestion'
-import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
-import { useSelector } from 'react-redux/es/hooks/useSelector'
+import { useEffect, useState } from 'react';
 
+function FaqPage(){
+    const [ questions, setQuestions ] = useState([])
 
-function FaqPage({ questions, tags }){
+    useEffect(()=>{
+        fetch('https://moringa-yjml.onrender.com/questions')
+        .then((res)=> res.json())
+        .then(data => {
+          setQuestions(data)
+        })
+      }, [])
+
+      const [ allTags, setAllTags ] = useState([])
+      
+      useEffect(()=>{
+        fetch('https://moringa-yjml.onrender.com/tags')
+        .then((res)=> res.json())
+        .then(data => {
+          setAllTags(data)
+        })
+        .catch((error) => {
+          console.error('Error fetching data:', error);
+        })
+      }, [])
+
     const [ ask, setAsk ] = useState(false)
-    const navigate = useNavigate() 
-    const user = useSelector((state)=> state.value2)
 
     function addQn(){
         setAsk(!ask)
@@ -28,7 +46,6 @@ function FaqPage({ questions, tags }){
         (question.title.toLowerCase() || question.description.toLowerCase()).includes(search.toLowerCase())
     );
 
-    if(user.id !== 0){
     return(
         <>
         <div id="FAQBody">
@@ -59,12 +76,10 @@ function FaqPage({ questions, tags }){
                 </div>
             </div>
             <button title="Post Question" className="addButtons" onClick={addQn}> + </button>
-            {ask ? <div className="popUpBackground"><button className='closePopUp' onClick={addQn} >Close</button><PostQn newId={questions.length + 1} allTags={tags} /></div>: <></>}
+            {ask ? <div className="popUpBackground"><button className='closePopUp' onClick={addQn} >Close</button><PostQn newId={questions.length + 1} allTags={allTags} /></div>: <></>}
         </div>
         </>
-    )}else{
-        navigate('/')
-    }
+    )
 }
 
 export default FaqPage

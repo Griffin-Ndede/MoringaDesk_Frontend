@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './tagsPage.css';
 
@@ -6,23 +6,24 @@ import './tagsPage.css';
 import { useDispatch } from "react-redux";
 import { getData1 } from "../myStore";
 
-function TagsPage({ tags }) {
+function TagsPage() {
 // const [tags, setTags] = useState([]);
 // const [selectedTag, setSelectedTag] = useState(null);
 // const [questions, setQuestions] = useState([]);
 const [searchTerm, setSearchTerm] = useState('');
 
 
-  // useEffect(() => {
-  //   fetch('/tags')
-  //     .then((response) => response.json())
-  //     .then((data) => {
-  //       setTags(data);
-  //     })
-  //     .catch((error) => {
-  //       console.error('Error fetching data:', error);
-  //     });
-  // }, []);
+  const [ allTags, setAllTags ] = useState([])
+  useEffect(()=>{
+    fetch('https://moringa-yjml.onrender.com/tags')
+    .then((res)=> res.json())
+    .then(data => {
+      setAllTags(data)
+    })
+    .catch((error) => {
+      console.error('Error fetching data:', error);
+    })
+  }, [])
 
   // const handleClick = (tagId) => {
   //   fetch(`/tags/${tagId}`)
@@ -46,7 +47,7 @@ const [searchTerm, setSearchTerm] = useState('');
             setSearchTerm(event.target.value);
           };
 
-  const filteredTags = tags.filter((tag) =>
+  const filteredTags = allTags.filter((tag) =>
     tag.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
