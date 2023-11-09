@@ -8,7 +8,8 @@ function UserPage() {
   const [activeButton, setActiveButton] = useState('Saves');
 
   const userId = localStorage.getItem('userId');
-  const userName = localStorage.getItem('userName');
+  const username = localStorage.getItem('username');
+  const created_at = localStorage.getItem('created_at');
 
   useEffect(() => {
     if (userId) {
@@ -45,8 +46,12 @@ function UserPage() {
         <img src='./Default_pfp.png' alt='Default pfp' />
         <div id="header-content">
           <div>
-            <h1>{userName}</h1>
-            {/* <p>Member since 2022</p> */}
+          {username ? (
+        <h1>{username}</h1>
+      ) : (
+        <h1>User</h1>
+      )}
+            <p>Member since {created_at}</p>
           </div>
           <div>
           <button onClick={() => handleClick('Saves')}>Saves</button>
