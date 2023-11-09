@@ -6,7 +6,8 @@ function PatchResp({ Solution, Code, Id }){
     const [ description , setDescription ] = useState(Solution)
     const [ code , setCode ] = useState(Code)
 
-    function handleSubmit(){
+    function handleSubmit(e){
+        e.preventDefault()
         if(description !== ' '){
             fetch(`https://moringa-yjml.onrender.com/responses/${Id}`, {
                 method: "PATCH",
@@ -21,6 +22,8 @@ function PatchResp({ Solution, Code, Id }){
                 .then(response => {
                     response.json()
                 })
+                .then(window.location.reload()
+                )
                 .catch((error) => {
                     console.error('Error fetching data:', error);
                   })
@@ -47,7 +50,7 @@ function PatchResp({ Solution, Code, Id }){
         <>
             <div className="questionPopUp">
                 <h1 className='popUpTitle'>Edit Response</h1>
-                <form onSubmit={handleSubmit}>
+                <form onSubmit={(e) => handleSubmit(e)}>
                     <div className="inputDivs">
                         <h3 className="Title">Suggestion: </h3>
                         <textarea id="descInput" className="inputs" defaultValue={Solution}  cols={40} rows={4} onChange={handleDesc} />
