@@ -47,7 +47,7 @@
     margin-bottom: 0;
     position: relative;
     top: -30px;
-    left: 4.5%;
+    left: 40px;
     width: 94%;
 }
 
@@ -87,4 +87,25 @@
     position: relative;
     top: -15px;
     font-size: 105%;
+}
+
+@media (max-width: 750px){
+
+    .userName1{
+        margin-top: 0;
+        margin-bottom: 0;
+        position: relative;
+        top: -30px;
+        left: 37px;
+        width: 94%;
+    }
+    .recentCardTitle1{
+        margin-top: 0;
+        margin-bottom: 0;
+        position: relative;
+        top: -25px;
+        left: 3.5%;
+        width: 90%;
+        font-size: 120%;
+    }
 }

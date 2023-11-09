@@ -47,8 +47,9 @@ function PostQn({ newId, allTags }){
                             })
                             .then(response => {
                                 response.json()
-                                window.location.reload()
                             })
+                            .then(window.location.reload()
+                            )
                             .catch((error) => {
                                 console.error('Error fetching data:', error);
                               })

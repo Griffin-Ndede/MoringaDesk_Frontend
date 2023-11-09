@@ -11,7 +11,28 @@ import { confirmAlert } from 'react-confirm-alert'; // Import
 import 'react-confirm-alert/src/react-confirm-alert.css';
 
 
-function QuestionPage({ tags, questionTags }){
+function QuestionPage(){
+    const [ allTags, setAllTags ] = useState([])
+    useEffect(()=>{
+        fetch('https://moringa-yjml.onrender.com/tags')
+        .then((res)=> res.json())
+        .then(data => {
+        setAllTags(data)
+        })
+        .catch((error) => {
+        console.error('Error fetching data:', error);
+        })
+    }, [])
+    const [ questionTags, setQuestionTags ] = useState([])
+
+    useEffect(()=>{
+        fetch('https://moringa-yjml.onrender.com/question_tags')
+        .then((res)=> res.json())
+        .then(data => {
+          setQuestionTags(data)
+        })
+      }, [])
+    
 
     const qnId = useSelector((state) => state.value);
     const userId = useSelector((state) => state.value2.id)
@@ -26,6 +47,7 @@ function QuestionPage({ tags, questionTags }){
         .then((res)=> res.json())
         .then(data => {
           setQuestion(data)
+          console.log(qnId)
         })
     // eslint-disable-next-line
       }, [])
@@ -92,7 +114,6 @@ function QuestionPage({ tags, questionTags }){
     function editActions(){
         setEditStatus(!editStatus)
     }
-    if(userId !== 0){
     return(
         <>
             <div id="questionPage">
@@ -133,12 +154,10 @@ function QuestionPage({ tags, questionTags }){
                 </div>
                 }
                 {resp ? <div className="popUpBackground"><button className='closePopUp' onClick={addResp} >Close</button><PostResp qn={qnId}/></div>: <></>}
-                {patchQuestion ? <div className="popUpBackground"><button className='closePopUp' onClick={patchQN} >Close</button><PatchQn tags={tags} questionTags={questionTags} Id={question.id} Title={question.title} Description={question.description} Code={question.code} QnTag={question.tags} UserId={question.user?.id}/></div>: <></>}
+                {patchQuestion ? <div className="popUpBackground"><button className='closePopUp' onClick={patchQN} >Close</button><PatchQn tags={allTags} questionTags={questionTags} Id={question.id} Title={question.title} Description={question.description} Code={question.code} QnTag={question.tags} UserId={question.user?.id}/></div>: <></>}
             </div>
         </>
-    )}else{
-        navigate('/')
-    }
+    )
 }
 
 export default QuestionPage

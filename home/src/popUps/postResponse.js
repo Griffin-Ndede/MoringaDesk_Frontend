@@ -8,7 +8,8 @@ function PostResp({ qn }){
     const [ code , setCode ] = useState('')
     const userId = useSelector((state) => state.value2.id);
 
-    function handleSubmit(){
+    function handleSubmit(e){
+        e.preventDefault()
         if(description !== ' '){
             fetch('https://moringa-yjml.onrender.com/response', {
                 method: "POST",
@@ -51,7 +52,7 @@ function PostResp({ qn }){
         <>
             <div className="questionPopUp">
                 <h1 className='popUpTitle'>Post a Response</h1>
-                <form onSubmit={handleSubmit}>
+                <form onSubmit={(e)=>handleSubmit(e)}>
                     <div className="inputDivs">
                         <h3 className="Title">Suggestion: </h3>
                         <textarea id="descInput" className="inputs" placeholder={"Enter a Suggestion..."}  cols={40} rows={4} onChange={handleDesc} />

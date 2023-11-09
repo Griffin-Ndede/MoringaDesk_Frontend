@@ -1,12 +1,22 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './login.css';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { useDispatch } from "react-redux";
 import { getData2 } from "../myStore";
 
-const LoginPage = ({ userData }) => {
+const LoginPage = () => {
   const navigate = useNavigate(); // Use useNavigate for navigation
   const dispatch = useDispatch();
+  const [ userData, setUserData ] = useState([])
+
+
+  useEffect(()=>{
+    fetch('https://moringa-yjml.onrender.com/users')
+    .then((res)=> res.json())
+    .then(data => {
+      setUserData(data)
+    })
+  }, [])
 
   const sendData = (user) => {
       dispatch(getData2(user));
