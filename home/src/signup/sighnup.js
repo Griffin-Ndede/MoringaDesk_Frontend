@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { NavLink, useNavigate } from 'react-router-dom';
 import "./sighnup.css"
-import img1 from "../images/image.png";
 
 const CreateAccount = () => {
   const navigate = useNavigate();
@@ -56,10 +55,11 @@ const CreateAccount = () => {
   return (
     <>
       <div id="img">
-        <img src={img1} alt="logo" />
+        <img id="signUpLogo" src={'https://moringaschool.com/wp-content/themes/moringa/public/images/logo-white.png'} alt="logo" />
       </div>
       <div id="registrationform">
         <form id="registration" onSubmit={handleSubmit}>
+          <div id="text-wrapper-33">Create an Account</div><br/>
           <label>First name</label><br />
           <input
             type='text'

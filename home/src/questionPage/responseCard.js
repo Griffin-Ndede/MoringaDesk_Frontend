@@ -136,7 +136,7 @@ function ResponseCard({ respId, user, userID, solution, code, votes }){
                     <h3 className="questionUserName">@{user}:</h3>
                     {userID === userId? <img className='respActionDropDown' alt='option menu' src='https://static.thenounproject.com/png/892510-200.png' onClick={editActions}/>: <></>}
                         {editStatus? <div className='respActionButtons'>
-                            <button className='editButtons' onClick={()=>(patchResp(), setEditStatus())}>Edit</button>
+                            <button className='editButtons' onClick={()=>{patchResp(); setEditStatus()}}>Edit</button>
                             <button className='deleteButtons' onClick={deleteResp}>Delete</button>
                         </div>: 
                         <></>}

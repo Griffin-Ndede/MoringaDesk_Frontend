@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { UseSelector, useSelector } from "react-redux/es/hooks/useSelector";
+import { useSelector } from "react-redux/es/hooks/useSelector";
 import { getData1, getData2 } from "./myStore";
 
 function NavBar({ tags }){
@@ -45,11 +45,11 @@ function NavBar({ tags }){
                         <div className="linkDiv"><Link className="navLinks" to={'/tags'} onClick={toggle}> Tags</Link></div>
                         <div id="tagNames">
                             {tags.map(tag => (
-                                <div className="linkDiv1"><Link className="navLinks1" to={`/tags/${tag.name}`} onClick={()=>(sendData(tag.id), toggle())}>{tag.name}</Link></div> 
+                                <div className="linkDiv1"><Link className="navLinks1" to={`/tags/${tag.name}`} onClick={()=>{sendData(tag.id); toggle()}}>{tag.name}</Link></div> 
                             ))}
                         </div>
                         <div className="linkDiv"><Link className="navLinks" to={'/user'} onClick={toggle}> User</Link></div>
-                        <div id="logOut" onClick={()=>(sendData1(), navigate('/'), window.location.reload())}><button id="logOutButton">Logout</button></div>
+                        <div id="logOut" onClick={()=>{sendData1(); navigate('/'); window.location.reload()}}><button id="logOutButton">Logout</button></div>
                     </div>
                 </>
                 :
