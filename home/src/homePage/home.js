@@ -1,16 +1,16 @@
 import React from "react";
 import "./home.css";
 import img1 from "../images/askqus.jpeg"
-import img2 from "../images/EML.png"
-import img3 from "../images/IG.jpeg"
+// import img2 from "../images/EML.png"
+// import img3 from "../images/IG.jpeg"
 // import img4 from "../images/image.png"
 // import img5 from "../images/MAP.jpeg"
 import img6 from "../images/mfFAQS.jpeg"
 
-import img8 from "../images/phone.png"
+// import img8 from "../images/phone.png"
 import img9 from "../images/postresp.jpeg"
 import img10 from "../images/tagsfrt.jpeg"
-import img11 from "../images/TWEETER.png"
+// import img11 from "../images/TWEETER.png"
 
 
 const Homepage =()=>{
@@ -67,16 +67,13 @@ const Homepage =()=>{
           </div>
           <div id="footer">
             <div id="socials">
-              <h3><img className="images" src={img3} alt="ig"></img>
+              <h3>
                 Instagram: @moringadesk</h3>
               <h3>
-              <img  className="images" src={img11} alt="TEETER"></img>
                 X: @moringadesk</h3>
               <h3>
-              <img className="images"src={img2} alt="EML"></img>
                 email: moringadesk@gmail.com</h3>
               <h3>
-              <img className="images" src={img8} alt="phone"></img>
                 Call us on: +2547 123 456 789</h3>
             </div>
             <div id="about">
