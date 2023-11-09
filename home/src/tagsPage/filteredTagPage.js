@@ -1,6 +1,6 @@
 import './filteredTags.css'
 import './tagsPage.css'
-import { useState } from 'react';
+// import { useState } from 'react';
 import { Link } from "react-router-dom"
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
@@ -15,11 +15,11 @@ function FilteredTag({ allTags }){
     };
 
     const tagId = useSelector((state) => state.value1);
-    const [searchTerm, setSearchTerm] = useState('');
+    // const [searchTerm, setSearchTerm] = useState('');
 
-    const handleSearch = (event) => {
-        setSearchTerm(event.target.value);
-      };
+    // const handleSearch = (event) => {
+    //     setSearchTerm(event.target.value);
+    //   };
 
     // const filteredTags = allTags.filter((tag) =>
     //     tag.questions?.title.toLowerCase().includes(searchTerm.toLowerCase())
@@ -30,7 +30,7 @@ function FilteredTag({ allTags }){
     <div id="head">
         <h1>Tags</h1> <br></br>
         <div id='searchbar'>
-            <input type="text" id="searchInput" placeholder="Filter by tag name" value={searchTerm} /*onChange={handleSearch}*/></input>
+            <input type="text" id="searchInput" placeholder="Filter by tag name" /*value={searchTerm} /*onChange={handleSearch}*/></input>
         </div>
     </div>
     <div id="filteredQns">
