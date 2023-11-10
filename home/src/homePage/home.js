@@ -24,9 +24,9 @@ const Homepage =()=>{
         </section>
         <section id="page2">
           <div id="about">
-            <h1>What we do</h1>
+            <h1>Welcome to Moringa Desk</h1>
             <p>At Moringa Desk, we're transforming tech education in the world tech field. 
-              Our approach blends industry-focused research and questions, dedicated mega minds across the world; shearing knowledge, and an innovative 
+              Our approach blends industry-focused research and questions, dedicated mega minds across the world; sharing knowledge, and an innovative 
               learning environment, preparing students for successful careers. 
               We recognize that the learning journey can be challenging, 
               so we've established a <span>support platform</span> for quick access to <span>assistance and solutions. </span> 
@@ -75,10 +75,6 @@ const Homepage =()=>{
                 email: moringadesk@gmail.com</h3>
               <h3>
                 Call us on: +2547 123 456 789</h3>
-            </div>
-            <div id="about">
-              <h3>How it works</h3>
-              <h3>Leave us a feedback</h3>
             </div>
             <div id="map">
             <iframe 
